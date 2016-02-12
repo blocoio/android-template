@@ -1,0 +1,18 @@
+<resources>
+  <dimen name="margin_tiny">4dp</dimen>
+  <dimen name="margin_small">8dp</dimen>
+  <dimen name="margin_default">16dp</dimen>
+  <dimen name="margin_double">32dp</dimen>
+  <dimen name="margin_triple">48dp</dimen>
+
+  <dimen name="text_small">14sp</dimen>
+  <dimen name="text_default">16sp</dimen>
+  <dimen name="text_large">18sp</dimen>
+  <dimen name="text_title">22sp</dimen>
+
+  <dimen name="elevation_card">2dp</dimen>
+  <dimen name="elevation_app_bar">4dp</dimen>
+  <dimen name="elevation_fab">6dp</dimen>
+
+  <dimen name="fab_margin">@dimen/margin_default</dimen>
+</resources>

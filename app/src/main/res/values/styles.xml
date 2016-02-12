@@ -1,0 +1,25 @@
+<resources>
+
+  <style name="BaseAppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
+    <!-- Global attributes here -->
+    <item name="colorPrimary">@color/primary</item>
+    <item name="colorPrimaryDark">@color/primaryDark</item>
+    <item name="colorAccent">@color/secondary</item>
+
+    <item name="windowActionBar">false</item>
+    <item name="windowNoTitle">true</item>
+
+    <item name="android:windowBackground">@color/background</item>
+    <item name="android:textColor">@color/text</item>
+    <item name="android:textColorHint">@color/text_hint</item>
+    <item name="android:textSize">@dimen/text_default</item>
+  </style>
+
+  <style name="AppTheme" parent="BaseAppTheme">
+    <!-- Pre-21 attributes here -->
+  </style>
+
+  <style name="AppTheme.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar"/>
+  <style name="AppTheme.PopupOverlay" parent="ThemeOverlay.AppCompat.Light"/>
+
+</resources>
