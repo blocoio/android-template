@@ -23,17 +23,19 @@
 
 ## Getting started
 
-1. Clone this repository and open it on Android Studio
-1. Rename package ```io.bloco.template```
-1. On app/build.gradle, replace dependencies with ```+``` for their most recent versions
-1. Set your application name on string.xml
-1. Set your application primary and secondary colors on colors.xml
+1. Download this repository and open it on Android Studio
+1. Rename the app package `io.bloco.template`
+1. On `AndroidApplication.java`, change the package on the `checkTestMode` method
+1. On `app/build.gradle`, change the applicationId to the new app package
+1. On `app/build.gradle`, update the dependencies Android Studio suggests
+1. On `string.xml`, set your application name 
+1. On `colors.xml`, set your application primary and secondary colors 
 
 And you're ready to start working on your new app.
 
 ## Notes
 
-- Make sure the method ```checkTestMode``` inside ```AndroidApplication``` includes a test class
+- Make sure the method `checkTestMode` inside `AndroidApplication` includes a test class
   that exists
 
 ## To Do
@@ -41,6 +43,7 @@ And you're ready to start working on your new app.
 - Analytics (Google Analytics and Answers, at least)
 - Crashlytics
 - SharedPreferences helper
+- Configure StrictMode
 - Manifest
     - backup.xml
     - ACTION_VIEW index

@@ -18,6 +18,10 @@ import javax.inject.Singleton;
     return application;
   }
 
+  @Provides @Singleton public AndroidApplication.Mode provideApplicationMode() {
+    return application.getMode();
+  }
+
   @Provides @Singleton public Resources provideResources(Context context) {
     return context.getResources();
   }

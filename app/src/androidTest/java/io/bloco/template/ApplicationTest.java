@@ -12,6 +12,7 @@ public class ApplicationTest extends ApplicationTestCase<AndroidApplication> {
   }
 
   public void testMode() throws Exception {
+    createApplication();
     assertThat(getApplication().getMode(), is(equalTo(AndroidApplication.Mode.TEST)));
   }
 }

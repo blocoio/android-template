@@ -9,6 +9,5 @@ public interface ActivityComponent {
 
   void inject(WelcomeActivity activity);
 
-  //Exposed to sub-graphs.
   Activity activity();
 }
