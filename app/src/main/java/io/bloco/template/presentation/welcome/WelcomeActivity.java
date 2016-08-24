@@ -2,7 +2,7 @@ package io.bloco.template.presentation.welcome;
 
 import android.os.Bundle;
 import android.widget.TextView;
-import butterknife.Bind;
+import butterknife.BindView;
 import io.bloco.template.R;
 import io.bloco.template.data.models.Card;
 import io.bloco.template.presentation.BaseActivity;
@@ -13,7 +13,7 @@ public class WelcomeActivity extends BaseActivity implements WelcomeContract.Vie
 
   @Inject WelcomeContract.Presenter presenter;
 
-  @Bind(R.id.welcome_cards) TextView welcomeCards;
+  @BindView(R.id.welcome_cards) TextView welcomeCards;
 
   @Override protected void onCreate(Bundle savedInstanceState) {
     super.onCreate(savedInstanceState);

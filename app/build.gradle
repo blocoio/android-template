@@ -28,28 +28,29 @@ android {
 dependencies {
   compile fileTree(dir: 'libs', include: ['*.jar'])
   compile 'com.android.support:appcompat-v7:24.1.1'
-  testCompile 'com.android.support:appcompat-v7:24.1.1'
-  androidTestCompile 'com.android.support:appcompat-v7:24.1.1'
   compile 'com.android.support:design:24.1.1'
-  testCompile 'com.android.support:design:24.1.1'
-  androidTestCompile 'com.android.support:design:24.1.1'
   // Dagger
-  compile 'com.google.dagger:dagger:2.0.2'
-  apt 'com.google.dagger:dagger-compiler:2.0.2'
+  compile 'com.google.dagger:dagger:2.5'
+  apt 'com.google.dagger:dagger-compiler:2.5'
   compile 'javax.annotation:jsr250-api:1.0'
   // Logging
-  compile 'com.jakewharton.timber:timber:4.1.2'
+  compile 'com.jakewharton.timber:timber:4.3.0'
   // View injection
-  compile 'com.jakewharton:butterknife:7.0.1'
+  compile 'com.jakewharton:butterknife:8.1.0'
+  apt 'com.jakewharton:butterknife-compiler:8.1.0'
   // Testing
-  testCompile 'com.android.support:appcompat-v7:24.1.1'
   testCompile 'junit:junit:4.12'
   testCompile 'com.github.blocoio:faker:1.2.4'
+  testCompile 'com.android.support:appcompat-v7:24.1.1'
+  testCompile 'com.android.support:design:24.1.1'
   testCompile 'org.mockito:mockito-core:2.0.44-beta'
   androidTestCompile 'junit:junit:4.12'
+  androidTestCompile 'com.github.blocoio:faker:1.2.4'
+  androidTestCompile 'com.android.support:appcompat-v7:24.1.1'
+  androidTestCompile 'com.android.support:design:24.1.1'
   androidTestCompile 'com.android.support:support-annotations:24.1.1'
-  androidTestCompile 'com.android.support.test:runner:0.4.1'
-  androidTestCompile 'com.android.support.test:rules:0.4.1'
+  androidTestCompile 'com.android.support.test:runner:0.5'
+  androidTestCompile 'com.android.support.test:rules:0.5'
   androidTestCompile 'com.android.support.test.espresso:espresso-core:2.2.2'
   androidTestCompile('com.android.support.test.espresso:espresso-contrib:2.2.2') {
     exclude module: 'recyclerview-v7'
