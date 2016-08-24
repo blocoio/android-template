@@ -5,7 +5,6 @@ import android.content.res.Resources;
 import dagger.Module;
 import dagger.Provides;
 import io.bloco.template.AndroidApplication;
-import javax.inject.Singleton;
 
 @Module public class ApplicationModule {
   private final AndroidApplication application;
@@ -14,15 +13,15 @@ import javax.inject.Singleton;
     this.application = application;
   }
 
-  @Provides @Singleton public Context provideApplicationContext() {
+  @Provides @PerApplication public Context provideApplicationContext() {
     return application;
   }
 
-  @Provides @Singleton public AndroidApplication.Mode provideApplicationMode() {
+  @Provides @PerApplication public AndroidApplication.Mode provideApplicationMode() {
     return application.getMode();
   }
 
-  @Provides @Singleton public Resources provideResources(Context context) {
+  @Provides @PerApplication public Resources provideResources(Context context) {
     return context.getResources();
   }
 }

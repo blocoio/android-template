@@ -5,9 +5,8 @@ import android.content.res.Resources;
 import dagger.Component;
 import io.bloco.template.AndroidApplication;
 import io.bloco.template.data.Database;
-import javax.inject.Singleton;
 
-@Singleton @Component(modules = ApplicationModule.class) public interface ApplicationComponent {
+@PerApplication @Component(modules = ApplicationModule.class) public interface ApplicationComponent {
   Context context();
 
   AndroidApplication.Mode applicationMode();

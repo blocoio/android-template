@@ -6,13 +6,13 @@ repositories {
 }
 
 android {
-  compileSdkVersion 'Google Inc.:Google APIs:23'
-  buildToolsVersion "23.0.2"
+  compileSdkVersion 24
+  buildToolsVersion '23.0.3'
 
   defaultConfig {
     applicationId "io.bloco.template"
     minSdkVersion 17
-    targetSdkVersion 23
+    targetSdkVersion 24
     versionCode 1
     versionName "1.0"
     testInstrumentationRunner 'android.support.test.runner.AndroidJUnitRunner'
@@ -27,12 +27,12 @@ android {
 
 dependencies {
   compile fileTree(dir: 'libs', include: ['*.jar'])
-  compile 'com.android.support:appcompat-v7:23.3.0'
-  testCompile 'com.android.support:appcompat-v7:23.3.0'
-  androidTestCompile 'com.android.support:appcompat-v7:23.3.0'
-  compile 'com.android.support:design:23.3.0'
-  testCompile 'com.android.support:design:23.3.0'
-  androidTestCompile 'com.android.support:design:23.3.0'
+  compile 'com.android.support:appcompat-v7:24.1.1'
+  testCompile 'com.android.support:appcompat-v7:24.1.1'
+  androidTestCompile 'com.android.support:appcompat-v7:24.1.1'
+  compile 'com.android.support:design:24.1.1'
+  testCompile 'com.android.support:design:24.1.1'
+  androidTestCompile 'com.android.support:design:24.1.1'
   // Dagger
   compile 'com.google.dagger:dagger:2.0.2'
   apt 'com.google.dagger:dagger-compiler:2.0.2'
@@ -42,12 +42,12 @@ dependencies {
   // View injection
   compile 'com.jakewharton:butterknife:7.0.1'
   // Testing
-  testCompile 'com.android.support:appcompat-v7:23.3.0'
+  testCompile 'com.android.support:appcompat-v7:24.1.1'
   testCompile 'junit:junit:4.12'
-  testCompile 'com.github.blocoio:faker:1.2.0'
+  testCompile 'com.github.blocoio:faker:1.2.4'
   testCompile 'org.mockito:mockito-core:2.0.44-beta'
   androidTestCompile 'junit:junit:4.12'
-  androidTestCompile 'com.android.support:support-annotations:23.3.0'
+  androidTestCompile 'com.android.support:support-annotations:24.1.1'
   androidTestCompile 'com.android.support.test:runner:0.4.1'
   androidTestCompile 'com.android.support.test:rules:0.4.1'
   androidTestCompile 'com.android.support.test.espresso:espresso-core:2.2.2'
