@@ -19,8 +19,19 @@ android {
   }
   buildTypes {
     release {
-      minifyEnabled false
+      minifyEnabled true
       proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+    }
+  }
+
+  // Share code between test environments
+  sourceSets {
+    String sharedTestDir = 'src/sharedTest/java'
+    test {
+      java.srcDir sharedTestDir
+    }
+    androidTest {
+      java.srcDir sharedTestDir
     }
   }
 }
