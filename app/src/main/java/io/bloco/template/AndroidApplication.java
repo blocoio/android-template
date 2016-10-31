@@ -1,6 +1,7 @@
 package io.bloco.template;
 
 import android.app.Application;
+import android.os.StrictMode;
 import io.bloco.template.common.di.ApplicationComponent;
 import io.bloco.template.common.di.ApplicationModule;
 import io.bloco.template.common.di.DaggerApplicationComponent;
@@ -18,12 +19,8 @@ public class AndroidApplication extends Application {
 
     if (BuildConfig.DEBUG) {
       Timber.plant(new Timber.DebugTree());
+      configStrictMode();
     }
-  }
-
-  private void initializeInjector() {
-    this.applicationComponent =
-        DaggerApplicationComponent.builder().applicationModule(new ApplicationModule(this)).build();
   }
 
   public ApplicationComponent getApplicationComponent() {
@@ -32,6 +29,17 @@ public class AndroidApplication extends Application {
 
   public Mode getMode() {
     return mode;
+  }
+
+  private void initializeInjector() {
+    this.applicationComponent =
+        DaggerApplicationComponent.builder().applicationModule(new ApplicationModule(this)).build();
+  }
+
+  private void configStrictMode() {
+    StrictMode.setThreadPolicy(
+        new StrictMode.ThreadPolicy.Builder().detectAll().penaltyLog().penaltyDialog().build());
+    StrictMode.setVmPolicy(new StrictMode.VmPolicy.Builder().detectAll().penaltyLog().build());
   }
 
   // Test loading a random test class, to check if we're in test mode

@@ -44,6 +44,5 @@ And you're ready to start working on your new app.
 - Analytics (Google Analytics and Answers, at least)
 - Crashlytics
 - SharedPreferences helper
-- Configure StrictMode
 - Manifest
     - ACTION_VIEW index
