@@ -6,13 +6,13 @@ repositories {
 }
 
 android {
-  compileSdkVersion 24
-  buildToolsVersion '23.0.3'
+  compileSdkVersion 25
+  buildToolsVersion '25.0.0'
 
   defaultConfig {
     applicationId "io.bloco.template"
     minSdkVersion 17
-    targetSdkVersion 24
+    targetSdkVersion 25
     versionCode 1
     versionName "1.0"
     testInstrumentationRunner 'android.support.test.runner.AndroidJUnitRunner'
@@ -37,29 +37,29 @@ android {
 }
 
 dependencies {
-  compile fileTree(dir: 'libs', include: ['*.jar'])
-  compile 'com.android.support:appcompat-v7:24.1.1'
-  compile 'com.android.support:design:24.1.1'
+  compile fileTree(include: ['*.jar'], dir: 'libs')
+  compile 'com.android.support:appcompat-v7:25.0.0'
+  compile 'com.android.support:design:25.0.0'
   // Dagger
-  compile 'com.google.dagger:dagger:2.5'
-  apt 'com.google.dagger:dagger-compiler:2.5'
-  compile 'javax.annotation:jsr250-api:1.0'
+  apt 'com.google.dagger:dagger-compiler:2.7'
+  compile 'com.google.dagger:dagger:2.7'
+  provided 'javax.annotation:jsr250-api:1.0'
   // Logging
-  compile 'com.jakewharton.timber:timber:4.3.0'
+  compile 'com.jakewharton.timber:timber:4.3.1'
   // View injection
-  compile 'com.jakewharton:butterknife:8.1.0'
-  apt 'com.jakewharton:butterknife-compiler:8.1.0'
+  compile 'com.jakewharton:butterknife:8.4.0'
+  apt 'com.jakewharton:butterknife-compiler:8.4.0'
   // Testing
   testCompile 'junit:junit:4.12'
   testCompile 'com.github.blocoio:faker:1.2.4'
-  testCompile 'com.android.support:appcompat-v7:24.1.1'
-  testCompile 'com.android.support:design:24.1.1'
+  testCompile 'com.android.support:appcompat-v7:25.0.0'
+  testCompile 'com.android.support:design:25.0.0'
   testCompile 'org.mockito:mockito-core:2.0.44-beta'
   androidTestCompile 'junit:junit:4.12'
   androidTestCompile 'com.github.blocoio:faker:1.2.4'
-  androidTestCompile 'com.android.support:appcompat-v7:24.1.1'
-  androidTestCompile 'com.android.support:design:24.1.1'
-  androidTestCompile 'com.android.support:support-annotations:24.1.1'
+  androidTestCompile 'com.android.support:appcompat-v7:25.0.0'
+  androidTestCompile 'com.android.support:design:25.0.0'
+  androidTestCompile 'com.android.support:support-annotations:25.0.0'
   androidTestCompile 'com.android.support.test:runner:0.5'
   androidTestCompile 'com.android.support.test:rules:0.5'
   androidTestCompile 'com.android.support.test.espresso:espresso-core:2.2.2'
