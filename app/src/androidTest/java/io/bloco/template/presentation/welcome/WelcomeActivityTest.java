@@ -10,7 +10,6 @@ import org.junit.runner.RunWith;
 import static android.support.test.espresso.Espresso.onView;
 import static android.support.test.espresso.assertion.ViewAssertions.matches;
 import static android.support.test.espresso.matcher.ViewMatchers.isDisplayed;
-import static android.support.test.espresso.matcher.ViewMatchers.withId;
 import static android.support.test.espresso.matcher.ViewMatchers.withText;
 import static io.bloco.template.helpers.AssertCurrentActivity.assertCurrentActivity;
 
@@ -29,6 +28,6 @@ import static io.bloco.template.helpers.AssertCurrentActivity.assertCurrentActiv
   }
 
   @Test public void testCards() throws Exception {
-    onView(withId(R.id.welcome_cards)).check(matches(withText("John Smith\n")));
+    onView(withText("John Smith\n")).check(matches(isDisplayed()));
   }
 }

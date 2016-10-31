@@ -1,7 +1,6 @@
 package io.bloco.template.presentation.welcome;
 
 import android.os.Bundle;
-import android.widget.TextView;
 import butterknife.BindView;
 import io.bloco.template.R;
 import io.bloco.template.data.models.Card;
@@ -13,7 +12,7 @@ public class WelcomeActivity extends BaseActivity implements WelcomeContract.Vie
 
   @Inject WelcomeContract.Presenter presenter;
 
-  @BindView(R.id.welcome_cards) TextView welcomeCards;
+  @BindView(R.id.welcome_cards) WelcomeView welcomeView;
 
   @Override protected void onCreate(Bundle savedInstanceState) {
     super.onCreate(savedInstanceState);
@@ -30,6 +29,6 @@ public class WelcomeActivity extends BaseActivity implements WelcomeContract.Vie
     for (Card card : cards) {
       welcomeText += card.getName() + "\n";
     }
-    welcomeCards.setText(welcomeText);
+    welcomeView.setText(welcomeText);
   }
 }

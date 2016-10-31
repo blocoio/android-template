@@ -1,13 +1,10 @@
 package io.bloco.template.common.di;
 
-import android.app.Activity;
-import dagger.Component;
+import dagger.Subcomponent;
 import io.bloco.template.presentation.welcome.WelcomeActivity;
 
-@PerActivity @Component(dependencies = ApplicationComponent.class, modules = ActivityModule.class)
-public interface ActivityComponent {
+@PerActivity @Subcomponent(modules = ActivityModule.class) public interface ActivityComponent {
+  ViewComponent plus(ViewModule viewModule);
 
   void inject(WelcomeActivity activity);
-
-  Activity activity();
 }

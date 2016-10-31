@@ -8,7 +8,6 @@ import android.util.AttributeSet;
 import android.view.ViewGroup;
 import android.widget.FrameLayout;
 import butterknife.ButterKnife;
-import io.bloco.template.common.di.DaggerViewComponent;
 import io.bloco.template.common.di.ViewComponent;
 import io.bloco.template.common.di.ViewModule;
 
@@ -55,15 +54,12 @@ public abstract class BaseView extends FrameLayout {
 
   protected ViewComponent getViewComponent() {
     BaseActivity activity = (BaseActivity) getContext();
-    return DaggerViewComponent.builder()
-        .activityComponent(activity.getActivityComponent())
-        .viewModule(new ViewModule(this))
-        .build();
+    return activity.getActivityComponent().plus(new ViewModule(this));
   }
 
   private void init(Context context) {
-    setLayoutParams(new LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT,
-        ViewGroup.LayoutParams.WRAP_CONTENT));
+    setLayoutParams(
+        new LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT));
     inflate(context, getLayoutRes(), this);
     ButterKnife.bind(this);
   }

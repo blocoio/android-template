@@ -11,7 +11,6 @@ import io.bloco.template.R;
 import io.bloco.template.common.di.ActivityComponent;
 import io.bloco.template.common.di.ActivityModule;
 import io.bloco.template.common.di.ApplicationComponent;
-import io.bloco.template.common.di.DaggerActivityComponent;
 
 public abstract class BaseActivity extends AppCompatActivity {
 
@@ -25,23 +24,14 @@ public abstract class BaseActivity extends AppCompatActivity {
   }
 
   protected ActivityComponent getActivityComponent() {
-    return DaggerActivityComponent.builder()
-        .applicationComponent(getApplicationComponent())
-        .activityModule(getActivityModule())
-        .build();
+    ApplicationComponent applicationComponent =
+        ((AndroidApplication) getApplication()).getApplicationComponent();
+    return applicationComponent.plus(new ActivityModule(this));
   }
 
   @LayoutRes protected abstract int getLayoutRes();
 
   // Private
-
-  private ApplicationComponent getApplicationComponent() {
-    return ((AndroidApplication) getApplication()).getApplicationComponent();
-  }
-
-  private ActivityModule getActivityModule() {
-    return new ActivityModule(this);
-  }
 
   private void setupToolbar() {
     toolbar = (Toolbar) findViewById(R.id.toolbar);

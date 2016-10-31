@@ -1,13 +1,8 @@
 package io.bloco.template.common.di;
 
-import android.view.View;
-import dagger.Component;
+import dagger.Subcomponent;
+import io.bloco.template.presentation.welcome.WelcomeView;
 
-@PerView @Component(dependencies = ActivityComponent.class, modules = ViewModule.class)
-public interface ViewComponent {
-
-  View view();
-
-  // Views
-
+@PerView @Subcomponent(modules = ViewModule.class) public interface ViewComponent {
+  void inject(WelcomeView welcomeView);
 }
