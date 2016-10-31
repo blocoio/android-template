@@ -1,5 +1,7 @@
 package io.bloco.template.data;
 
+import io.bloco.template.data.models.Card;
+import java.util.List;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -16,6 +18,7 @@ public class DatabaseTest {
   }
 
   @Test public void getAllCards() throws Exception {
-    assertThat(database.getAllCards().size(), is(equalTo(1)));
+    List<Card> cards = database.getAllCards().toBlocking().first();
+    assertThat(cards.size(), is(equalTo(1)));
   }
 }

@@ -13,6 +13,7 @@
     - Application has a testing flag
 - Dependency injection (with [Dagger v2](http://google.github.io/dagger/))
 - View injection (with [Butterknife](http://jakewharton.github.io/butterknife/))
+- Reactive programming with RxJava and RxAndroid
 - Preconditions
 - Google Design library
 - Logging (with [Timber](https://github.com/JakeWharton/timber))

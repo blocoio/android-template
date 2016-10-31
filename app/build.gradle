@@ -49,6 +49,9 @@ dependencies {
   // View injection
   compile 'com.jakewharton:butterknife:8.4.0'
   apt 'com.jakewharton:butterknife-compiler:8.4.0'
+  // Reactive programming
+  compile 'io.reactivex:rxandroid:1.2.1'
+  compile 'io.reactivex:rxjava:1.1.6'
   // Testing
   testCompile 'junit:junit:4.12'
   testCompile 'com.github.blocoio:faker:1.2.4'

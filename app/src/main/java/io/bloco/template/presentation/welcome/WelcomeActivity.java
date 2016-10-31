@@ -24,6 +24,11 @@ public class WelcomeActivity extends BaseActivity implements WelcomePresenter.Vi
     return R.layout.activity_welcome;
   }
 
+  @Override protected void onDestroy() {
+    super.onDestroy();
+    presenter.stop();
+  }
+
   @Override public void showCards(List<Card> cards) {
     String welcomeText = "";
     for (Card card : cards) {
