@@ -5,7 +5,7 @@
 - Clean architecture with 3 layers
     - Data (for models, database, API and preferences)
     - Domain (for business logic)
-    - Presentation (for views and presenters)
+    - Presentation (for UI logic, with MVP)
 - Tests
     - Unit tests
     - Application tests

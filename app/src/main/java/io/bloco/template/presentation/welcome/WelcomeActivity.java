@@ -8,9 +8,9 @@ import io.bloco.template.presentation.BaseActivity;
 import java.util.List;
 import javax.inject.Inject;
 
-public class WelcomeActivity extends BaseActivity implements WelcomeContract.View {
+public class WelcomeActivity extends BaseActivity implements WelcomePresenter.View {
 
-  @Inject WelcomeContract.Presenter presenter;
+  @Inject WelcomePresenter presenter;
 
   @BindView(R.id.welcome_cards) WelcomeView welcomeView;
 

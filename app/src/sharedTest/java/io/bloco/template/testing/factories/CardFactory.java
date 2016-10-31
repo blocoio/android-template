@@ -1,4 +1,4 @@
-package io.bloco.template.helpers.factories;
+package io.bloco.template.testing.factories;
 
 import io.bloco.template.data.models.Card;
 

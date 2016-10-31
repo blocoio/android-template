@@ -6,17 +6,16 @@ import io.bloco.template.domain.GetAllCards;
 import java.util.List;
 import javax.inject.Inject;
 
-@PerActivity public class WelcomePresenter implements WelcomeContract.Presenter,
-    GetAllCards.Callback {
+@PerActivity public class WelcomePresenter implements GetAllCards.Callback {
 
   private final GetAllCards getAllCards;
-  private WelcomeContract.View view;
+  private View view;
 
   @Inject public WelcomePresenter(GetAllCards getAllCards) {
     this.getAllCards = getAllCards;
   }
 
-  @Override public void start(WelcomeContract.View view) {
+  public void start(View view) {
     this.view = view;
     getAllCards.get(this);
   }
@@ -25,5 +24,9 @@ import javax.inject.Inject;
     if (!cards.isEmpty()) {
       view.showCards(cards);
     }
+  }
+
+  public interface View {
+    void showCards(List<Card> cards);
   }
 }

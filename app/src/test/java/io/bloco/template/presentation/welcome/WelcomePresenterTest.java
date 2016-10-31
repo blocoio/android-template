@@ -2,7 +2,7 @@ package io.bloco.template.presentation.welcome;
 
 import io.bloco.template.data.models.Card;
 import io.bloco.template.domain.GetAllCards;
-import io.bloco.template.helpers.factories.CardFactory;
+import io.bloco.template.testing.factories.CardFactory;
 import java.util.Collections;
 import java.util.List;
 import org.junit.Before;
@@ -21,7 +21,7 @@ public class WelcomePresenterTest {
   private CardFactory cardFactory;
 
   @Mock private GetAllCards getAllCards;
-  @Mock private WelcomeContract.View view;
+  @Mock private WelcomePresenter.View view;
 
   @Before public void setUp() {
     MockitoAnnotations.initMocks(this);
