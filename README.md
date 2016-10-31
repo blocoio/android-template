@@ -45,5 +45,4 @@ And you're ready to start working on your new app.
 - SharedPreferences helper
 - Configure StrictMode
 - Manifest
-    - backup.xml
     - ACTION_VIEW index
