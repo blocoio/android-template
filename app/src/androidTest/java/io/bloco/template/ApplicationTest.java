@@ -1,18 +1,18 @@
 package io.bloco.template;
 
-import android.test.ApplicationTestCase;
+import android.support.test.runner.AndroidJUnit4;
+import org.junit.Test;
+import org.junit.runner.RunWith;
 
+import static io.bloco.template.helpers.ApplicationHelper.getApplication;
 import static org.hamcrest.core.Is.is;
 import static org.hamcrest.core.IsEqual.equalTo;
 import static org.junit.Assert.assertThat;
 
-public class ApplicationTest extends ApplicationTestCase<AndroidApplication> {
-  public ApplicationTest() {
-    super(AndroidApplication.class);
-  }
+@RunWith(AndroidJUnit4.class)
+public class ApplicationTest {
 
-  public void testMode() throws Exception {
-    createApplication();
+  @Test public void mode() throws Exception {
     assertThat(getApplication().getMode(), is(equalTo(AndroidApplication.Mode.TEST)));
   }
 }

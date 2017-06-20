@@ -1,5 +1,4 @@
 apply plugin: 'com.android.application'
-apply plugin: 'com.neenbedankt.android-apt'
 
 repositories {
   maven { url 'https://jitpack.io' }
@@ -7,21 +6,27 @@ repositories {
 
 android {
   compileSdkVersion 25
-  buildToolsVersion '25.0.0'
+  buildToolsVersion '25.0.3'
 
   defaultConfig {
     applicationId "io.bloco.template"
-    minSdkVersion 17
+    minSdkVersion 19
     targetSdkVersion 25
     versionCode 1
     versionName "1.0"
     testInstrumentationRunner 'android.support.test.runner.AndroidJUnitRunner'
   }
+
   buildTypes {
     release {
       minifyEnabled true
       proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
     }
+  }
+
+  compileOptions {
+    sourceCompatibility JavaVersion.VERSION_1_8
+    targetCompatibility JavaVersion.VERSION_1_8
   }
 
   // Share code between test environments
@@ -38,31 +43,31 @@ android {
 
 dependencies {
   compile fileTree(include: ['*.jar'], dir: 'libs')
-  compile 'com.android.support:appcompat-v7:25.0.0'
-  compile 'com.android.support:design:25.0.0'
+  compile 'com.android.support:appcompat-v7:25.3.1'
+  compile 'com.android.support:design:25.3.1'
   // Dagger
-  apt 'com.google.dagger:dagger-compiler:2.7'
-  compile 'com.google.dagger:dagger:2.7'
+  annotationProcessor 'com.google.dagger:dagger-compiler:2.11'
+  compile 'com.google.dagger:dagger:2.11'
   provided 'javax.annotation:jsr250-api:1.0'
   // Logging
-  compile 'com.jakewharton.timber:timber:4.3.1'
+  compile 'com.jakewharton.timber:timber:4.5.1'
   // View injection
-  compile 'com.jakewharton:butterknife:8.4.0'
-  apt 'com.jakewharton:butterknife-compiler:8.4.0'
+  compile 'com.jakewharton:butterknife:8.6.0'
+  annotationProcessor 'com.jakewharton:butterknife-compiler:8.6.0'
   // Reactive programming
   compile 'io.reactivex:rxandroid:1.2.1'
-  compile 'io.reactivex:rxjava:1.1.6'
+  compile 'io.reactivex:rxjava:1.3.0'
   // Testing
   testCompile 'junit:junit:4.12'
-  testCompile 'com.github.blocoio:faker:1.2.4'
-  testCompile 'com.android.support:appcompat-v7:25.0.0'
-  testCompile 'com.android.support:design:25.0.0'
-  testCompile 'org.mockito:mockito-core:2.0.44-beta'
+  testCompile 'com.github.blocoio:faker:1.2.5'
+  testCompile 'com.android.support:appcompat-v7:25.3.1'
+  testCompile 'com.android.support:design:25.3.1'
+  testCompile 'org.mockito:mockito-core:2.8.9'
   androidTestCompile 'junit:junit:4.12'
-  androidTestCompile 'com.github.blocoio:faker:1.2.4'
-  androidTestCompile 'com.android.support:appcompat-v7:25.0.0'
-  androidTestCompile 'com.android.support:design:25.0.0'
-  androidTestCompile 'com.android.support:support-annotations:25.0.0'
+  androidTestCompile 'com.github.blocoio:faker:1.2.5'
+  androidTestCompile 'com.android.support:appcompat-v7:25.3.1'
+  androidTestCompile 'com.android.support:design:25.3.1'
+  androidTestCompile 'com.android.support:support-annotations:25.3.1'
   androidTestCompile 'com.android.support.test:runner:0.5'
   androidTestCompile 'com.android.support.test:rules:0.5'
   androidTestCompile 'com.android.support.test.espresso:espresso-core:2.2.2'

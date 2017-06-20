@@ -13,7 +13,8 @@ import static android.support.test.espresso.matcher.ViewMatchers.isDisplayed;
 import static android.support.test.espresso.matcher.ViewMatchers.withText;
 import static io.bloco.template.helpers.AssertCurrentActivity.assertCurrentActivity;
 
-@RunWith(AndroidJUnit4.class) public class WelcomeActivityTest {
+@RunWith(AndroidJUnit4.class)
+public class WelcomeActivityTest {
 
   @Rule public ActivityTestRule<WelcomeActivity> activityTestRule =
       new ActivityTestRule<>(WelcomeActivity.class);
