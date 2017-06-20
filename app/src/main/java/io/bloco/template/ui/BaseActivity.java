@@ -1,4 +1,4 @@
-package io.bloco.template.presentation;
+package io.bloco.template.ui;
 
 import android.os.Bundle;
 import android.support.annotation.LayoutRes;

@@ -1,7 +1,7 @@
 package io.bloco.template.common.di;
 
 import dagger.Subcomponent;
-import io.bloco.template.presentation.welcome.WelcomeActivity;
+import io.bloco.template.ui.welcome.WelcomeActivity;
 
 @PerActivity @Subcomponent(modules = ActivityModule.class) public interface ActivityComponent {
   ViewComponent plus(ViewModule viewModule);

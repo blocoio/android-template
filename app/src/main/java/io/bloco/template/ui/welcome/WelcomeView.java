@@ -1,11 +1,11 @@
-package io.bloco.template.presentation.welcome;
+package io.bloco.template.ui.welcome;
 
 import android.content.Context;
 import android.util.AttributeSet;
 import android.widget.TextView;
 import butterknife.BindView;
 import io.bloco.template.R;
-import io.bloco.template.presentation.BaseView;
+import io.bloco.template.ui.BaseView;
 
 public class WelcomeView extends BaseView {
 

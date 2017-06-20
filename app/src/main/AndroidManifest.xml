@@ -12,7 +12,7 @@
       android:theme="@style/AppTheme"
   >
     <activity
-        android:name=".presentation.welcome.WelcomeActivity"
+        android:name=".ui.welcome.WelcomeActivity"
         android:label="@string/app_name"
         android:theme="@style/AppTheme"
     >

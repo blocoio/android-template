@@ -1,4 +1,4 @@
-package io.bloco.template.presentation;
+package io.bloco.template.ui;
 
 import android.content.Context;
 import android.os.Bundle;

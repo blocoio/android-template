@@ -1,10 +1,10 @@
-package io.bloco.template.presentation.welcome;
+package io.bloco.template.ui.welcome;
 
 import android.os.Bundle;
 import butterknife.BindView;
 import io.bloco.template.R;
 import io.bloco.template.data.models.Card;
-import io.bloco.template.presentation.BaseActivity;
+import io.bloco.template.ui.BaseActivity;
 import java.util.List;
 import javax.inject.Inject;
 

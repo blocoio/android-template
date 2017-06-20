@@ -1,4 +1,4 @@
-package io.bloco.template.presentation.welcome;
+package io.bloco.template.ui.welcome;
 
 import android.support.test.rule.ActivityTestRule;
 import android.support.test.runner.AndroidJUnit4;

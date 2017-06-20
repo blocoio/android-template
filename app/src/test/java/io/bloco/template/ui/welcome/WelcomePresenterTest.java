@@ -1,4 +1,4 @@
-package io.bloco.template.presentation.welcome;
+package io.bloco.template.ui.welcome;
 
 import io.bloco.template.data.models.Card;
 import io.bloco.template.domain.GetAllCards;

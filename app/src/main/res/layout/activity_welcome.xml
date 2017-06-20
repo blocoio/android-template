@@ -6,7 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:fitsSystemWindows="true"
-    tools:context=".presentation.welcome.WelcomeActivity"
+    tools:context=".ui.welcome.WelcomeActivity"
 >
 
   <android.support.design.widget.AppBarLayout
@@ -29,7 +29,7 @@
       android:padding="@dimen/margin_default"
       app:layout_behavior="@string/appbar_scrolling_view_behavior"
   >
-    <io.bloco.template.presentation.welcome.WelcomeView
+    <io.bloco.template.ui.welcome.WelcomeView
         android:id="@+id/welcome_cards"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
