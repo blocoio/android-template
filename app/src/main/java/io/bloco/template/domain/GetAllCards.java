@@ -1,23 +1,20 @@
 package io.bloco.template.domain;
 
-import io.bloco.template.common.Schedulers;
-import io.bloco.template.data.Database;
+import io.bloco.template.data.CardRepository;
 import io.bloco.template.data.models.Card;
+import io.reactivex.Observable;
 import java.util.List;
 import javax.inject.Inject;
-import rx.Observable;
 
 public class GetAllCards {
 
-  private final Schedulers schedulers;
-  private final Database database;
+  private final CardRepository cardRepository;
 
-  @Inject public GetAllCards(Schedulers schedulers, Database database) {
-    this.schedulers = schedulers;
-    this.database = database;
+  @Inject public GetAllCards(CardRepository cardRepository) {
+    this.cardRepository = cardRepository;
   }
 
   public Observable<List<Card>> get() {
-    return database.getAllCards().compose(schedulers.<List<Card>>apply());
+    return cardRepository.getAll();
   }
 }

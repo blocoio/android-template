@@ -5,7 +5,7 @@
 - Clean architecture with 3 layers
     - Data (for models, database, API and preferences)
     - Domain (for business logic)
-    - Presentation (for UI logic, with MVP)
+    - Presentation (for UI logic, with MVVM)
 - Tests
     - Unit tests
     - Application tests
@@ -13,9 +13,10 @@
     - Application has a testing flag
 - Dependency injection (with [Dagger v2](http://google.github.io/dagger/))
 - View injection (with [Butterknife](http://jakewharton.github.io/butterknife/))
-- Reactive programming with RxJava and RxAndroid
+- Reactive programming with RxJava 2 and RxAndroid
 - Preconditions
 - Google Design library
+- Android architecture components to share ViewModels during configuration changes
 - Logging (with [Timber](https://github.com/JakeWharton/timber))
 - Resource defaults
     - styles.xml
@@ -43,6 +44,4 @@ And you're ready to start working on your new app.
 
 - Analytics (Google Analytics and Answers, at least)
 - Crashlytics
-- SharedPreferences helper
-- Manifest
-    - ACTION_VIEW index
+- SharedPreferences helper with RxPreferences

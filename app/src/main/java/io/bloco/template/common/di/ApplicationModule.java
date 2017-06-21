@@ -5,8 +5,10 @@ import android.content.res.Resources;
 import dagger.Module;
 import dagger.Provides;
 import io.bloco.template.AndroidApplication;
+import io.bloco.template.common.di.viewmodel.ViewModelModule;
 
-@Module public class ApplicationModule {
+@Module(includes = ViewModelModule.class)
+public class ApplicationModule {
   private final AndroidApplication application;
 
   public ApplicationModule(AndroidApplication application) {
