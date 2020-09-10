@@ -1,88 +1,84 @@
 apply plugin: 'com.android.application'
+apply plugin: 'kotlin-android'
+apply plugin: 'kotlin-android-extensions'
+apply plugin: 'kotlin-kapt'
 
 repositories {
-  maven { url 'https://jitpack.io' }
+    maven { url 'https://jitpack.io' }
 }
 
 android {
-  compileSdkVersion 25
-  buildToolsVersion '25.0.3'
+    compileSdkVersion 30
+    buildToolsVersion "30.0.2"
 
-  defaultConfig {
-    applicationId "io.bloco.template"
-    minSdkVersion 19
-    targetSdkVersion 25
-    versionCode 1
-    versionName "1.0"
-    testInstrumentationRunner 'android.support.test.runner.AndroidJUnitRunner'
-  }
+    defaultConfig {
+        applicationId "io.bloco.template"
+        minSdkVersion 21
+        targetSdkVersion 30
+        versionCode 1
+        versionName "1.0"
 
-  buildTypes {
-    release {
-      minifyEnabled true
-      proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
-  }
 
-  compileOptions {
-    sourceCompatibility JavaVersion.VERSION_1_8
-    targetCompatibility JavaVersion.VERSION_1_8
-  }
+    kapt {
+        generateStubs = true
+    }
 
-  // Share code between test environments
-  sourceSets {
-    String sharedTestDir = 'src/sharedTest/java'
-    test {
-      java.srcDir sharedTestDir
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
     }
-    androidTest {
-      java.srcDir sharedTestDir
-    }
-  }
 }
 
 dependencies {
-  compile fileTree(include: ['*.jar'], dir: 'libs')
-  compile 'com.android.support:appcompat-v7:25.3.1'
-  compile 'com.android.support:design:25.3.1'
-  // Architecture Components
-  compile 'android.arch.lifecycle:runtime:1.0.0-alpha3'
-  compile 'android.arch.lifecycle:extensions:1.0.0-alpha3'
-  annotationProcessor 'android.arch.lifecycle:compiler:1.0.0-alpha3'
-  // Dagger
-  annotationProcessor 'com.google.dagger:dagger-compiler:2.11'
-  compile 'com.google.dagger:dagger:2.11'
-  provided 'javax.annotation:jsr250-api:1.0'
-  // Logging
-  compile 'com.jakewharton.timber:timber:4.5.1'
-  // View injection
-  compile 'com.jakewharton:butterknife:8.6.0'
-  annotationProcessor 'com.jakewharton:butterknife-compiler:8.6.0'
-  // Reactive programming
-  compile 'io.reactivex.rxjava2:rxandroid:2.0.1'
-  compile 'io.reactivex.rxjava2:rxjava:2.1.0'
-  // Reactive lifecycle
-  compile 'com.trello.rxlifecycle2:rxlifecycle:2.1.0'
-  compile 'com.trello.rxlifecycle2:rxlifecycle-android:2.1.0'
-  compile 'com.trello.rxlifecycle2:rxlifecycle-android-lifecycle:2.1.0'
-  // Testing
-  testCompile 'junit:junit:4.12'
-  testCompile 'com.google.truth:truth:0.32'
-  testCompile 'com.github.blocoio:faker:1.2.5'
-  testCompile 'com.android.support:appcompat-v7:25.3.1'
-  testCompile 'com.android.support:design:25.3.1'
-  testCompile 'org.mockito:mockito-core:2.8.9'
-  androidTestCompile 'junit:junit:4.12'
-  testCompile 'com.google.truth:truth:0.32'
-  androidTestCompile 'com.github.blocoio:faker:1.2.5'
-  androidTestCompile 'com.android.support:appcompat-v7:25.3.1'
-  androidTestCompile 'com.android.support:design:25.3.1'
-  androidTestCompile 'com.android.support:support-annotations:25.3.1'
-  androidTestCompile 'com.android.support.test:runner:0.5'
-  androidTestCompile 'com.android.support.test:rules:0.5'
-  androidTestCompile 'com.android.support.test.espresso:espresso-core:2.2.2'
-  androidTestCompile('com.android.support.test.espresso:espresso-contrib:2.2.2') {
-    exclude module: 'recyclerview-v7'
-    exclude module: 'support-v4'
-  }
+    implementation fileTree(dir: "libs", include: ["*.jar"])
+
+    //Kotlin
+    implementation "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
+    implementation "org.jetbrains.kotlinx:kotlinx-coroutines-core:1.3.9"
+
+    // Android
+    implementation 'androidx.core:core-ktx:1.3.1'
+    implementation 'androidx.appcompat:appcompat:1.2.0'
+    implementation 'androidx.constraintlayout:constraintlayout:2.0.1'
+    implementation 'androidx.preference:preference:1.1.1'
+    implementation 'androidx.lifecycle:lifecycle-viewmodel-ktx:2.2.0'
+    implementation 'androidx.lifecycle:lifecycle-runtime-ktx:2.2.0'
+
+    // Preferences
+    implementation 'androidx.preference:preference:1.1.1'
+    implementation 'com.github.tfcporciuncula:flow-preferences:1.3.2'
+
+    // Material Design
+    implementation 'com.google.android.material:material:1.2.1'
+
+    // Dependency Injection
+    implementation "com.google.dagger:dagger:2.28.3"
+    implementation "com.google.dagger:dagger-android:2.15"
+    kapt "com.google.dagger:dagger-compiler:2.28.3"
+
+    // Logging
+    implementation 'com.jakewharton.timber:timber:4.7.1'
+
+    // Testing
+    testImplementation 'junit:junit:4.13'
+    testImplementation 'org.mockito:mockito-inline:3.5.10'
+    testImplementation 'com.nhaarman.mockitokotlin2:mockito-kotlin:2.2.0'
+
+    // Instrumentation Testing
+    androidTestImplementation 'androidx.test.ext:junit:1.1.2'
+    androidTestImplementation 'androidx.test.espresso:espresso-core:3.3.0'
+    kaptAndroidTest 'com.google.dagger:dagger-compiler:2.28.3'
+
+}
+
+tasks.withType(org.jetbrains.kotlin.gradle.tasks.KotlinCompile).all {
+    kotlinOptions.freeCompilerArgs += [
+            '-Xuse-experimental=kotlinx.coroutines.ExperimentalCoroutinesApi',
+            '-Xuse-experimental=kotlinx.coroutines.FlowPreview',
+            '-Xallow-result-return-type',
+    ]
 }
