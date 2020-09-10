@@ -21,22 +21,24 @@ class CounterViewModel
     init {
         counterDomain.get()
             .onEach {
-            counterCurrentValue.value = it
-        }.launchIn(ioScope)
+                counterCurrentValue.value = it
+            }
+            .launchIn(ioScope)
 
         counterModifier
             .asFlow()
             .onEach { click ->
-                var editedValue = counterDomain.get().first()
+                var valueToEdit = counterDomain.get().first()
 
                 when (click) {
-                    Modification.Increment -> editedValue++
-                    Modification.Decrement -> editedValue--
+                    Modification.Increment -> valueToEdit++
+                    Modification.Decrement -> valueToEdit--
                 }
 
-                counterDomain.editCounter(editedValue)
+                counterDomain.editCounter(valueToEdit)
                     .onFailure { errors.send(it) }
-            }.launchIn(ioScope)
+            }
+            .launchIn(ioScope)
 
     }
 
@@ -50,8 +52,8 @@ class CounterViewModel
     }
 
     // OutPuts
-    fun getValue(): Flow<Counter> = counterCurrentValue
-    fun getErrors(): Flow<Throwable> = errors.asFlow()
+    fun value(): Flow<Counter> = counterCurrentValue
+    fun errors(): Flow<Throwable> = errors.asFlow()
 
     private enum class Modification {
         Increment, Decrement

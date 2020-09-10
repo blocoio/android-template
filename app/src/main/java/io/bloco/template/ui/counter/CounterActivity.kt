@@ -29,15 +29,18 @@ class CounterActivity : BaseActivity() {
         fabIncrement.setOnClickListener { viewModel.incrementClick() }
         fabDecrement.setOnClickListener { viewModel.decrementClick() }
 
-        viewModel.getValue()
-            .onEach {
-                value.text = it.toString()
-        }.launchIn(lifecycleScope)
+        viewModel.value()
+            .onEach { value.text = it.toString() }
+            .launchIn(lifecycleScope)
 
-        viewModel.getErrors()
-            .onEach {
-                Snackbar.make(coordinatorLayout, R.string.error_message, Snackbar.LENGTH_SHORT).show()
-        }.launchIn(lifecycleScope)
+        viewModel.errors()
+            .onEach { makeErrorSnackBar() }
+            .launchIn(lifecycleScope)
+    }
+
+
+    private fun makeErrorSnackBar() {
+        Snackbar.make(coordinatorLayout, R.string.error_message, Snackbar.LENGTH_SHORT).show()
     }
 
 }

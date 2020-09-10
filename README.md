@@ -29,7 +29,7 @@
 1. On `app/build.gradle`, change the applicationId to the new app package
 1. On `app/build.gradle`, update the dependencies Android Studio suggests
 1. On `string.xml`, set your application name 
-1. On `theme.xml` & `theme.xml` set your application primary and secondary colors
+1. On `theme.xml` & `colors.xml` set your application primary and secondary colors
 
 And you're ready to start working on your new app.
 
