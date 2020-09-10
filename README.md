@@ -5,7 +5,7 @@
 - Clean architecture with 3 layers
     - Data (for models, database, API and preferences)
     - Domain (for business logic)
-    - Presentation (for UI logic, with View Model)
+    - Presentation (for UI logic, with MVVM)
 - Tests
     - Unit tests
     - Application tests
@@ -29,7 +29,7 @@
 1. On `app/build.gradle`, change the applicationId to the new app package
 1. On `app/build.gradle`, update the dependencies Android Studio suggests
 1. On `string.xml`, set your application name 
-1. On `theme.xml`, set your application primary and secondary colors
+1. On `theme.xml` & `theme.xml` set your application primary and secondary colors
 
 And you're ready to start working on your new app.
 
@@ -40,6 +40,7 @@ And you're ready to start working on your new app.
 
 ## To Do
 
-- Analytics (Google Analytics and Answers, at least)
-- Crashlytics
-- SharedPreferences helper with RxPreferences
+- Timber Logs
+- Hilt
+- Gesture Navigation
+- Real World Example Application Branch
