@@ -4,7 +4,6 @@ import io.bloco.template.data.models.Counter
 import io.bloco.template.data.preferences.CounterStoragePreferences
 import javax.inject.Inject
 
-
 class GetAndSetCounter
 @Inject constructor(
     private val preferences: CounterStoragePreferences

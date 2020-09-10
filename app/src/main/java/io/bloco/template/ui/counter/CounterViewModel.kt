@@ -28,10 +28,12 @@ class CounterViewModel
             .asFlow()
             .onEach { click ->
                 var editedValue = counterDomain.get().first()
+
                 when (click) {
                     Modification.Increment -> editedValue++
                     Modification.Decrement -> editedValue--
                 }
+
                 counterDomain.editCounter(editedValue)
                     .onFailure { errors.send(it) }
             }.launchIn(ioScope)
@@ -55,10 +57,3 @@ class CounterViewModel
         Increment, Decrement
     }
 }
-
-
-
-
-
-
-
