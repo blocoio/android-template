@@ -16,7 +16,7 @@ class CounterViewModel
     private val counterModifier = BroadcastChannel<Modification>(1)
 
     private val counterCurrentValue = MutableStateFlow(Counter(0))
-    private val errors = BroadcastChannel<String>(1)
+    private val errors = BroadcastChannel<Throwable>(1)
 
     init {
         counterDomain.get()
@@ -27,30 +27,29 @@ class CounterViewModel
         counterModifier
             .asFlow()
             .onEach { click ->
+                var editedValue = counterDomain.get().first()
                 when (click) {
-                    Modification.Increment -> counterDomain.editCounter(
-                        counterDomain.get().first() + 1
-                    )
-                    Modification.Decrement -> counterDomain.editCounter(
-                        counterDomain.get().first() - 1
-                    ).onFailure { errors.send(it.message ?: "Decrement failed") }
+                    Modification.Increment -> editedValue++
+                    Modification.Decrement -> editedValue--
                 }
+                counterDomain.editCounter(editedValue)
+                    .onFailure { errors.send(it) }
             }.launchIn(ioScope)
 
     }
 
     // Inputs
-    fun incrementCounter() {
+    fun incrementClick() {
         counterModifier.sendBlocking(Modification.Increment)
     }
 
-    fun decrementCounter() {
+    fun decrementClick() {
         counterModifier.sendBlocking(Modification.Decrement)
     }
 
     // OutPuts
-    fun getValue(): StateFlow<Counter> = counterCurrentValue
-    fun getErrors(): Flow<String> = errors.asFlow()
+    fun getValue(): Flow<Counter> = counterCurrentValue
+    fun getErrors(): Flow<Throwable> = errors.asFlow()
 
     private enum class Modification {
         Increment, Decrement
