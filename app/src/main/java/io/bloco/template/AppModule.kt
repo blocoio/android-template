@@ -1,12 +1,12 @@
 package io.bloco.template
 
 import android.content.Context
-import android.content.SharedPreferences
 import android.content.res.Resources
 import androidx.preference.PreferenceManager
 import com.tfcporciuncula.flow.FlowSharedPreferences
 import dagger.Module
 import dagger.Provides
+import javax.inject.Singleton
 
 @Module
 class AppModule(
@@ -23,5 +23,7 @@ class AppModule(
     fun resources(): Resources = app.resources
 
     @Provides
-    fun flowSharedPreferences() = FlowSharedPreferences(PreferenceManager.getDefaultSharedPreferences(context()))
+    @Singleton
+    fun flowSharedPreferences(context: Context) =
+        FlowSharedPreferences(PreferenceManager.getDefaultSharedPreferences(context))
 }
