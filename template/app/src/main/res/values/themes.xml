@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <style name="AppTheme" parent="Theme.MaterialComponents.Light.DarkActionBar">
+        <item name="android:navigationBarColor">@android:color/transparent</item>
+
+        <!-- Optional, but recommended for full edge-to-edge rendering
+        <item name="android:statusBarColor">@android:color/transparent</item>-->
+
+        <!-- Customize your theme here. -->
+        <item name="colorPrimary">@color/bloco_green</item>
+        <item name="colorPrimaryVariant">@color/bloco_cyan</item>
+        <item name="colorOnPrimary">@color/black</item>
+        <item name="colorSecondary">@color/bloco_light_blue</item>
+        <item name="colorSecondaryVariant">@color/bloco_dark_blue</item>
+        <item name="colorOnSecondary">@color/black</item>
+        <item name="colorSurface">@color/black</item>
+        <item name="colorOnSurface">@color/white</item>
+        <item name="android:colorBackground">@color/white</item>
+        <item name="colorOnBackground">@color/black</item>
+        <item name="colorError">@color/dark_red</item>
+        <item name="colorOnError">@color/dark_red</item>
+    </style>
+
+</resources>
