@@ -5,6 +5,7 @@ import android.os.StrictMode
 import android.os.StrictMode.VmPolicy
 import io.bloco.template.common.di.AppComponent
 import io.bloco.template.common.di.DaggerAppComponent
+import timber.log.Timber
 
 open class App : Application() {
 
@@ -27,6 +28,7 @@ open class App : Application() {
         super.onCreate()
         component.inject(this)
         setupStrictMode()
+        setupTimber()
     }
 
     private fun setupStrictMode() {
@@ -35,6 +37,12 @@ open class App : Application() {
                 StrictMode.ThreadPolicy.Builder().detectAll().penaltyLog().penaltyDeath().build()
             )
             StrictMode.setVmPolicy(VmPolicy.Builder().detectAll().penaltyLog().build())
+        }
+    }
+
+    private fun setupTimber() {
+        if (BuildConfig.DEBUG) {
+            Timber.plant(Timber.DebugTree())
         }
     }
 
