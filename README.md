@@ -1,7 +1,5 @@
  <img src="images/logo.png" alt="ArchiTecture logo"/>
-<br />
 
-# Features
 ## Clean architecture with 3 layers
 - Data (for models, database, API and preferences)
 - Domain (for business logic)
