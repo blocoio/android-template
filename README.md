@@ -1,8 +1,7 @@
  <img src="images/logo.png" alt="ArchiTecture logo"/>
-<br /><br />
+<br />
 
 # Features
-
 ## Clean architecture with 3 layers
 - Data (for models, database, API and preferences)
 - Domain (for business logic)
@@ -25,8 +24,6 @@
 - Resource defaults
     - themes.xml
     - colors.xml
-
-<br />
 
 # Getting started
 
