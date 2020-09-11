@@ -24,12 +24,13 @@
 ## Getting started
 
 1. Download this repository and open it on Android Studio
-1. Rename the app package `io.bloco.template`
-1. On `app`, change the package on the `mode` lazy var
-1. On `app/build.gradle`, change the applicationId to the new app package
-1. On `app/build.gradle`, update the dependencies Android Studio suggests
-1. On `string.xml`, set your application name 
-1. On `theme.xml` & `colors.xml` set your application primary and secondary colors
+2. Rename the app package `io.bloco.template`
+3. Check if the manifest package was renamed along with the package
+4. On `app`, change the package on the `mode` lazy var
+5. On `app/build.gradle`, change the applicationId to the new app package
+6. On `app/build.gradle`, update the dependencies Android Studio suggests
+7. On `string.xml`, set your application name
+8. On `theme.xml` & `colors.xml` set your application primary and secondary colors
 
 And you're ready to start working on your new app.
 
@@ -42,5 +43,11 @@ And you're ready to start working on your new app.
 
 - Hilt
 - Gesture Navigation
-- Real World Example Application Branch
 - Styles.xml Styles-Text.xml
+- TestAppComponent for easier Injection
+- Github CI Actions (Unit Tests, Lint, "Instrumented" (pre commented for easy setup))
+- Github CI Badges
+- Instrumented Delay
+- JetFire note for easy check (canIDropJetify)
+- Rename Template Script
+- Real World Example Application Branch

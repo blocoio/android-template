@@ -10,7 +10,6 @@ import io.bloco.template.ui.BaseActivity
 import kotlinx.android.synthetic.main.activity_counter.*
 import kotlinx.coroutines.flow.launchIn
 import kotlinx.coroutines.flow.onEach
-import timber.log.Timber
 import javax.inject.Inject
 
 class CounterActivity : BaseActivity() {
@@ -36,14 +35,13 @@ class CounterActivity : BaseActivity() {
 
         viewModel.errors()
             .onEach {
-                makeErrorSnackBar()
-                Timber.w(it, "Displayed Error Snackbar")
+                showErrorSnackBar()
             }
             .launchIn(lifecycleScope)
     }
 
 
-    private fun makeErrorSnackBar() {
+    private fun showErrorSnackBar() {
         Snackbar.make(coordinatorLayout, R.string.error_message, Snackbar.LENGTH_SHORT).show()
     }
 
