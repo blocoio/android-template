@@ -1,4 +1,4 @@
-package io.bloco.template.data.models
+package io.bloco.template.domain.models
 
 data class Counter(val value: Int) {
     operator fun inc(): Counter {

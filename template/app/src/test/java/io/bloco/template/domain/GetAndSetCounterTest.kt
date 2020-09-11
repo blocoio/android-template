@@ -3,7 +3,7 @@ package io.bloco.template.domain
 import com.nhaarman.mockitokotlin2.mock
 import com.nhaarman.mockitokotlin2.verify
 import com.nhaarman.mockitokotlin2.whenever
-import io.bloco.template.data.models.Counter
+import io.bloco.template.domain.models.Counter
 import io.bloco.template.data.CounterRepository
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.first

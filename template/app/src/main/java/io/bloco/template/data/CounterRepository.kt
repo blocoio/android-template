@@ -1,7 +1,7 @@
 package io.bloco.template.data
 
 import com.tfcporciuncula.flow.FlowSharedPreferences
-import io.bloco.template.data.models.Counter
+import io.bloco.template.domain.models.Counter
 import kotlinx.coroutines.flow.asFlow
 import kotlinx.coroutines.flow.flatMapConcat
 import kotlinx.coroutines.flow.map

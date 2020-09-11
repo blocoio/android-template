@@ -1,6 +1,6 @@
 package io.bloco.template.ui.counter
 
-import io.bloco.template.data.models.Counter
+import io.bloco.template.domain.models.Counter
 import io.bloco.template.domain.GetAndSetCounter
 import io.bloco.template.ui.BaseViewModel
 import kotlinx.coroutines.channels.BroadcastChannel
