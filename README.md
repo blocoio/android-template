@@ -40,7 +40,7 @@ And you're ready to start working on your new app.
 
 ## To Do
 
-- Timber Logs
 - Hilt
 - Gesture Navigation
 - Real World Example Application Branch
+- Styles.xml Styles-Text.xml
