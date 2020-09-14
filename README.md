@@ -47,10 +47,8 @@ newcomers can grab the template and start using it without worrying when to turn
 
 ### 📝 To Do
 
-- Hilt Dependency Manager
 - Gesture Navigation compatibility 
 - Styles.xml Styles-Text.xml
-- TestAppComponent for easier Injection and Reverse Injection
 - Github CI Actions [Unit Tests, Lint, Instrumented _(pre configured for easy setup)_]
 - Rename Template Script
 - Real World Example Application Branch
