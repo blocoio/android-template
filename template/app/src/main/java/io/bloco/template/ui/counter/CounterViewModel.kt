@@ -1,15 +1,15 @@
 package io.bloco.template.ui.counter
 
-import io.bloco.template.domain.models.Counter
+import androidx.hilt.lifecycle.ViewModelInject
 import io.bloco.template.domain.GetAndSetCounter
+import io.bloco.template.domain.models.Counter
 import io.bloco.template.ui.BaseViewModel
 import kotlinx.coroutines.channels.BroadcastChannel
 import kotlinx.coroutines.channels.sendBlocking
 import kotlinx.coroutines.flow.*
-import javax.inject.Inject
 
 class CounterViewModel
-@Inject constructor(
+@ViewModelInject constructor(
     counterDomain: GetAndSetCounter
 ) : BaseViewModel() {
 

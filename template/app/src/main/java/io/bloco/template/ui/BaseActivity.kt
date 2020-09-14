@@ -6,5 +6,4 @@ import io.bloco.template.App
 abstract class BaseActivity : AppCompatActivity() {
 
     private val app get() = applicationContext as App
-    val component by lazy { app.component.activityComponent() }
 }

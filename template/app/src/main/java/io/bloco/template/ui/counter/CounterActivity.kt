@@ -4,26 +4,20 @@ import android.os.Bundle
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.lifecycleScope
 import com.google.android.material.snackbar.Snackbar
+import dagger.hilt.android.AndroidEntryPoint
 import io.bloco.template.R
-import io.bloco.template.common.di.ViewModelFactory
 import io.bloco.template.ui.BaseActivity
 import kotlinx.android.synthetic.main.activity_counter.*
 import kotlinx.coroutines.flow.launchIn
 import kotlinx.coroutines.flow.onEach
-import javax.inject.Inject
 
+@AndroidEntryPoint
 class CounterActivity : BaseActivity() {
 
-    @Inject
-    lateinit var viewModelFactory: ViewModelFactory<CounterViewModel>
-
-    private val viewModel by lazy {
-        ViewModelProvider(this, viewModelFactory).get(CounterViewModel::class.java)
-    }
+    private val viewModel =  ViewModelProvider(this).get(CounterViewModel::class.java)
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        component.inject(this)
         setContentView(R.layout.activity_counter)
 
         fabIncrement.setOnClickListener { viewModel.incrementClick() }
