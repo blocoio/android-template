@@ -1,5 +1,7 @@
 package io.bloco.template.ui.counter
 
+import android.content.Context
+import androidx.preference.PreferenceManager
 import androidx.test.espresso.Espresso.onView
 import androidx.test.espresso.action.ViewActions.click
 import androidx.test.espresso.assertion.ViewAssertions.matches
@@ -7,32 +9,68 @@ import androidx.test.espresso.matcher.ViewMatchers.withId
 import androidx.test.espresso.matcher.ViewMatchers.withText
 import androidx.test.ext.junit.rules.ActivityScenarioRule
 import androidx.test.ext.junit.runners.AndroidJUnit4
+import com.tfcporciuncula.flow.FlowSharedPreferences
+import dagger.Module
+import dagger.Provides
+import dagger.hilt.InstallIn
+import dagger.hilt.android.components.ApplicationComponent
+import dagger.hilt.android.qualifiers.ApplicationContext
+import dagger.hilt.android.testing.HiltAndroidRule
+import dagger.hilt.android.testing.HiltAndroidTest
+import dagger.hilt.android.testing.UninstallModules
+import io.bloco.template.AppModule
 import io.bloco.template.R
-import io.bloco.template.utils.ClearPreferencesTestRule
+import io.bloco.template.data.CounterRepository
+import kotlinx.coroutines.runBlocking
 import org.junit.Rule
 import org.junit.Test
+import org.junit.rules.RuleChain
 import org.junit.runner.RunWith
 
+@HiltAndroidTest
+@UninstallModules(AppModule::class)
 @RunWith(AndroidJUnit4::class)
 class CounterActivityTest {
 
-    @get:Rule
-    val clearPreferencesTestRule = ClearPreferencesTestRule()
+    @Module
+    @InstallIn(ApplicationComponent::class)
+    object AppTestModule{
 
-    @get:Rule
+        @Provides
+        fun flowSharedPreferences(@ApplicationContext appContext: Context) : FlowSharedPreferences {
+            val sharedPreferences = PreferenceManager.getDefaultSharedPreferences(appContext)
+            sharedPreferences.edit().clear().commit()
+            val flowSharedPreferences =  FlowSharedPreferences(sharedPreferences)
+
+            runBlocking {
+                flowSharedPreferences.getInt(CounterRepository.COUNTER_KEY, defaultValue = 1).setAndCommit(1)
+            }
+            return  flowSharedPreferences
+        }
+    }
+
+    var hiltRule = HiltAndroidRule(this)
     val intentTestRule = ActivityScenarioRule<CounterActivity>(CounterActivity::class.java)
 
-    @Test
-    fun testIncrementAndDecrementButtons() {
-        onView(withId(R.id.fabIncrement)).perform(click())
-        onView(withId(R.id.value)).check(matches(withText("1")))
+    @get:Rule
+    var rules = RuleChain.outerRule(hiltRule)
+        .around(intentTestRule)
 
+    @Test
+    fun testIncrementButtons() {
+        onView(withId(R.id.fabIncrement)).perform(click())
+        onView(withId(R.id.value)).check(matches(withText("2")))
+    }
+
+    @Test
+    fun testDecrementButtons() {
         onView(withId(R.id.fabDecrement)).perform(click())
         onView(withId(R.id.value)).check(matches(withText("0")))
     }
 
     @Test
     fun decrementErrorMessage() {
+        onView(withId(R.id.fabDecrement)).perform(click())
         onView(withId(R.id.fabDecrement)).perform(click())
         onView(withId(R.id.value)).check(matches(withText("0")))
 

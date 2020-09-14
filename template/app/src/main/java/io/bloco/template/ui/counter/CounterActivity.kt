@@ -14,10 +14,11 @@ import kotlinx.coroutines.flow.onEach
 @AndroidEntryPoint
 class CounterActivity : BaseActivity() {
 
-    private val viewModel =  ViewModelProvider(this).get(CounterViewModel::class.java)
+    private lateinit var viewModel : CounterViewModel
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        viewModel = ViewModelProvider(this).get(CounterViewModel::class.java)
         setContentView(R.layout.activity_counter)
 
         fabIncrement.setOnClickListener { viewModel.incrementClick() }
