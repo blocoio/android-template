@@ -1,8 +1,8 @@
  <img src="images/logo.png" alt="ArchiTecture logo"/>
 
 ## Clean architecture with 3 layers
-- Data (for models, database, API and preferences)
-- Domain (for business logic)
+- Data (for database, API and preferences code)
+- Domain (for business logic and models)
 - Presentation (for UI logic, with MVVM)
 
  <img src="images/AndroidTemplate-CleanArchitecture.png" alt="ArchiTecture logo"/>
@@ -41,14 +41,17 @@ And you're ready to start working on your new app.
 # Notes
 - Make sure the method `checkTestMode` inside `AndroidApplication` includes a test class
   that exists
-- By choice jetifier enabled inside `gradle.properties`. Even do its not necessary for the current decencies, this was left so 
-newcomers can grab the template and start using it without worrying when to turn it on.
- We do recommend you to check [Can I drop Jetifier?](https://github.com/plnice/can-i-drop-jetifier) when expanding the template.
+- Jetifier is enabled inside `gradle.properties`. Even though it's not necessary for the 
+  current dependencies, it was left enabled so anyone can start using the template without 
+  worrying when to turn it on. We do recommend you to check [Can I drop Jetifier?](https://github.com/plnice/can-i-drop-jetifier) 
+  when expanding the template.
 
 ### 📝 To Do
 
-- Gesture Navigation compatibility 
-- Styles.xml Styles-Text.xml
-- Github CI Actions [Unit Tests, Lint, Instrumented _(pre configured for easy setup)_]
-- Rename Template Script
-- Real World Example Application Branch
+- Hilt Dependency Manager
+- Edge-to-edge / Gesture navigation setup 
+- `styles.xml` and `styles-text.xml` example files
+- TestAppComponent for easier test dependency injection
+- Github CI Actions (Unit Tests, Lint and Instrumented Tests pre-configured for easy setup)
+- Rename package template Script
+- Real world example application branch
