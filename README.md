@@ -48,10 +48,8 @@ And you're ready to start working on your new app.
 
 ### 📝 To Do
 
-- Hilt Dependency Manager
 - Edge-to-edge / Gesture navigation setup 
 - `styles.xml` and `styles-text.xml` example files
-- TestAppComponent for easier test dependency injection
 - Github CI Actions (Unit Tests, Lint and Instrumented Tests pre-configured for easy setup)
 - Rename package template Script
 - Real world example application branch
