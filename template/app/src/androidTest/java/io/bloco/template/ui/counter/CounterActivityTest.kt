@@ -1,6 +1,5 @@
 package io.bloco.template.ui.counter
 
-import android.content.Context
 import androidx.preference.PreferenceManager
 import androidx.test.espresso.Espresso.onView
 import androidx.test.espresso.action.ViewActions.click
@@ -9,12 +8,9 @@ import androidx.test.espresso.matcher.ViewMatchers.withId
 import androidx.test.espresso.matcher.ViewMatchers.withText
 import androidx.test.ext.junit.rules.ActivityScenarioRule
 import androidx.test.ext.junit.runners.AndroidJUnit4
+import androidx.test.platform.app.InstrumentationRegistry.getInstrumentation
 import com.tfcporciuncula.flow.FlowSharedPreferences
-import dagger.Module
-import dagger.Provides
-import dagger.hilt.InstallIn
-import dagger.hilt.android.components.ApplicationComponent
-import dagger.hilt.android.qualifiers.ApplicationContext
+import dagger.hilt.android.testing.BindValue
 import dagger.hilt.android.testing.HiltAndroidRule
 import dagger.hilt.android.testing.HiltAndroidTest
 import dagger.hilt.android.testing.UninstallModules
@@ -32,21 +28,16 @@ import org.junit.runner.RunWith
 @RunWith(AndroidJUnit4::class)
 class CounterActivityTest {
 
-    @Module
-    @InstallIn(ApplicationComponent::class)
-    object AppTestModule{
+    @BindValue @JvmField val flowSharedPreferences : FlowSharedPreferences = let {
+        val sharedPreferences = PreferenceManager.getDefaultSharedPreferences(
+            getInstrumentation().targetContext)
+        sharedPreferences.edit().clear().commit()
+        val flowSharedPreferences =  FlowSharedPreferences(sharedPreferences)
 
-        @Provides
-        fun flowSharedPreferences(@ApplicationContext appContext: Context) : FlowSharedPreferences {
-            val sharedPreferences = PreferenceManager.getDefaultSharedPreferences(appContext)
-            sharedPreferences.edit().clear().commit()
-            val flowSharedPreferences =  FlowSharedPreferences(sharedPreferences)
-
-            runBlocking {
-                flowSharedPreferences.getInt(CounterRepository.COUNTER_KEY, defaultValue = 1).setAndCommit(1)
-            }
-            return  flowSharedPreferences
+        runBlocking {
+            flowSharedPreferences.getInt(CounterRepository.COUNTER_KEY, defaultValue = 1).setAndCommit(1)
         }
+        flowSharedPreferences
     }
 
     var hiltRule = HiltAndroidRule(this)
