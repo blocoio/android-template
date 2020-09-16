@@ -1,12 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <style name="AppTheme" parent="Theme.MaterialComponents.Light.DarkActionBar">
+    <!-- Edge-to-edge rendering can be found on theme.xml(v29)-->
+    <style name="Base.AppTheme" parent="Theme.MaterialComponents.Light.DarkActionBar">
         <item name="android:navigationBarColor">@android:color/transparent</item>
+        <item name="android:windowTranslucentNavigation">true</item>
 
-        <!-- Optional, but recommended for full edge-to-edge rendering
-        <item name="android:statusBarColor">@android:color/transparent</item>-->
+        <item name="android:statusBarColor">@color/bloco_green</item>
+    </style>
 
+    <style name="AppTheme" parent="Base.AppTheme">
         <!-- Customize your theme here. -->
         <item name="colorPrimary">@color/bloco_green</item>
         <item name="colorPrimaryVariant">@color/bloco_cyan</item>
@@ -20,6 +23,11 @@
         <item name="colorOnBackground">@color/black</item>
         <item name="colorError">@color/dark_red</item>
         <item name="colorOnError">@color/dark_red</item>
+
+        <!-- Custom styles -->
+        <item name="toolbarNavigationButtonStyle">@style/Widget.Bloco.ToolbarNavigationButton</item>
+        <item name="titleTextStyle">@style/TextAppearance.Bloco.ToolbarTitle</item>
+
     </style>
 
 </resources>
