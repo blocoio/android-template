@@ -9,15 +9,6 @@ import timber.log.Timber
 @HiltAndroidApp
 open class App : Application() {
 
-    val mode by lazy {
-        try {
-            classLoader.loadClass("io.bloco.template.AppTest")
-            Mode.Test
-        } catch (e: ClassNotFoundException) {
-            Mode.Normal
-        }
-    }
-
     override fun onCreate() {
         super.onCreate()
         setupStrictMode()

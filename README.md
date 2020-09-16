@@ -1,5 +1,8 @@
  <img src="images/logo.png" alt="ArchiTecture logo"/>
 
+![Tests status](https://github.com/envelop-app/envelop-android/workflows/test/badge.svg) 
+![Lint status](https://github.com/envelop-app/envelop-android/workflows/lint/badge.svg)
+
 ## Clean architecture with 3 layers
 - Data (for database, API and preferences code)
 - Domain (for business logic and models)
@@ -19,6 +22,7 @@
 - Google [Material Design](https://material.io/blog/android-material-theme-color) library
 - Logging (with [Timber](https://github.com/JakeWharton/timber))
 - Android architecture components to share ViewModels during configuration changes
+- Edge To Edge Configuration
 - Resource defaults
     - themes.xml - app themes
     - themes.xml (v29) - app themes (for better edgeToEdge)
@@ -48,9 +52,9 @@ And you're ready to start working on your new app.
   current dependencies, it was left enabled so anyone can start using the template without 
   worrying when to turn it on. We do recommend you to check [Can I drop Jetifier?](https://github.com/plnice/can-i-drop-jetifier) 
   when expanding the template.
+- Android Template contains `.github/workflows` for lint check and unit testing. You can easily take this project worflow and repurpose it with a few path changes, you can also find a commented example in test.yml for Instrumentation Testing and CodeCoverage that we advice to keep a clean project, you will however need to replace the secret keys with your own.
 
 ### 📝 To Do
 
-- Github CI Actions (Unit Tests, Lint and Instrumented Tests pre-configured for easy setup)
 - Rename package template Script
 - Real world example application branch
