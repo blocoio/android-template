@@ -20,8 +20,11 @@
 - Logging (with [Timber](https://github.com/JakeWharton/timber))
 - Android architecture components to share ViewModels during configuration changes
 - Resource defaults
-    - themes.xml
-    - colors.xml
+    - themes.xml - app themes
+    - themes.xml (v29) - app themes (for better edgeToEdge)
+    - colors.xml - colors for the entire project
+    - styles.xml - widget styles 
+    - styles-text.xml - text appearances
 
 # Getting started
 
@@ -48,8 +51,6 @@ And you're ready to start working on your new app.
 
 ### 📝 To Do
 
-- Edge-to-edge / Gesture navigation setup 
-- `styles.xml` and `styles-text.xml` example files
 - Github CI Actions (Unit Tests, Lint and Instrumented Tests pre-configured for easy setup)
 - Rename package template Script
 - Real world example application branch
