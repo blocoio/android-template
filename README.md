@@ -14,7 +14,7 @@
 - Application has a testing flag
     
 ## Other useful features
-- Dependency injection (with [Dagger v2](http://google.github.io/dagger/))
+- Dependency injection (with [Hilt](http://google.github.io/hilt/))
 - Reactive programming with [Kotlin Flows](https://kotlinlang.org/docs/reference/coroutines/flow.html)
 - Google [Material Design](https://material.io/blog/android-material-theme-color) library
 - Logging (with [Timber](https://github.com/JakeWharton/timber))
@@ -48,10 +48,8 @@ And you're ready to start working on your new app.
 
 ### 📝 To Do
 
-- Hilt Dependency Manager
 - Edge-to-edge / Gesture navigation setup 
 - `styles.xml` and `styles-text.xml` example files
-- TestAppComponent for easier test dependency injection
 - Github CI Actions (Unit Tests, Lint and Instrumented Tests pre-configured for easy setup)
 - Rename package template Script
 - Real world example application branch

@@ -1,29 +1,22 @@
 package io.bloco.template
 
 import android.content.Context
-import android.content.res.Resources
 import androidx.preference.PreferenceManager
 import com.tfcporciuncula.flow.FlowSharedPreferences
 import dagger.Module
 import dagger.Provides
+import dagger.hilt.InstallIn
+import dagger.hilt.android.components.ApplicationComponent
+import dagger.hilt.android.qualifiers.ApplicationContext
 import javax.inject.Singleton
 
 @Module
-class AppModule(
-    private val app: App
-) {
-
-    @Provides
-    fun app() = app
-
-    @Provides
-    fun context(): Context = app
-
-    @Provides
-    fun resources(): Resources = app.resources
+@InstallIn(ApplicationComponent::class)
+class AppModule {
 
     @Provides
     @Singleton
-    fun flowSharedPreferences(context: Context) =
-        FlowSharedPreferences(PreferenceManager.getDefaultSharedPreferences(context))
+    fun flowSharedPreferences(@ApplicationContext appContext: Context) =
+        FlowSharedPreferences(PreferenceManager.getDefaultSharedPreferences(appContext))
+
 }

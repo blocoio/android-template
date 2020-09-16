@@ -14,9 +14,13 @@ class CounterRepository
 ) {
 
     private val counterPreferences by lazy {
-        preferences.get().getInt("counter_value", 0)
+        preferences.get().getInt(COUNTER_KEY, 0)
     }
 
     fun getValue() = { counterPreferences }.asFlow().flatMapConcat { it.asFlow() }.map { Counter(it) }
     suspend fun setValue(counter: Counter) { counterPreferences.setAndCommit(counter.value) }
+
+    companion object {
+        const val COUNTER_KEY : String = "counter_value"
+    }
 }
