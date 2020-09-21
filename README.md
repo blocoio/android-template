@@ -28,6 +28,15 @@
 
 # Getting started
 
+### Script 
+1. Download this repository extract and open the folder
+2. Run `newproject.sh` script to create a copy with the name you want 
+3. On `app`, change the package on the `mode` lazy var
+4. On `theme.xml` & `colors.xml` set your application primary and secondary colors 
+
+And you're ready to start working on your new app.
+
+### Manual
 1. Download this repository extract and open the template folder on Android Studio
 2. Rename the app package `io.bloco.template`
 3. Check if the manifest package was renamed along with the package
@@ -52,5 +61,4 @@ And you're ready to start working on your new app.
 ### 📝 To Do
 
 - Github CI Actions (Unit Tests, Lint and Instrumented Tests pre-configured for easy setup)
-- Rename package template Script
 - Real world example application branch
