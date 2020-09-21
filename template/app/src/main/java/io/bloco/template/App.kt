@@ -39,7 +39,5 @@ open class App : Application() {
             Timber.plant(Timber.DebugTree())
         }
     }
-
-    enum class Mode { Normal, Test }
-
+    
 }
