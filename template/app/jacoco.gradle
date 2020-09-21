@@ -1,0 +1,59 @@
+apply plugin: 'jacoco'
+
+jacoco {
+  toolVersion '0.8.5'
+}
+
+task jacocoAndroidTestReport(type: JacocoReport) {
+
+  sourceDirectories.from = files(["$project.projectDir/src/main/java"])
+  classDirectories.from = files([
+      fileTree(
+          dir: project.buildDir,
+          includes: [
+              "intermediates/javac/debug/**",
+              "tmp/kotlin-classes/debug/**"
+          ],
+          excludes: [
+              'android/**/*.*',
+              '**/R.class',
+              '**/R$*.class',
+              '**/BuildConfig.*',
+              '**/Manifest*.*',
+              '**/*Test*.*',
+              // Dagger
+              '**/*Module.*',
+              '**/*Module*Factory.*',
+              '**/*Module$Companion.*',
+              '**/*Dagger*.*',
+              '**/*MembersInjector*.*',
+              '**/*_Provide*Factory*.*',
+              '**/*_Factory.*',
+              // Epoxy
+              '**/*ViewModel_.*',
+              '**/EpoxyModelKotlinExtensionsKt.*',
+          ]
+      )
+  ])
+
+  executionData.from = fileTree(dir: project.buildDir, includes: [
+      'jacoco/testDebugUnitTest.exec',
+      'outputs/code_coverage/debugAndroidTest/connected/**/*.ec'
+  ])
+
+  if (project.hasProperty('codeCoverageDataLocation')) {
+    executionData.from += fileTree(dir: codeCoverageDataLocation, includes: ['**/*.ec'])
+  }
+
+  reports {
+    html.enabled true
+    html.destination file("${buildDir}/reports/coverage")
+    xml.enabled true
+    xml.destination file("${buildDir}/reports/coverage.xml")
+    csv.enabled false
+  }
+
+  doLast {
+    println "Wrote HTML coverage report to ${reports.html.destination}/index.html"
+  }
+}
