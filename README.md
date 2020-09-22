@@ -32,22 +32,30 @@
 
 # Getting started
 
+### Script 
+1. Download this repository extract and open the folder
+2. Run `newproject.sh` script to create a copy with the name you want 
+    * Example: `./newproject.sh -p com.example.project -t Project` 
+3. On `app/build.gradle`, update the dependencies Android Studio suggests
+4. On `theme.xml` & `colors.xml` set your application primary and secondary colors 
+
+
+And you're ready to start working on your new app.
+
+### Manual
 1. Download this repository extract and open the template folder on Android Studio
 2. Rename the app package `io.bloco.template`
 3. Check if the manifest package was renamed along with the package
-4. On `app`, change the package on the `mode` lazy var
-5. On `app/build.gradle`, change the applicationId to the new app package
-6. On `app/build.gradle`, update the dependencies Android Studio suggests
-7. On `string.xml`, set your application name
-8. On `theme.xml` & `colors.xml` set your application primary and secondary colors 
+4. On `app/build.gradle`, change the applicationId to the new app package
+5. On `app/build.gradle`, update the dependencies Android Studio suggests
+6. On `string.xml`, set your application name
+7. On `theme.xml` & `colors.xml` set your application primary and secondary colors 
 
 And you're ready to start working on your new app.
 
 <br />
 
 # Notes
-- Make sure the method `checkTestMode` inside `AndroidApplication` includes a test class
-  that exists
 - Jetifier is enabled inside `gradle.properties`. Even though it's not necessary for the 
   current dependencies, it was left enabled so anyone can start using the template without 
   worrying when to turn it on. We do recommend you to check [Can I drop Jetifier?](https://github.com/plnice/can-i-drop-jetifier) 
@@ -56,5 +64,4 @@ And you're ready to start working on your new app.
 
 ### 📝 To Do
 
-- Rename package template Script
 - Real world example application branch
