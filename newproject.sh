@@ -77,8 +77,7 @@ if [[ "$title" =~ \ |\' ]]; then
     die "Invalid Title: $title (can't have any spaces)"
 fi
 
-
-TITLE_NO_SPACES="${title// /}"
+TITLE_NO_SPACES=$title
 
 # Copy main folder
 cp -R $OLD_TITLE $TITLE_NO_SPACES
@@ -94,7 +93,7 @@ rm -rf $TITLE_NO_SPACES/build
 rm -rf $TITLE_NO_SPACES/app/build
 
 # Rename folder structure
-renamefolderstructure() {
+renameFolderStructure() {
   DIR=""
   if [ "$*" != "" ] ; then
       DIR="$*"
@@ -119,15 +118,15 @@ renamefolderstructure() {
 
 # Rename project folder structure
 PACKAGE_DIR="app/src/main/java"
-PACKAGE_DIR=$( renamefolderstructure $PACKAGE_DIR )
+PACKAGE_DIR=$( renameFolderStructure $PACKAGE_DIR )
 
 # Rename android test folder structure
 ANDROIDTEST_DIR="app/src/androidTest/java"
-ANDROIDTEST_DIR=$( renamefolderstructure $ANDROIDTEST_DIR )
+ANDROIDTEST_DIR=$( renameFolderStructure $ANDROIDTEST_DIR )
 
 # Rename test folder structure
 TEST_DIR="app/src/test/java"
-TEST_DIR=$( renamefolderstructure $TEST_DIR )
+TEST_DIR=$( renameFolderStructure $TEST_DIR )
 
 echo "Files structure has been renamed. Replacing package and package name within files..."
 
@@ -139,7 +138,7 @@ LC_ALL=C find $WORKING_DIR/$TITLE_NO_SPACES -type f -exec sed -i "" "s/$OLD_TITL
 
 # search and replace files <...>
 
-echo "Package and package name within files has been renamed, Replacing Strings.xml"
+echo "Package and package name within files has been renamed, replacing strings.xml"
 sed -i "" "s/$OLD_APPNAME/$title/" "$WORKING_DIR/$TITLE_NO_SPACES/app/src/main/res/values/strings.xml"
 echo "Strings.xml app name replaced with $title, app is ready to be tested"
 
