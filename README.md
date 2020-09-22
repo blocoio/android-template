@@ -1,7 +1,7 @@
  <img src="images/logo.png" alt="ArchiTecture logo"/>
 
-![Tests status](https://github.com/envelop-app/envelop-android/workflows/test/badge.svg) 
-![Lint status](https://github.com/envelop-app/envelop-android/workflows/lint/badge.svg)
+[![test](https://github.com/blocoio/android-template/workflows/test/badge.svg?branch=master)](https://github.com/blocoio/android-template/actions?query=workflow%3Atest+branch%3Amaster)
+[![lint](https://github.com/blocoio/android-template/workflows/lint/badge.svg?branch=master)](https://github.com/blocoio/android-template/actions?query=workflow%3Alint+branch%3Amaster)
 
 ## Clean architecture with 3 layers
 - Data (for database, API and preferences code)
@@ -61,7 +61,3 @@ And you're ready to start working on your new app.
   worrying when to turn it on. We do recommend you to check [Can I drop Jetifier?](https://github.com/plnice/can-i-drop-jetifier) 
   when expanding the template.
 - Android Template contains `.github/workflows` for lint check and unit testing. You can easily take this project worflow and repurpose it with a few path changes, you can also find a commented example in test.yml for Instrumentation Testing and CodeCoverage that we advice to keep a clean project, you will however need to replace the secret keys with your own.
-
-### 📝 To Do
-
-- Real world example application branch
