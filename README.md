@@ -53,11 +53,12 @@ And you're ready to start working on your new app.
 
 And you're ready to start working on your new app.
 
-<br />
-
 # Notes
 - Jetifier is enabled inside `gradle.properties`. Even though it's not necessary for the 
   current dependencies, it was left enabled so anyone can start using the template without 
   worrying when to turn it on. We do recommend you to check [Can I drop Jetifier?](https://github.com/plnice/can-i-drop-jetifier) 
   when expanding the template.
 - Android Template contains `.github/workflows` for lint check and unit testing. You can easily take this project worflow and repurpose it with a few path changes, you can also find a commented example in test.yml for Instrumentation Testing and CodeCoverage that we advice to keep a clean project, you will however need to replace the secret keys with your own.
+
+# More
+If you want to know more you can check our [blog post](https://www.bloco.io/blog/2020/android-app-starter-update).
