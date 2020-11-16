@@ -20,7 +20,7 @@ usage() {
     fi
 
     cat << EOF
-Usage: $PROGNAME --package-name [PACKAGE_NAME] --title [TITLE] --app-name [APP_NAME]
+Usage: $PROGNAME --package-name [PACKAGE_NAME] --title [TITLE]
 Rename an Android app and package.
 
 Options:
