@@ -13,8 +13,8 @@ import org.junit.Test
 
 class GetAndSetCounterTest {
 
-    val mockRepo = mock<CounterRepository>()
-    val getAndSetCounter = GetAndSetCounter(mockRepo)
+    private val mockRepo = mock<CounterRepository>()
+    private val getAndSetCounter = GetAndSetCounter(mockRepo)
 
     @Test
     fun get() = runBlocking {
