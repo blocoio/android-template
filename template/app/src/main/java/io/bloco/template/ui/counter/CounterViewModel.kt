@@ -39,17 +39,11 @@ class CounterViewModel
                     .onFailure { errors.emit(it) }
             }
             .launchIn(ioScope)
-
     }
 
     // Inputs
-    fun incrementClick() {
-        runBlocking { counterModifier.emit(Modification.Increment) }
-    }
-
-    fun decrementClick() {
-        runBlocking { counterModifier.emit(Modification.Decrement) }
-    }
+    fun incrementClick() = runBlocking { counterModifier.emit(Modification.Increment) }
+    fun decrementClick() = runBlocking { counterModifier.emit(Modification.Decrement) }
 
     // OutPuts
     fun value(): Flow<Counter> = counterCurrentValue

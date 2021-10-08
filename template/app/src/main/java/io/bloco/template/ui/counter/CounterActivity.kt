@@ -35,9 +35,7 @@ class CounterActivity : BaseActivity() {
             .launchIn(lifecycleScope)
 
         viewModel.errors()
-            .onEach {
-                showErrorSnackBar()
-            }
+            .onEach { showErrorSnackBar() }
             .launchIn(lifecycleScope)
 
         binding.fabIncrement.setOnClickListener { viewModel.incrementClick() }
