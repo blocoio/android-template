@@ -16,7 +16,7 @@ open class App : Application() {
     }
 
     private fun setupStrictMode() {
-        if (BuildConfig.DEBUG) {
+        if (!BuildConfig.DEBUG) {
             StrictMode.setThreadPolicy(
                 StrictMode.ThreadPolicy.Builder()
                     .detectAll()

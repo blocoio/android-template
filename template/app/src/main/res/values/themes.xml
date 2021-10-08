@@ -24,6 +24,8 @@
         <item name="colorError">@color/dark_red</item>
         <item name="colorOnError">@color/dark_red</item>
 
+        <item name="android:windowDrawsSystemBarBackgrounds">true</item>
+
         <!-- Custom styles -->
         <item name="toolbarNavigationButtonStyle">@style/Widget.Bloco.ToolbarNavigationButton</item>
         <item name="titleTextStyle">@style/TextAppearance.Bloco.ToolbarTitle</item>

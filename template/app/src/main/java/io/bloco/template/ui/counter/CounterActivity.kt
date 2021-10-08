@@ -5,6 +5,7 @@ import androidx.activity.viewModels
 import androidx.lifecycle.lifecycleScope
 import com.google.android.material.snackbar.Snackbar
 import dagger.hilt.android.AndroidEntryPoint
+import dev.chrisbanes.insetter.applyInsetter
 import io.bloco.template.R
 import io.bloco.template.databinding.ActivityCounterBinding
 import io.bloco.template.ui.BaseActivity
@@ -20,13 +21,14 @@ class CounterActivity : BaseActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        //Theres a problem with this being generic? think so
         binding = ActivityCounterBinding.inflate(layoutInflater)
-        val view = binding.root
-        setContentView(view)
+        setContentView(binding.root)
 
-        binding.fabIncrement.setOnClickListener { viewModel.incrementClick() }
-        binding.fabDecrement.setOnClickListener { viewModel.decrementClick() }
+        binding.fabLayout.applyInsetter {
+            type(navigationBars = true) {
+                padding()
+            }
+        }
 
         viewModel.value()
             .onEach { binding.value.text = it.toString() }
@@ -37,6 +39,9 @@ class CounterActivity : BaseActivity() {
                 showErrorSnackBar()
             }
             .launchIn(lifecycleScope)
+
+        binding.fabIncrement.setOnClickListener { viewModel.incrementClick() }
+        binding.fabDecrement.setOnClickListener { viewModel.decrementClick() }
     }
 
 
