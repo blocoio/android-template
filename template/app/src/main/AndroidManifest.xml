@@ -11,7 +11,8 @@
         android:allowBackup="true"
         android:fullBackupContent="@xml/backup"
         android:theme="@style/AppTheme">
-        <activity android:name=".ui.counter.CounterActivity">
+        <activity android:name=".ui.counter.CounterActivity"
+            android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

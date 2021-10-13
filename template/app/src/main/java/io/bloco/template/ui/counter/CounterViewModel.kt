@@ -1,22 +1,23 @@
 package io.bloco.template.ui.counter
 
-import androidx.hilt.lifecycle.ViewModelInject
+import dagger.hilt.android.lifecycle.HiltViewModel
 import io.bloco.template.domain.GetAndSetCounter
 import io.bloco.template.domain.models.Counter
 import io.bloco.template.ui.BaseViewModel
-import kotlinx.coroutines.channels.BroadcastChannel
-import kotlinx.coroutines.channels.sendBlocking
 import kotlinx.coroutines.flow.*
+import kotlinx.coroutines.runBlocking
+import javax.inject.Inject
 
+@HiltViewModel
 class CounterViewModel
-@ViewModelInject constructor(
+@Inject constructor(
     counterDomain: GetAndSetCounter
 ) : BaseViewModel() {
 
-    private val counterModifier = BroadcastChannel<Modification>(1)
+    private val counterModifier = MutableSharedFlow<Modification>(1)
 
     private val counterCurrentValue = MutableStateFlow(Counter(0))
-    private val errors = BroadcastChannel<Throwable>(1)
+    private val errors = MutableSharedFlow<Throwable>(1)
 
     init {
         counterDomain.get()
@@ -26,7 +27,6 @@ class CounterViewModel
             .launchIn(ioScope)
 
         counterModifier
-            .asFlow()
             .onEach { click ->
                 var valueToEdit = counterDomain.get().first()
 
@@ -36,24 +36,18 @@ class CounterViewModel
                 }
 
                 counterDomain.editCounter(valueToEdit)
-                    .onFailure { errors.send(it) }
+                    .onFailure { errors.emit(it) }
             }
             .launchIn(ioScope)
-
     }
 
     // Inputs
-    fun incrementClick() {
-        counterModifier.sendBlocking(Modification.Increment)
-    }
-
-    fun decrementClick() {
-        counterModifier.sendBlocking(Modification.Decrement)
-    }
+    fun incrementClick() = runBlocking { counterModifier.emit(Modification.Increment) }
+    fun decrementClick() = runBlocking { counterModifier.emit(Modification.Decrement) }
 
     // OutPuts
     fun value(): Flow<Counter> = counterCurrentValue
-    fun errors(): Flow<Throwable> = errors.asFlow()
+    fun errors(): Flow<Throwable> = errors
 
     private enum class Modification {
         Increment, Decrement
