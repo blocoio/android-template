@@ -1,6 +1,0 @@
-<resources>
-    <string name="app_name">Base Template</string>
-    <string name="error_message">Can\'t decrease more</string>
-    <string name="counter">Counter:</string>
-    <string name="counter_default_value">0</string>
-</resources>
