@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">template</string>
+    <string name="api_error">Error from API.</string>
 </resources>

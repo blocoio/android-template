@@ -9,6 +9,8 @@ androidxComposeCompiler = "1.3.1"
 androidxComposeNavigation = "2.5.2"
 androidxHiltNavigationCompose = "1.0.0"
 
+accompanist = "0.26.5-rc"
+
 javax = "1"
 hilt = "2.42"
 dagger = "2.43.2"
@@ -31,6 +33,8 @@ compose-material = { group = "androidx.compose.material", name = "material", ver
 
 androidx-navigation-compose = { group = "androidx.navigation", name = "navigation-compose", version.ref = "androidxComposeNavigation" }
 
+accompanist-swiperefresh = { group = "com.google.accompanist", name = "accompanist-swiperefresh", version.ref ="accompanist"}
+
 # Debug
 compose-tools-debug = { group = "androidx.compose.ui", name = "ui-tooling", version.ref = "androidxCompose" }
 compose-tools-manifest = { group = "androidx.compose.ui", name = "ui-test-manifest", version.ref = "androidxCompose" }
@@ -47,6 +51,9 @@ dagger = { group = "com.google.dagger", name = "dagger", version.ref = "dagger" 
 dagger-compiler = { group = "com.google.dagger", name = "dagger-compiler", version.ref = "dagger" }
 ktor-core = { group = "io.ktor", name = "ktor-client-core", version.ref = "ktor" }
 ktor-cio = { group = "io.ktor", name = "ktor-client-cio", version.ref = "ktor" }
+ktor-client-content-negotiation = { group = "io.ktor", name = "ktor-client-content-negotiation", version.ref = "ktor" }
+ktor-client-content-serialization = { group = "io.ktor", name = "ktor-client-serialization", version.ref = "ktor" }
+ktor-serialization-kotlinx-json = { group = "io.ktor", name = "ktor-serialization-kotlinx-json", version.ref = "ktor" }
 
 # Testing
 junit = { group = "junit", name = "junit", version = "4.13.2" }
@@ -64,7 +71,8 @@ androidCompose = [
     "compose",
     "compose-tools",
     "compose-material",
-    "androidx-navigation-compose"
+    "androidx-navigation-compose",
+    "accompanist-swiperefresh"
 ]
 
 androidCompose-debug = [
@@ -81,7 +89,10 @@ androidCompose-test = [
 
 network = [
     "ktor-core",
-    "ktor-cio"
+    "ktor-cio",
+    "ktor-client-content-negotiation",
+    "ktor-client-content-serialization",
+    "ktor-serialization-kotlinx-json"
 ]
 
 test-core = [

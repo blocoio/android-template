@@ -20,7 +20,7 @@ fun TemplateNaveHost(
             })
         }
         composable("/detail{id}") { backStackEntry ->
-        DetailsScreen(hiltViewModel(), backStackEntry.arguments?.getString("id"))
+            backStackEntry.arguments?.getString("id")?.let { DetailsScreen(hiltViewModel(), it) }
         }
     }
 }
