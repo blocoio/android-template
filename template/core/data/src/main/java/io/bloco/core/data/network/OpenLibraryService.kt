@@ -1,6 +1,7 @@
 package io.bloco.core.data.network
 
-import io.bloco.core.data.models.Book
+import io.bloco.core.data.models.BookDetailsDto
+import io.bloco.core.data.models.BookDto
 import io.bloco.core.data.models.BookRecords
 import io.ktor.client.HttpClient
 import io.ktor.client.call.body
@@ -10,22 +11,22 @@ import javax.inject.Inject
 
 class OpenLibraryService
 @Inject constructor(
-    @OpenLibraryHttpClient private var httpClient: HttpClient
+    @OpenLibraryHttpClient private val httpClient: HttpClient
 ) {
     suspend fun getBooks(): Result<BookRecords> = try {
         Result.success(
             httpClient.get {
-                url(path = "/")
+                url(path = "/search.json?q=android&limit=20")
             }.body()
         )
     } catch (e: Exception) {
         Result.failure(e)
     }
 
-    suspend fun getBook(id: String): Result<Book> = try {
+    suspend fun getBook(id: String): Result<BookDetailsDto> = try {
         Result.success(
             httpClient.get {
-                url(path = "/")
+                url(path = "/works/$id.json")
             }.body()
         )
     } catch (e: Exception) {
