@@ -1,11 +1,19 @@
 package io.bloco.core.domain
 
-import io.bloco.core.data.network.OpenLibraryHttpClient
-import io.bloco.core.data.network.OpenLibraryService
-import java.net.http.HttpClient
+import io.bloco.core.data.repositories.BookRepository
+import io.bloco.core.domain.models.Book
+import io.bloco.core.domain.models.toModel
 import javax.inject.Inject
 
 class GetBooks @Inject constructor(
-    client: OpenLibraryService
+    private val bookRepository: BookRepository
+
 ) {
+    suspend operator fun invoke(): Result<List<Book>> {
+        return bookRepository.getBooks().map { bookList ->
+            bookList.map {
+                it.toModel()
+            }
+        }
+    }
 }
