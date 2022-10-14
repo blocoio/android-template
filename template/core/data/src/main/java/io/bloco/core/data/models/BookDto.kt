@@ -4,7 +4,9 @@ import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
 
 @Serializable
-data class Book(
+data class BookDto(
+    @SerialName("key")
+    val key: String,
     @SerialName("title")
     val title: String
-) 
+)

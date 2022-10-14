@@ -53,12 +53,11 @@ android {
 
 dependencies {
     implementation(project(":core:domain"))
-
+    implementation(project(mapOf("path" to ":core:data")))
     implementation(libs.bundles.androidCompose)
     implementation(libs.hilt.android)
     kapt(libs.hilt.compiler)
     implementation(libs.hilt.navigation.compose)
-
     debugImplementation(libs.bundles.androidCompose.debug)
 
     androidTestImplementation(libs.bundles.androidCompose.test)
