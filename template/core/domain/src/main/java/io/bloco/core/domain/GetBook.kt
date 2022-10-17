@@ -11,7 +11,7 @@ class GetBook @Inject constructor(
 ) {
     suspend operator fun invoke(id: String): Result<BookDetails> {
         return bookRepository.getBookDetails(id).map { bookDetails ->
-            println(bookDetails.title)
+            println("Title: " + bookDetails.title)
             bookDetails.toModel()
         }
     }
