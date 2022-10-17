@@ -1,0 +1,98 @@
+[versions]
+compileSDK = "33"
+targetSDK = "33"
+minSDK = "23"
+androidGradlePlugin = "7.3.0"
+
+androidxCompose = "1.3.0-beta02"
+androidxComposeCompiler = "1.3.1"
+androidxComposeNavigation = "2.5.2"
+androidxHiltNavigationCompose = "1.0.0"
+
+javax = "1"
+hilt = "2.42"
+dagger = "2.43.2"
+kotlin = "1.7.10"
+ktor = "2.1.1"
+
+[libraries]
+## Android
+androidx-core = { group = "androidx.core", name = "core-ktx", version = "1.9.0" }
+androidx-lifecycle = { group = "androidx.lifecycle", name = "lifecycle-runtime-ktx", version = "2.5.1" }
+androidx-activity-compose = { group = "androidx.activity", name = "activity-compose", version = "1.5.1" }
+
+hilt-android = { group = "com.google.dagger", name = "hilt-android", version.ref = "hilt" }
+hilt-navigation-compose = { group = "androidx.hilt", name = "hilt-navigation-compose", version.ref = "androidxHiltNavigationCompose" }
+hilt-compiler = { group = "com.google.dagger", name = "hilt-android-compiler", version.ref = "hilt" }
+
+compose = { group = "androidx.compose.ui", name = "ui", version.ref = "androidxCompose" }
+compose-tools = { group = "androidx.compose.ui", name = "ui-tooling-preview", version.ref = "androidxCompose" }
+compose-material = { group = "androidx.compose.material", name = "material", version.ref = "androidxCompose" }
+
+androidx-navigation-compose = { group = "androidx.navigation", name = "navigation-compose", version.ref = "androidxComposeNavigation" }
+
+# Debug
+compose-tools-debug = { group = "androidx.compose.ui", name = "ui-tooling", version.ref = "androidxCompose" }
+compose-tools-manifest = { group = "androidx.compose.ui", name = "ui-test-manifest", version.ref = "androidxCompose" }
+
+# Testing
+test-junit = { group = "androidx.test.ext", name = "junit", version = "1.1.3" }
+test-espresso = { group = "androidx.test.espresso", name = "espresso-core", version = "3.4.0" }
+test-compose = { group = "androidx.compose.ui", name = "ui-test-junit4", version.ref = "androidxCompose" }
+test-navigation = { group = "androidx.navigation", name = "navigation-testing", version.ref = "androidxComposeNavigation" }
+
+## Non Android
+javax-inject = { group = "javax.inject", name = "javax.inject", version.ref = "javax" }
+dagger = { group = "com.google.dagger", name = "dagger", version.ref = "dagger" }
+dagger-compiler = { group = "com.google.dagger", name = "dagger-compiler", version.ref = "dagger" }
+ktor-core = { group = "io.ktor", name = "ktor-client-core", version.ref = "ktor" }
+ktor-cio = { group = "io.ktor", name = "ktor-client-cio", version.ref = "ktor" }
+
+# Testing
+junit = { group = "junit", name = "junit", version = "4.13.2" }
+mockk = { group = "io.mockk", name = "mockk", version = "1.12.8" }
+
+## Dependencies of the included build-logic
+android-gradlePlugin = { group = "com.android.tools.build", name = "gradle", version.ref = "androidGradlePlugin" }
+kotlin-gradlePlugin = { group = "org.jetbrains.kotlin", name = "kotlin-gradle-plugin", version.ref = "kotlin" }
+
+[bundles]
+androidCompose = [
+    "androidx-core",
+    "androidx-lifecycle",
+    "androidx-activity-compose",
+    "compose",
+    "compose-tools",
+    "compose-material",
+    "androidx-navigation-compose"
+]
+
+androidCompose-debug = [
+    "compose-tools-debug",
+    "compose-tools-manifest"
+]
+
+androidCompose-test = [
+    "test-junit",
+    "test-espresso",
+    "test-compose",
+    "test-navigation"
+]
+
+network = [
+    "ktor-core",
+    "ktor-cio"
+]
+
+test-core = [
+    "junit",
+    "mockk"
+]
+
+[plugins]
+android-application = { id = "com.android.application", version.ref = "androidGradlePlugin" }
+hilt = { id = "com.google.dagger.hilt.android", version.ref = "hilt" }
+hilt-android = { id = "dagger.hilt.android.plugin", version.ref = "hilt" }
+kotlin-jvm = { id = "org.jetbrains.kotlin.jvm", version.ref = "kotlin" }
+kotlin-android = { id = "org.jetbrains.kotlin.android", version.ref = "kotlin" }
+kotlin-serialization = { id = "org.jetbrains.kotlin.plugin.serialization", version.ref = "kotlin" }
