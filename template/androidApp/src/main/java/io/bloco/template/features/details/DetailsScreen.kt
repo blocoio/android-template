@@ -15,6 +15,7 @@ fun DetailsScreen(detailsViewModel: DetailsViewModel, id: String) {
     val bookListUpdateState by detailsViewModel.bookDetailsUpdateState.collectAsState()
     val bookDetails by detailsViewModel.bookDetails.collectAsState()
 
+    //TODO: Talvez a solução seja https://medium.com/scalereal/providing-assistedinject-supported-viewmodel-for-composable-using-hilt-ae973632e29a
     LaunchedEffect(key1 = Unit, block = {
         detailsViewModel.sendBookId(id = id)
     })

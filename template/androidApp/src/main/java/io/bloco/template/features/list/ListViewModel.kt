@@ -32,30 +32,26 @@ class ListViewModel @Inject constructor(
         events
             .filterIsInstance<Event.Refresh>()
             .onStart {
-                getBooks()
-                    .onSuccess {
-                        _bookListUpdateState.value = BookListUpdateState.UpdateSuccess
-                        _books.value = it
-                    }
-                    .onFailure {
-                        _bookListUpdateState.value = BookListUpdateState.ErrorFromAPI
-                    }
+                updateBookList(getBooks)
             }
             .onEach {
-                //TODO: Isto não devia estar duplicado
-                getBooks()
-                    .onSuccess {
-                        _bookListUpdateState.value = BookListUpdateState.UpdateSuccess
-                        _books.value = it
-                    }
-                    .onFailure {
-                        _bookListUpdateState.value = BookListUpdateState.ErrorFromAPI
-                    }
+                updateBookList(getBooks)
             }.launchIn(viewModelScope)
     }
 
     fun refresh() {
         events.tryEmit(Event.Refresh)
+    }
+
+    private suspend fun updateBookList(getBooks: GetBooks) {
+        getBooks()
+            .onSuccess {
+                _bookListUpdateState.value = BookListUpdateState.UpdateSuccess
+                _books.value = it
+            }
+            .onFailure {
+                _bookListUpdateState.value = BookListUpdateState.ErrorFromAPI
+            }
     }
 
     private sealed class Event {

@@ -15,4 +15,4 @@ class NetworkModule {
     fun ktorHttpClient() = httpClient()
 }
 
-//TODO: Rever esta questão
+//TODO: Rever esta dependência
