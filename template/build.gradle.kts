@@ -1,3 +1,5 @@
+import org.jetbrains.kotlin.gradle.dsl.kotlinExtension
+
 buildscript {
     repositories {
         google()

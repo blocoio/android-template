@@ -4,6 +4,5 @@ plugins {
 
 dependencies {
     implementation(project(":core:data"))
-
     implementation(libs.javax.inject)
 }

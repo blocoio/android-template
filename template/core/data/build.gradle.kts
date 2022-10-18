@@ -6,6 +6,4 @@ plugins {
 dependencies {
     api(libs.bundles.network)
     implementation(libs.javax.inject)
-    implementation(libs.dagger)
-    annotationProcessor(libs.dagger.compiler)
 }
