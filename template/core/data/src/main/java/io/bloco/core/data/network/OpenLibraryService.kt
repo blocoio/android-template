@@ -15,7 +15,7 @@ class OpenLibraryService
     suspend fun getBooks(): Result<BookRecords> = try {
         Result.success(
             httpClient().get {
-                url(path = "/search.json?q=android&limit=20")
+                url(path = "/search.json?q=android&limit=10")
             }.body()
         )
     } catch (e: Exception) {
