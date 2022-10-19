@@ -39,7 +39,7 @@ jobs:
         uses: actions/upload-artifact@v1
         with:
           name: tests-results
-          path: ${{ env.WORKING_DIR }}/app/build/reports/tests/testDebugUnitTest/
+          path: ${{ env.WORKING_DIR }}/androidApp/build/reports/tests/testDebugUnitTest/
 
 #      - name: Build androidTest APK
 #        run: ./gradlew :app:assembleDebugAndroidTest

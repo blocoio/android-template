@@ -35,4 +35,4 @@ jobs:
         if: always()
         with:
           name: lint-reports
-          path: ${{ env.WORKING_DIR }}/app/build/reports/
+          path: ${{ env.WORKING_DIR }}/androidApp/build/reports/
