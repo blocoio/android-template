@@ -23,14 +23,16 @@ import io.bloco.template.R
 import io.bloco.template.component.Toast
 
 @Composable
-fun ListScreen(listViewModel: ListViewModel, openDetailsClicked: (String) -> Unit) {
+fun ListScreen(
+    listViewModel: ListViewModel,
+    openDetailsClicked: (String) -> Unit,
+) {
     val bookListUpdateState by listViewModel.bookListUpdateState.collectAsState()
-    val books = listViewModel.books.collectAsState()
 
-    when (bookListUpdateState) {
+    when (val state = bookListUpdateState) {
         ListViewModel.BookListUpdateState.ErrorFromAPI -> Toast(R.string.api_error)
         ListViewModel.BookListUpdateState.LoadingFromAPI -> Unit
-        ListViewModel.BookListUpdateState.UpdateSuccess -> {
+        is ListViewModel.BookListUpdateState.UpdateSuccess -> {
             SwipeRefresh(
                 state = rememberSwipeRefreshState(isRefreshing = bookListUpdateState == ListViewModel.BookListUpdateState.LoadingFromAPI),
                 onRefresh = { listViewModel.refresh() },
@@ -44,7 +46,7 @@ fun ListScreen(listViewModel: ListViewModel, openDetailsClicked: (String) -> Uni
                         style = MaterialTheme.typography.h3
                     )
                     LazyColumn {
-                        itemsIndexed(books.value) { _, book ->
+                        itemsIndexed(state.books) { _, book ->
                             Row(
                                 modifier = Modifier
                                     .clickable { openDetailsClicked(book.key) }

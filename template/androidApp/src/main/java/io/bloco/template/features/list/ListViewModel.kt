@@ -3,9 +3,9 @@ package io.bloco.template.features.list
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import dagger.hilt.android.lifecycle.HiltViewModel
+import io.bloco.core.commons.PublishFlow
 import io.bloco.core.domain.GetBooks
 import io.bloco.core.domain.models.Book
-import io.bloco.template.shared.PublishFlow
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.flow.filterIsInstance
@@ -21,9 +21,6 @@ class ListViewModel @Inject constructor(
 
     private val events = PublishFlow<Event>()
 
-    private val _books = MutableStateFlow<List<Book>>(emptyList())
-    val books = _books.asStateFlow()
-
     private val _bookListUpdateState =
         MutableStateFlow<BookListUpdateState>(BookListUpdateState.LoadingFromAPI)
     val bookListUpdateState = _bookListUpdateState.asStateFlow()
@@ -31,12 +28,9 @@ class ListViewModel @Inject constructor(
     init {
         events
             .filterIsInstance<Event.Refresh>()
-            .onStart {
-                updateBookList(getBooks)
-            }
-            .onEach {
-                updateBookList(getBooks)
-            }.launchIn(viewModelScope)
+            .onStart { updateBookList(getBooks) }
+            .onEach { updateBookList(getBooks) }
+            .launchIn(viewModelScope)
     }
 
     fun refresh() {
@@ -45,13 +39,8 @@ class ListViewModel @Inject constructor(
 
     private suspend fun updateBookList(getBooks: GetBooks) {
         getBooks()
-            .onSuccess {
-                _bookListUpdateState.value = BookListUpdateState.UpdateSuccess
-                _books.value = it
-            }
-            .onFailure {
-                _bookListUpdateState.value = BookListUpdateState.ErrorFromAPI
-            }
+            .onSuccess { _bookListUpdateState.value = BookListUpdateState.UpdateSuccess(it) }
+            .onFailure { _bookListUpdateState.value = BookListUpdateState.ErrorFromAPI }
     }
 
     private sealed class Event {
@@ -60,7 +49,7 @@ class ListViewModel @Inject constructor(
 
     sealed class BookListUpdateState {
         object LoadingFromAPI : BookListUpdateState()
-        object UpdateSuccess : BookListUpdateState()
+        data class UpdateSuccess(val books: List<Book>) : BookListUpdateState()
         object ErrorFromAPI : BookListUpdateState()
     }
 }

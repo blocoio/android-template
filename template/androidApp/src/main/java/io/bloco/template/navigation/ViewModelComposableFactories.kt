@@ -16,15 +16,15 @@ interface BaseViewModelFactoryProvider {
 }
 
 @Composable
-private fun getViewModelFactoryProvider() = EntryPointAccessors.fromActivity(
-    LocalContext.current as Activity,
-    ViewModelFactoryProvider::class.java
-)
-
-@Composable
 fun detailViewModel(bookId: String): DetailsViewModel = viewModel(
     factory = DetailsViewModel.provideFactory(
         getViewModelFactoryProvider().getDetailsViewModelFactory(),
         bookId
     )
+)
+
+@Composable
+private fun getViewModelFactoryProvider() = EntryPointAccessors.fromActivity(
+    LocalContext.current as Activity,
+    ViewModelFactoryProvider::class.java
 )

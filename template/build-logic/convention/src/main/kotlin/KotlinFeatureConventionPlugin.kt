@@ -7,7 +7,6 @@ class KotlinFeatureConventionPlugin : Plugin<Project> {
             pluginManager.apply {
                 apply("kotlin")
             }
-
         }
     }
 }

@@ -35,17 +35,11 @@ android {
         targetCompatibility = JavaVersion.VERSION_1_8
     }
 
-    kotlinOptions {
-        jvmTarget = JavaVersion.VERSION_1_8.toString()
-    }
+    kotlinOptions { jvmTarget = JavaVersion.VERSION_1_8.toString() }
+    hilt { enableAggregatingTask = true }
 
-    hilt {
-        enableAggregatingTask = true
-    }
+    buildFeatures { compose = true }
 
-    buildFeatures {
-        compose = true
-    }
     composeOptions {
         kotlinCompilerExtensionVersion = libs.versions.compose.compiler.get().toString()
     }
@@ -58,14 +52,25 @@ android {
 }
 
 dependencies {
+    // Project Dependencies
     implementation(project(":core:domain"))
+    implementation(project(":core:commons"))
+
+    // Dependencies
+        // Compose
     implementation(libs.bundles.compose)
+
+        // Hilt
+    implementation(libs.hilt.navigation.compose)
     implementation(libs.hilt.android)
     kapt(libs.hilt.compiler)
-    implementation(libs.hilt.navigation.compose)
+
+    // Debug Dependencies
     debugImplementation(libs.bundles.compose.debug)
 
+    // Android Test Dependencies
     androidTestImplementation(libs.bundles.compose.test)
 
+    // Test Dependencies
     testImplementation(libs.bundles.test.core)
 }
