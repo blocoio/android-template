@@ -29,7 +29,9 @@ import io.bloco.core.domain.models.Book
 import io.bloco.template.R
 import io.bloco.template.component.Toast
 import io.bloco.template.features.list.ListViewModel.BookListUpdateState
-import io.bloco.template.features.list.ListViewModel.BookListUpdateState.*
+import io.bloco.template.features.list.ListViewModel.BookListUpdateState.ErrorFromAPI
+import io.bloco.template.features.list.ListViewModel.BookListUpdateState.LoadingFromAPI
+import io.bloco.template.features.list.ListViewModel.BookListUpdateState.UpdateSuccess
 
 @Composable
 fun ListScreen(

@@ -5,7 +5,7 @@ import io.bloco.core.commons.logDebug
 import io.bloco.core.commons.setup
 import org.junit.Test
 
-import org.junit.Assert.*
+import org.junit.Assert.assertEquals
 import java.util.logging.Level
 
 /**
