@@ -75,10 +75,10 @@ jobs:
 #      - uses: codecov/codecov-action@v1.0.3
 #        with:
 #          token: ${{ secrets.CODECOV_TOKEN }}
-#          file: app/build/reports/coverage.xml
+#          file: androidApp/build/reports/coverage.xml
 #
 #      - name: Upload code coverage reports
 #        uses: actions/upload-artifact@v1
 #        with:
 #          name: code-coverage
-#          path: app/build/reports/
+#          path: androidApp/build/reports/

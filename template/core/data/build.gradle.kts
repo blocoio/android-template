@@ -4,6 +4,8 @@ plugins {
 }
 
 dependencies {
+    implementation(project(":core:commons"))
+
     api(libs.bundles.network)
     implementation(libs.javax.inject)
 }

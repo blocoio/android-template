@@ -51,13 +51,12 @@ test-navigation = { group = "androidx.navigation", name = "navigation-testing", 
 
 ## Non Android
 javax-inject = { group = "javax.inject", name = "javax.inject", version.ref = "javax" }
-dagger = { group = "com.google.dagger", name = "dagger", version.ref = "dagger" }
-dagger-compiler = { group = "com.google.dagger", name = "dagger-compiler", version.ref = "dagger" }
 coroutines = { group = "org.jetbrains.kotlinx", name = "kotlinx-coroutines-core", version.ref = "coroutines"}
 ktor-core = { group = "io.ktor", name = "ktor-client-core", version.ref = "ktor" }
 ktor-cio = { group = "io.ktor", name = "ktor-client-cio", version.ref = "ktor" }
 ktor-client-content-negotiation = { group = "io.ktor", name = "ktor-client-content-negotiation", version.ref = "ktor" }
 ktor-client-content-serialization = { group = "io.ktor", name = "ktor-client-serialization", version.ref = "ktor" }
+ktor-client-logging = { group = "io.ktor", name = "ktor-client-logging-jvm", version.ref = "ktor" }
 ktor-serialization-kotlinx-json = { group = "io.ktor", name = "ktor-serialization-kotlinx-json", version.ref = "ktor" }
 
 # Testing
@@ -95,9 +94,10 @@ compose-test = [
 network = [
     "ktor-core",
     "ktor-cio",
+    "ktor-client-logging",
     "ktor-client-content-negotiation",
     "ktor-client-content-serialization",
-    "ktor-serialization-kotlinx-json"
+    "ktor-serialization-kotlinx-json",
 ]
 
 test-core = [

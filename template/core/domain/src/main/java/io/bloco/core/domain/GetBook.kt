@@ -1,5 +1,6 @@
 package io.bloco.core.domain
 
+import io.bloco.core.commons.logDebug
 import io.bloco.core.data.repositories.BookRepository
 import io.bloco.core.domain.models.BookDetails
 import io.bloco.core.domain.models.toModel
@@ -11,7 +12,7 @@ class GetBook @Inject constructor(
 ) {
     suspend operator fun invoke(id: String): Result<BookDetails> {
         return bookRepository.getBookDetails(id).map { bookDetails ->
-            println("Title: " + bookDetails.title)
+            logDebug { ("Title: " + bookDetails.title) }
             bookDetails.toModel()
         }
     }

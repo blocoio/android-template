@@ -5,6 +5,8 @@ import io.bloco.core.data.models.BookRecords
 import io.ktor.client.call.body
 import io.ktor.client.request.get
 import io.ktor.client.request.url
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.withContext
 import javax.inject.Inject
 
 class OpenLibraryService
@@ -12,23 +14,27 @@ class OpenLibraryService
     private val httpClient: OpenLibraryHttpClient
 ) {
 
-    suspend fun getBooks(): Result<BookRecords> = try {
-        Result.success(
-            httpClient().get {
-                url(path = "/search.json?q=android&limit=10")
-            }.body()
-        )
-    } catch (e: Exception) {
-        Result.failure(e)
+    suspend fun getBooks(): Result<BookRecords> = withContext(Dispatchers.IO) {
+        return@withContext try {
+            Result.success(
+                httpClient().get {
+                    url(path = "/search.json?q=android&limit=10")
+                }.body()
+            )
+        } catch (e: Exception) {
+            Result.failure(e)
+        }
     }
 
-    suspend fun getBook(id: String): Result<BookDetailsDto> = try {
-        Result.success(
-            httpClient().get {
-                url(path = "/works/$id.json")
-            }.body()
-        )
-    } catch (e: Exception) {
-        Result.failure(e)
+    suspend fun getBook(id: String): Result<BookDetailsDto> = withContext(Dispatchers.IO) {
+        return@withContext try {
+            Result.success(
+                httpClient().get {
+                    url(path = "/works/$id.json")
+                }.body()
+            )
+        } catch (e: Exception) {
+            Result.failure(e)
+        }
     }
 }
