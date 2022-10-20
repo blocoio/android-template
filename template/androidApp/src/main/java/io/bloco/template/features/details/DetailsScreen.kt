@@ -25,7 +25,7 @@ fun DetailsScreen(detailsViewModel: DetailsViewModel) {
                 modifier = Modifier.padding(16.dp)
             ) {
                 Text(
-                    text = stringResource(id = R.string.book_title) + " " + state.book.title,
+                    text = stringResource(id = R.string.book_title, state.book.title),
                     style = MaterialTheme.typography.h5
                 )
 

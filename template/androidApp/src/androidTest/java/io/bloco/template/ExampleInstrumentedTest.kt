@@ -22,6 +22,7 @@ import java.util.logging.Level
  */
 @RunWith(AndroidJUnit4::class)
 class ExampleInstrumentedTest {
+
     @get:Rule
     val composeTestRule = createComposeRule()
 
@@ -37,11 +38,5 @@ class ExampleInstrumentedTest {
         val appContext = InstrumentationRegistry.getInstrumentation().targetContext
         assertEquals("io.bloco.template", appContext.packageName)
     }
-
-
-
-    @Test
-    fun loadingSetupScreen() {
-
-    }
+    
 }
