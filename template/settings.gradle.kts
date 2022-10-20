@@ -19,6 +19,7 @@ dependencyResolutionManagement {
 rootProject.name = "template"
 include(
     ":androidApp",
+    ":lint-checks",
     ":core:commons",
     ":core:domain",
     ":core:data",

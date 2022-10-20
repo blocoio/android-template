@@ -1,15 +1,13 @@
+@file:Suppress("MatchingDeclarationName")
 package io.bloco.template.navigation
 
 import android.app.Activity
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.platform.LocalContext
-import androidx.lifecycle.ViewModel
-import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.viewmodel.compose.viewModel
 import dagger.hilt.android.EntryPointAccessors
 import io.bloco.template.MainActivity.ViewModelFactoryProvider
 import io.bloco.template.features.details.DetailsViewModel
-
 
 interface BaseViewModelFactoryProvider {
     fun getDetailsViewModelFactory(): DetailsViewModel.Factory

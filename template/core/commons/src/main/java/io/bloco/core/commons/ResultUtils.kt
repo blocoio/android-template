@@ -3,8 +3,8 @@ package io.bloco.core.commons
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.catch
 import kotlinx.coroutines.flow.flattenConcat
-import kotlinx.coroutines.flow.onEach
 import kotlinx.coroutines.flow.map
+import kotlinx.coroutines.flow.onEach
 
 fun <T> Flow<T>.toResult(): Flow<Result<T>> =
     map { Result.success(it) }
@@ -31,8 +31,7 @@ fun <T, R> Flow<Result<T>>.foldOnEach(
             {
                 onSuccess.invoke(it)
             }, {
-                onFailure.invoke(it)
-            }
+            onFailure.invoke(it)
+        }
         )
     }
-

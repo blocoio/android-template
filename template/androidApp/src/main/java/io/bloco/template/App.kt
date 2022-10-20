@@ -8,7 +8,6 @@ import io.bloco.core.commons.Log.addLogger
 import io.bloco.core.commons.Log.Logger
 import io.bloco.core.commons.Log.Level
 
-
 @HiltAndroidApp
 class App : Application() {
     override fun onCreate() {
@@ -60,4 +59,3 @@ class App : Application() {
         })
     }
 }
-

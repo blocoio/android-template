@@ -48,6 +48,11 @@ android {
             excludes.add("/META-INF/{AL2.0,LGPL2.1}")
         }
     }
+    testOptions {
+        unitTests {
+            isIncludeAndroidResources = true
+        }
+    }
     namespace = "io.bloco.template"
 }
 
@@ -57,10 +62,10 @@ dependencies {
     implementation(project(":core:commons"))
 
     // Dependencies
-        // Compose
+    // Compose
     implementation(libs.bundles.compose)
 
-        // Hilt
+    // Hilt
     implementation(libs.hilt.navigation.compose)
     implementation(libs.hilt.android)
     kapt(libs.hilt.compiler)
