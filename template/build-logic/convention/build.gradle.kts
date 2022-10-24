@@ -10,8 +10,8 @@ java {
 }
 
 dependencies {
-    compileOnly(libs.android.gradlePlugin)
-    compileOnly(libs.kotlin.gradlePlugin)
+    compileOnly(libs.gradle.plugin.android)
+    compileOnly(libs.gradle.plugin.kotlin)
 }
 
 gradlePlugin {

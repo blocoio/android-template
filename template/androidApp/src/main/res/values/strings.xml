@@ -1,3 +1,12 @@
 <resources>
     <string name="app_name">template</string>
+
+    <!-- Generic -->
+    <string name="api_error">Error from API.</string>
+
+    <!-- List Screen -->
+    <string name="book_list">Book list</string>
+
+    <!-- Details Screen -->
+    <string name="book_title">Book title: %s</string>
 </resources>

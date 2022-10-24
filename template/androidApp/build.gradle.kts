@@ -6,13 +6,13 @@ plugins {
 }
 
 android {
-    compileSdk = libs.versions.compileSDK.get().toInt()
+    compileSdk = libs.versions.sdk.compile.get().toInt()
 
     defaultConfig {
         applicationId = "io.bloco.template"
 
-        minSdk = libs.versions.minSDK.get().toInt()
-        targetSdk = libs.versions.targetSDK.get().toInt()
+        minSdk = libs.versions.sdk.min.get().toInt()
+        targetSdk = libs.versions.sdk.target.get().toInt()
 
         versionCode = 1
         versionName = "1.0"
@@ -34,14 +34,14 @@ android {
         sourceCompatibility = JavaVersion.VERSION_1_8
         targetCompatibility = JavaVersion.VERSION_1_8
     }
-    kotlinOptions {
-        jvmTarget = JavaVersion.VERSION_1_8.toString()
-    }
-    buildFeatures {
-        compose = true
-    }
+
+    kotlinOptions { jvmTarget = JavaVersion.VERSION_1_8.toString() }
+    hilt { enableAggregatingTask = true }
+
+    buildFeatures { compose = true }
+
     composeOptions {
-        kotlinCompilerExtensionVersion = libs.versions.androidxComposeCompiler.get().toString()
+        kotlinCompilerExtensionVersion = libs.versions.compose.compiler.get().toString()
     }
     packagingOptions {
         resources {
@@ -52,16 +52,25 @@ android {
 }
 
 dependencies {
+    // Project Dependencies
     implementation(project(":core:domain"))
+    implementation(project(":core:commons"))
 
-    implementation(libs.bundles.androidCompose)
+    // Dependencies
+        // Compose
+    implementation(libs.bundles.compose)
+
+        // Hilt
+    implementation(libs.hilt.navigation.compose)
     implementation(libs.hilt.android)
     kapt(libs.hilt.compiler)
-    implementation(libs.hilt.navigation.compose)
 
-    debugImplementation(libs.bundles.androidCompose.debug)
+    // Debug Dependencies
+    debugImplementation(libs.bundles.compose.debug)
 
-    androidTestImplementation(libs.bundles.androidCompose.test)
+    // Android Test Dependencies
+    androidTestImplementation(libs.bundles.compose.test)
 
+    // Test Dependencies
     testImplementation(libs.bundles.test.core)
 }

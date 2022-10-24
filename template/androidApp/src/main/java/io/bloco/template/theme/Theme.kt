@@ -1,4 +1,4 @@
-package io.bloco.template.core.designsystem.theme
+package io.bloco.template.theme
 
 import androidx.compose.foundation.isSystemInDarkTheme
 import androidx.compose.foundation.layout.PaddingValues
