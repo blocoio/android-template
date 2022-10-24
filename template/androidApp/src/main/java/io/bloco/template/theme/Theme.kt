@@ -59,5 +59,4 @@ fun TemplateTheme(
             Scaffold { content.invoke(it) }
         }
     }
-
 }

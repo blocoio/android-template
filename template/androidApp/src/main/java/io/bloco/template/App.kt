@@ -4,10 +4,9 @@ import android.app.Application
 import android.os.StrictMode
 import android.util.Log
 import dagger.hilt.android.HiltAndroidApp
-import io.bloco.core.commons.Log.addLogger
-import io.bloco.core.commons.Log.Logger
 import io.bloco.core.commons.Log.Level
-
+import io.bloco.core.commons.Log.Logger
+import io.bloco.core.commons.Log.addLogger
 
 @HiltAndroidApp
 class App : Application() {
@@ -60,4 +59,3 @@ class App : Application() {
         })
     }
 }
-

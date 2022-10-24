@@ -25,12 +25,14 @@ class OpenLibraryHttpClient @Inject constructor() {
             expectSuccess = true
 
             install(ContentNegotiation) {
-                json(Json {
-                    isLenient = true
-                    ignoreUnknownKeys = true
-                    allowSpecialFloatingPointValues = true
-                    useArrayPolymorphism = true
-                })
+                json(
+                    Json {
+                        isLenient = true
+                        ignoreUnknownKeys = true
+                        allowSpecialFloatingPointValues = true
+                        useArrayPolymorphism = true
+                    }
+                )
             }
 
             install(Logging) {

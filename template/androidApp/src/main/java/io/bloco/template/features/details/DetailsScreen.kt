@@ -28,7 +28,6 @@ fun DetailsScreen(detailsViewModel: DetailsViewModel) {
                     text = stringResource(id = R.string.book_title, state.book.title),
                     style = MaterialTheme.typography.h5
                 )
-
             }
         }
     }

@@ -12,7 +12,8 @@ class GetBooks @Inject constructor(
     suspend operator fun invoke(): Result<List<Book>> {
         return bookRepository.getBooks()
             .map { it.docs }
-            .map { bookList -> bookList.map { it.toModel() }
-        }
+            .map { bookList ->
+                bookList.map { it.toModel() }
+            }
     }
 }

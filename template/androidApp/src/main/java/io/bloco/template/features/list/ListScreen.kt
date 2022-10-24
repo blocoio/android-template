@@ -1,6 +1,5 @@
 package io.bloco.template.features.list
 
-import android.util.Log
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.gestures.Orientation
 import androidx.compose.foundation.gestures.scrollable
@@ -15,7 +14,6 @@ import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
-import androidx.compose.runtime.mutableStateListOf
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
@@ -84,13 +82,13 @@ private fun ListBooks(
             }
         }
     }
-
 }
 
 @Composable
 private fun ErrorFromApi() = Toast(R.string.api_error)
 
 @Preview(showSystemUi = true)
+@Suppress("UnusedPrivateMember")
 @Composable
 private fun ListScreenPreview() = ListBooks(
     state = UpdateSuccess(listOf(Book("", "Preview"))),

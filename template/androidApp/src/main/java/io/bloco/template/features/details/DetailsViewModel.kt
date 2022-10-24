@@ -3,7 +3,6 @@ package io.bloco.template.features.details
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.viewModelScope
-import dagger.Provides
 import dagger.assisted.Assisted
 import dagger.assisted.AssistedFactory
 import dagger.assisted.AssistedInject
@@ -13,11 +12,10 @@ import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.launch
 
-
 class DetailsViewModel @AssistedInject constructor(
     @Assisted bookId: String,
     getBook: GetBook,
-): ViewModel() {
+) : ViewModel() {
 
     private val _bookDetailsUpdateState =
         MutableStateFlow<APIRequestState>(APIRequestState.LoadingFromAPI)

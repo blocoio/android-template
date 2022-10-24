@@ -2,9 +2,8 @@
 package io.bloco.template
 
 import io.bloco.core.commons.logd
-import org.junit.Test
-
 import org.junit.Assert.assertEquals
+import org.junit.Test
 
 /**
  * Example local unit test, which will execute on the development machine (host).

@@ -1,15 +1,13 @@
 package io.bloco.template
 
 import androidx.compose.ui.test.junit4.createComposeRule
-import androidx.test.platform.app.InstrumentationRegistry
 import androidx.test.ext.junit.runners.AndroidJUnit4
+import androidx.test.platform.app.InstrumentationRegistry
 import io.bloco.core.commons.logd
-
-import org.junit.Test
-import org.junit.runner.RunWith
-
 import org.junit.Assert.assertEquals
 import org.junit.Rule
+import org.junit.Test
+import org.junit.runner.RunWith
 
 /**
  * Instrumented test, which will execute on an Android device.
@@ -29,5 +27,4 @@ class ExampleInstrumentedTest {
         logd("App Package name = ${appContext.packageName}")
         assertEquals("io.bloco.template", appContext.packageName)
     }
-    
 }

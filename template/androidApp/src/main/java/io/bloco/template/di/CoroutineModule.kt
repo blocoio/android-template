@@ -6,7 +6,6 @@ import dagger.hilt.InstallIn
 import dagger.hilt.components.SingletonComponent
 import io.bloco.core.commons.BackgroundDispatcher
 import kotlinx.coroutines.Dispatchers
-
 import kotlin.coroutines.CoroutineContext
 
 @Module
@@ -16,5 +15,4 @@ class CoroutineModule {
     @Provides
     @BackgroundDispatcher
     fun backgroundContext(): CoroutineContext = Dispatchers.IO
-
 }
