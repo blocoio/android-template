@@ -26,6 +26,6 @@ jobs:
           restore-keys: |
             ${{ runner.os }}-gradle-
 
-      - name: Run ktlint
+      - name: Run Detekt
         working-directory: ${{ env.WORKING_DIR }}
         run: ./gradlew detekt
