@@ -1,5 +1,6 @@
 package io.bloco.core.data.network
 
+import io.bloco.core.commons.BackgroundDispatcher
 import io.bloco.core.data.models.BookDetailsDto
 import io.bloco.core.data.models.BookRecords
 import io.ktor.client.call.body
@@ -8,13 +9,15 @@ import io.ktor.client.request.url
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
 import javax.inject.Inject
+import kotlin.coroutines.CoroutineContext
 
 class OpenLibraryService
 @Inject constructor(
-    private val httpClient: OpenLibraryHttpClient
+    private val httpClient: OpenLibraryHttpClient,
+    @BackgroundDispatcher private val coroutineContext: CoroutineContext
 ) {
 
-    suspend fun getBooks(): Result<BookRecords> = withContext(Dispatchers.IO) {
+    suspend fun getBooks(): Result<BookRecords> = withContext(coroutineContext) {
         return@withContext try {
             Result.success(
                 httpClient().get {
@@ -26,7 +29,7 @@ class OpenLibraryService
         }
     }
 
-    suspend fun getBook(id: String): Result<BookDetailsDto> = withContext(Dispatchers.IO) {
+    suspend fun getBook(id: String): Result<BookDetailsDto> = withContext(coroutineContext) {
         return@withContext try {
             Result.success(
                 httpClient().get {

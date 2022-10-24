@@ -1,6 +1,6 @@
 package io.bloco.core.data.network
 
-import io.bloco.core.commons.logDebug
+import io.bloco.core.commons.logd
 import io.ktor.client.HttpClient
 import io.ktor.client.engine.cio.CIO
 import io.ktor.client.plugins.DefaultRequest
@@ -8,7 +8,6 @@ import io.ktor.client.plugins.contentnegotiation.ContentNegotiation
 import io.ktor.client.plugins.logging.LogLevel
 import io.ktor.client.plugins.logging.Logger
 import io.ktor.client.plugins.logging.Logging
-import io.ktor.client.plugins.observer.ResponseObserver
 import io.ktor.client.request.header
 import io.ktor.http.ContentType
 import io.ktor.http.HttpHeaders
@@ -37,7 +36,7 @@ class OpenLibraryHttpClient @Inject constructor() {
             install(Logging) {
                 logger = object : Logger {
                     override fun log(message: String) {
-                        logDebug { "Response: $message" }
+                        logd("Response: $message")
                     }
                 }
                 level = LogLevel.ALL

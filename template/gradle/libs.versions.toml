@@ -51,6 +51,7 @@ test-navigation = { group = "androidx.navigation", name = "navigation-testing", 
 
 ## Non Android
 javax-inject = { group = "javax.inject", name = "javax.inject", version.ref = "javax" }
+
 coroutines = { group = "org.jetbrains.kotlinx", name = "kotlinx-coroutines-core", version.ref = "coroutines"}
 ktor-core = { group = "io.ktor", name = "ktor-client-core", version.ref = "ktor" }
 ktor-cio = { group = "io.ktor", name = "ktor-client-cio", version.ref = "ktor" }
@@ -89,6 +90,10 @@ compose-test = [
     "test-espresso",
     "test-compose",
     "test-navigation"
+]
+
+javax = [
+    "javax-inject",
 ]
 
 network = [
