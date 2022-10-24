@@ -43,7 +43,7 @@ class MissingExcludePreviewAnnotationDetector : Detector(), Detector.UastScanner
     companion object {
         private const val COMPOSE_PREVIEW_ANNOTATION = "androidx.compose.ui.tooling.preview.Preview"
         private const val EXCLUDE_FROM_JACOCO_ANNOTATION =
-            "io.bloco.cabinet.ExcludeFromJacocoGeneratedReport"
+            "io.bloco.template.ExcludeFromJacocoGeneratedReport"
 
         internal val ISSUE_MISSING_EXCLUDE_PREVIEW_ANNOTATION = Issue.create(
             id = "MissingExcludePreviewAnnotation",
