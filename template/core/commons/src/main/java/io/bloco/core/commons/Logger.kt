@@ -1,3 +1,4 @@
+@file:Suppress("MatchingDeclarationName", "MemberNameEqualsClassName")
 package io.bloco.core.commons
 
 import java.util.regex.Pattern
@@ -89,4 +90,3 @@ fun logw(message: String, throwable: Throwable? = null) =
 
 fun loge(message: String, throwable: Throwable? = null) =
     Log.log(Log.Level.ERROR, message, throwable)
-
