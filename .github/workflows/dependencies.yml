@@ -24,11 +24,10 @@ jobs:
 
       - name: Get Dependencies
         working-directory: ${{ env.WORKING_DIR }}
-        run: ./template/gradlew dependencyUpdates
+        run: ./gradlew dependencyUpdates
 
       - name: HTML Preview
-        working-directory: ${{ env.WORKING_DIR }}
         id: html_preview
         uses: pavi2410/html-preview-action@v2
         with:
-          html_file: 'build/dependencyUpdates/report.html'
+          html_file: 'template/build/dependencyUpdates/report.html'
