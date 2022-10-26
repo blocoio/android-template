@@ -27,7 +27,7 @@ jobs:
         run: ./gradlew dependencyUpdates
 
       - name: HTML Preview
-        path: ~/${{ env.WORKING_DIR }}/.gradle/caches
+        working-directory: ${{ env.WORKING_DIR }}
         id: html_preview
         uses: pavi2410/html-preview-action@v2
         with:
