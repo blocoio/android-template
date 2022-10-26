@@ -6,11 +6,12 @@ import androidx.compose.foundation.gestures.scrollable
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.systemBarsPadding
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.itemsIndexed
 import androidx.compose.foundation.rememberScrollState
-import androidx.compose.material.MaterialTheme
-import androidx.compose.material.Text
+import androidx.compose.material3.MaterialTheme
+import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
@@ -26,10 +27,10 @@ import com.google.accompanist.swiperefresh.rememberSwipeRefreshState
 import io.bloco.core.domain.models.Book
 import io.bloco.template.R
 import io.bloco.template.component.Toast
-import io.bloco.template.features.list.ListViewModel.BookListUpdateState
-import io.bloco.template.features.list.ListViewModel.BookListUpdateState.ErrorFromAPI
-import io.bloco.template.features.list.ListViewModel.BookListUpdateState.LoadingFromAPI
-import io.bloco.template.features.list.ListViewModel.BookListUpdateState.UpdateSuccess
+import io.bloco.template.features.list.ListViewModel.ListScreenUiState
+import io.bloco.template.features.list.ListViewModel.ListScreenUiState.ErrorFromAPI
+import io.bloco.template.features.list.ListViewModel.ListScreenUiState.LoadingFromAPI
+import io.bloco.template.features.list.ListViewModel.ListScreenUiState.UpdateSuccess
 
 @Composable
 fun ListScreen(
@@ -50,7 +51,7 @@ fun ListScreen(
 
 @Composable
 private fun ListBooks(
-    state: BookListUpdateState,
+    state: ListScreenUiState,
     onRefresh: () -> Unit,
     onDetailsClicked: (String) -> Unit,
 ) = SwipeRefresh(
@@ -58,6 +59,7 @@ private fun ListBooks(
     onRefresh = onRefresh,
     modifier = Modifier
         .scrollable(rememberScrollState(), Orientation.Vertical)
+        .systemBarsPadding()
         .padding(16.dp)
 ) {
     var books by remember { mutableStateOf(emptyList<Book>()) }
@@ -68,7 +70,7 @@ private fun ListBooks(
     Column {
         Text(
             text = stringResource(id = R.string.book_list),
-            style = MaterialTheme.typography.h3
+            style = MaterialTheme.typography.headlineSmall
         )
         LazyColumn {
             itemsIndexed(books) { _, book ->

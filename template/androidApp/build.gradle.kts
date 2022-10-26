@@ -41,6 +41,12 @@ android {
 
     buildFeatures { compose = true }
 
+    kotlinOptions {
+        freeCompilerArgs = freeCompilerArgs + listOf(
+            "-opt-in=androidx.compose.material3.ExperimentalMaterial3Api",
+        )
+    }
+
     composeOptions {
         kotlinCompilerExtensionVersion = libs.versions.compose.compiler.get().toString()
     }
@@ -76,6 +82,12 @@ dependencies {
     // Ktor Engine
     implementation(libs.ktor.core)
     implementation(libs.ktor.engine.android)
+
+    // SplashScreen
+    implementation(libs.splashscreen)
+
+    // Datastore
+    implementation(libs.datastore.android)
 
     // Debug Dependencies
     debugImplementation(libs.bundles.compose.debug)

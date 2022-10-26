@@ -5,9 +5,9 @@ import io.bloco.commonstest.MockMainDispatcherTestRule
 import io.bloco.core.domain.GetBooks
 import io.bloco.core.domain.models.Book
 import io.bloco.template.features.list.ListViewModel
-import io.bloco.template.features.list.ListViewModel.BookListUpdateState.ErrorFromAPI
-import io.bloco.template.features.list.ListViewModel.BookListUpdateState.LoadingFromAPI
-import io.bloco.template.features.list.ListViewModel.BookListUpdateState.UpdateSuccess
+import io.bloco.template.features.list.ListViewModel.ListScreenUiState.ErrorFromAPI
+import io.bloco.template.features.list.ListViewModel.ListScreenUiState.LoadingFromAPI
+import io.bloco.template.features.list.ListViewModel.ListScreenUiState.UpdateSuccess
 import io.mockk.coEvery
 import io.mockk.mockk
 import kotlinx.coroutines.test.runTest
