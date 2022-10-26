@@ -1,6 +1,11 @@
+name: dependencies
+
 on:
   pull_request:
     types: [opened, reopened]
+
+env:
+  WORKING_DIR: template
 
 jobs:
   comment:
