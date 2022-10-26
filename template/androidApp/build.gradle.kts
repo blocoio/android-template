@@ -96,6 +96,7 @@ dependencies {
     androidTestImplementation(libs.hilt.test)
     kaptAndroidTest(libs.hilt.test.compiler)
 
+    androidTestImplementation(libs.test.core)
     androidTestImplementation(libs.bundles.compose.test)
     androidTestImplementation(libs.ktor.engine.mock)
     androidTestImplementation(project(":core:commons-test"))

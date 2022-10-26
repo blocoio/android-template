@@ -30,7 +30,6 @@ import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.flow.onEach
 import kotlinx.coroutines.launch
 
-
 @AndroidEntryPoint
 class MainActivity : ComponentActivity() {
 
@@ -81,6 +80,7 @@ class MainActivity : ComponentActivity() {
                 onDispose {}
             }
 
-            TemplateTheme { TemplateNaveHost() } }
+            TemplateTheme { TemplateNaveHost() }
+        }
     }
 }

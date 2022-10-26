@@ -18,7 +18,7 @@ class MainActivityViewModel @Inject constructor(
     appSettings: AppSettings
 ) : ViewModel() {
     val uiState: StateFlow<MainActivityUiState> = appSettings.isFirstOpening().map {
-        if(it) {
+        if (it) {
             // Here you can add new logic
             // for first time opening the app it can be useful to check if theres is existing local
             // data from previous installations, or check and download heavier resources
@@ -37,4 +37,3 @@ class MainActivityViewModel @Inject constructor(
         object Success : MainActivityUiState
     }
 }
-

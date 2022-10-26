@@ -5,7 +5,6 @@ import androidx.annotation.ChecksSdkIntAtLeast
 import androidx.compose.foundation.isSystemInDarkTheme
 import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Surface
@@ -17,7 +16,6 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.LocalContext
-import io.bloco.template.MainActivityViewModel
 
 private val DarkColorPalette = darkColorScheme(
     primary = Purple200,
@@ -81,7 +79,5 @@ fun TemplateTheme(
     }
 }
 
-
 @ChecksSdkIntAtLeast(api = Build.VERSION_CODES.S)
 private fun supportsDynamicTheming() = Build.VERSION.SDK_INT >= Build.VERSION_CODES.S
-
