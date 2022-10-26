@@ -16,6 +16,11 @@ dependencies {
 
 gradlePlugin {
     plugins {
+        register("coroutines") {
+            id = "template.coroutines"
+            implementationClass = "CoroutinesConventionPlugin"
+        }
+
         register("kotlinFeature") {
             id = "template.kotlin.feature"
             implementationClass = "KotlinFeatureConventionPlugin"

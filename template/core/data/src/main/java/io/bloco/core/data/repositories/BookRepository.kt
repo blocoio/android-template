@@ -9,8 +9,8 @@ class BookRepository
 @Inject constructor(
     private val openLibraryService: OpenLibraryService
 ) {
-    suspend fun getBooks(): Result<BookRecords> =
-        openLibraryService.getBooks()
+    suspend fun getBooks(keyword: String = "Android"): Result<BookRecords> =
+        openLibraryService.getBooks(keyword)
 
     suspend fun getBookDetails(id: String): Result<BookDetailsDto> =
         openLibraryService.getBook(id)

@@ -1,8 +1,9 @@
 package io.bloco.core.data.network
 
+import io.bloco.core.commons.ApiUrl
 import io.bloco.core.commons.logd
 import io.ktor.client.HttpClient
-import io.ktor.client.engine.cio.CIO
+import io.ktor.client.engine.HttpClientEngineFactory
 import io.ktor.client.plugins.DefaultRequest
 import io.ktor.client.plugins.contentnegotiation.ContentNegotiation
 import io.ktor.client.plugins.logging.LogLevel
@@ -18,10 +19,13 @@ import javax.inject.Inject
 import javax.inject.Singleton
 
 @Singleton
-class OpenLibraryHttpClient @Inject constructor() {
+class OpenLibraryHttpClient @Inject constructor(
+    @ApiUrl private val baseUrl: String,
+    private val engine: HttpClientEngineFactory<*>,
+) {
 
     private val client by lazy {
-        HttpClient(CIO) {
+        HttpClient(engine) {
             expectSuccess = true
 
             install(ContentNegotiation) {
@@ -48,7 +52,7 @@ class OpenLibraryHttpClient @Inject constructor() {
                 header(HttpHeaders.ContentType, ContentType.Application.Json)
                 url {
                     protocol = URLProtocol.HTTPS
-                    host = "openlibrary.org"
+                    host = baseUrl
                 }
             }
         }
