@@ -1,4 +1,4 @@
-package io.bloco.data_test
+package io.bloco.datatest
 
 import io.bloco.core.commons.endpoints.OpenLibraryEndpoint
 import io.ktor.client.HttpClient

@@ -1,4 +1,4 @@
-package io.bloco.commons_test
+package io.bloco.commonstest
 
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.test.TestCoroutineScheduler

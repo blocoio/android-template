@@ -11,7 +11,7 @@ import androidx.test.ext.junit.runners.AndroidJUnit4
 import androidx.test.platform.app.InstrumentationRegistry
 import dagger.hilt.android.testing.HiltAndroidRule
 import dagger.hilt.android.testing.HiltAndroidTest
-import io.bloco.data_test.MockOpenLibraryApi
+import io.bloco.datatest.MockOpenLibraryApi
 import org.junit.Before
 import org.junit.Rule
 import org.junit.Test
@@ -42,7 +42,7 @@ class ComposeAndNetworkExampleInstrumentedTest {
     }
 
     @Test
-    fun listBooksSuccess()  {
+    fun listBooksSuccess() {
         MockOpenLibraryApi.giveSuccess()
         with(composeRule) {
             waitForIdle()
@@ -64,5 +64,4 @@ class ComposeAndNetworkExampleInstrumentedTest {
                 .assertDoesNotExist()
         }
     }
-
 }

@@ -3,7 +3,7 @@ package io.bloco.template.di
 import dagger.Module
 import dagger.hilt.components.SingletonComponent
 import dagger.hilt.testing.TestInstallIn
-import io.bloco.data_test.MockOpenLibraryApi
+import io.bloco.datatest.MockOpenLibraryApi
 import io.ktor.client.engine.HttpClientEngineConfig
 import io.ktor.client.engine.HttpClientEngineFactory
 
@@ -12,7 +12,7 @@ import io.ktor.client.engine.HttpClientEngineFactory
     components = [SingletonComponent::class],
     replaces = [NetworkModule::class]
 )
-class NetworkTestModule: NetworkModule() {
+class NetworkTestModule : NetworkModule() {
 
     override val baseUrl = "localhost"
 
