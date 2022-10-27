@@ -1,7 +1,6 @@
 package io.bloco.template
 
 import app.cash.turbine.test
-import io.bloco.commonstest.MockMainDispatcherTestRule
 import io.bloco.core.domain.GetBooks
 import io.bloco.core.domain.models.Book
 import io.bloco.template.features.list.ListViewModel

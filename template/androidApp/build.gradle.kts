@@ -86,12 +86,10 @@ dependencies {
 
     androidTestImplementation(libs.bundles.compose.test)
     androidTestImplementation(libs.ktor.engine.mock)
-    androidTestImplementation(project(":core:commons-test"))
     androidTestImplementation(project(":core:data-test"))
 
     // Test Dependencies
     testImplementation(libs.bundles.test.core)
     testImplementation(libs.mockk.agent)
     testImplementation(libs.mockk.android)
-    testImplementation(project(":core:commons-test"))
 }
