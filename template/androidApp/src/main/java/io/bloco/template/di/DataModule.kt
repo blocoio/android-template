@@ -33,7 +33,6 @@ open class DataModule {
     fun httpClientEngine(): HttpClientEngineFactory<*> = internalHttpClientEngine()
 
     protected open fun internalDataStore(context: Context) = context.dataStore
-    protected open fun internalCacheDataStore(context: Context) = context.cacheDataStore
 
     @Provides
     @Singleton
@@ -42,8 +41,6 @@ open class DataModule {
 
     companion object {
         private const val DATA_STORE = "store"
-        private const val CACHE_DATA_STORE = "cache"
         private val Context.dataStore: DataStore<Preferences> by preferencesDataStore(name = DATA_STORE)
-        private val Context.cacheDataStore: DataStore<Preferences> by preferencesDataStore(name = CACHE_DATA_STORE)
     }
 }

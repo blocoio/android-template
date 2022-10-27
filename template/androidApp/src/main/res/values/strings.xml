@@ -4,8 +4,6 @@
     <!-- Generic -->
     <string name="api_error">Error from API.</string>
 
-    <!-- Accessibility -->
-
     <!-- List Screen -->
     <string name="book_list">Book list</string>
 

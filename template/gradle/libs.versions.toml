@@ -7,7 +7,7 @@ gradle-android = "7.3.0"
 gradle-versions = "0.43.0"
 
 compose = "1.3.0-beta02"
-compose-material = "1.0.0-rc01"
+compose-material = "1.0.0"
 compose-compiler = "1.3.1"
 compose-navigation = "2.5.2"
 compose-navigation-hilt = "1.0.0"

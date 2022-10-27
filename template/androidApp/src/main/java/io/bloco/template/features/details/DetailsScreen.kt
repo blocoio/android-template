@@ -16,12 +16,12 @@ import io.bloco.template.component.Toast
 
 @Composable
 fun DetailsScreen(detailsViewModel: DetailsViewModel) {
-    val bookListUpdateState by detailsViewModel.bookDetailsUpdateState.collectAsState()
+    val bookListUpdateState by detailsViewModel.updateState.collectAsState()
 
     when (val state = bookListUpdateState) {
-        DetailsViewModel.DetailsScreenUiState.ErrorFromAPI -> Toast(R.string.api_error)
-        DetailsViewModel.DetailsScreenUiState.LoadingFromAPI -> Unit
-        is DetailsViewModel.DetailsScreenUiState.Success -> {
+        DetailsViewModel.UiState.ErrorFromAPI -> Toast(R.string.api_error)
+        DetailsViewModel.UiState.LoadingFromAPI -> Unit
+        is DetailsViewModel.UiState.Success -> {
             Column(
                 modifier = Modifier
                     .systemBarsPadding()

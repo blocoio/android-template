@@ -20,9 +20,9 @@ import dagger.hilt.EntryPoint
 import dagger.hilt.InstallIn
 import dagger.hilt.android.AndroidEntryPoint
 import dagger.hilt.android.components.ActivityComponent
-import io.bloco.template.MainActivityViewModel.MainActivityUiState
-import io.bloco.template.MainActivityViewModel.MainActivityUiState.Loading
-import io.bloco.template.MainActivityViewModel.MainActivityUiState.Success
+import io.bloco.template.MainActivityViewModel.UiState
+import io.bloco.template.MainActivityViewModel.UiState.Loading
+import io.bloco.template.MainActivityViewModel.UiState.Success
 import io.bloco.template.navigation.BaseViewModelFactoryProvider
 import io.bloco.template.navigation.TemplateNaveHost
 import io.bloco.template.theme.TemplateTheme
@@ -43,16 +43,7 @@ class MainActivity : ComponentActivity() {
         val splashScreen = installSplashScreen()
         super.onCreate(savedInstanceState)
 
-        var uiState: MainActivityUiState by mutableStateOf(Loading)
-
-        lifecycleScope.launch {
-            lifecycle.repeatOnLifecycle(Lifecycle.State.STARTED) {
-                viewModel.uiState
-                    .onEach {
-                        uiState = it
-                    }.collect()
-            }
-        }
+        var uiState: UiState by mutableStateOf(Loading)
 
         // Keep the splash screen on-screen until the UI state is loaded. This condition is
         // evaluated each time the app needs to be redrawn so it should be fast to avoid blocking
@@ -61,6 +52,15 @@ class MainActivity : ComponentActivity() {
             when (uiState) {
                 Loading -> true
                 Success -> false
+            }
+        }
+
+        lifecycleScope.launch {
+            lifecycle.repeatOnLifecycle(Lifecycle.State.STARTED) {
+                viewModel.uiState
+                    .onEach {
+                        uiState = it
+                    }.collect()
             }
         }
 
@@ -74,8 +74,7 @@ class MainActivity : ComponentActivity() {
 
             // Update the dark content of the system bars to match the theme
             DisposableEffect(systemUiController, darkTheme) {
-                systemUiController.setSystemBarsColor(if (darkTheme) Color.Transparent else Color.White)
-                systemUiController.setStatusBarColor(if (darkTheme) Color.Transparent else Color.White)
+                systemUiController.setSystemBarsColor(Color.Transparent)
                 systemUiController.systemBarsDarkContentEnabled = !darkTheme
                 onDispose {}
             }

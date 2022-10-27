@@ -5,8 +5,8 @@ import androidx.lifecycle.viewModelScope
 import dagger.hilt.android.lifecycle.HiltViewModel
 import io.bloco.core.commons.logd
 import io.bloco.core.domain.AppSettings
-import io.bloco.template.MainActivityViewModel.MainActivityUiState.Loading
-import io.bloco.template.MainActivityViewModel.MainActivityUiState.Success
+import io.bloco.template.MainActivityViewModel.UiState.Loading
+import io.bloco.template.MainActivityViewModel.UiState.Success
 import kotlinx.coroutines.flow.SharingStarted
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.map
@@ -17,7 +17,7 @@ import javax.inject.Inject
 class MainActivityViewModel @Inject constructor(
     appSettings: AppSettings
 ) : ViewModel() {
-    val uiState: StateFlow<MainActivityUiState> = appSettings.isFirstOpening().map {
+    val uiState: StateFlow<UiState> = appSettings.isFirstOpening().map {
         if (it) {
             // Here you can add new logic
             // for first time opening the app it can be useful to check if theres is existing local
@@ -32,8 +32,8 @@ class MainActivityViewModel @Inject constructor(
         started = SharingStarted.WhileSubscribed(1_000)
     )
 
-    sealed interface MainActivityUiState {
-        object Loading : MainActivityUiState
-        object Success : MainActivityUiState
+    sealed interface UiState {
+        object Loading : UiState
+        object Success : UiState
     }
 }
