@@ -1,0 +1,30 @@
+{
+  "numFound": 1518,
+  "start": 0,
+  "numFoundExact": true,
+  "docs": [
+    {
+      "key": "0",
+      "title": "bloco.io"
+    },
+    {
+      "key": "1",
+      "title": "bloco.io"
+    },
+    {
+      "key": "2",
+      "title": "bloco.io"
+    },
+    {
+      "key": "3",
+      "title": "bloco.io"
+    },
+    {
+      "key": "4",
+      "title": "bloco.io"
+    }
+  ],
+  "num_found": 1518,
+  "q": "android",
+  "offset": null
+}

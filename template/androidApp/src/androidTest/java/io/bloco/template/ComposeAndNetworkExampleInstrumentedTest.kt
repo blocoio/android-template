@@ -11,7 +11,10 @@ import androidx.test.ext.junit.runners.AndroidJUnit4
 import androidx.test.platform.app.InstrumentationRegistry
 import dagger.hilt.android.testing.HiltAndroidRule
 import dagger.hilt.android.testing.HiltAndroidTest
+import io.bloco.core.commons.endpoints.OpenLibraryEndpoint
+import io.bloco.datatest.DataTestResources
 import io.bloco.datatest.MockOpenLibraryApi
+import io.ktor.http.*
 import org.junit.Before
 import org.junit.Rule
 import org.junit.Test
@@ -27,7 +30,7 @@ class ComposeAndNetworkExampleInstrumentedTest {
     private val composeRule = createEmptyComposeRule()
 
     private lateinit var scenario: ActivityScenario<MainActivity>
-    lateinit var instrumentationContext: Context
+    private lateinit var instrumentationContext: Context
 
     @get:Rule
     val chain: TestRule = RuleChain
@@ -43,20 +46,40 @@ class ComposeAndNetworkExampleInstrumentedTest {
 
     @Test
     fun listBooksSuccess() {
-        MockOpenLibraryApi.giveSuccess()
+        MockOpenLibraryApi.giveResponse(
+            request = OpenLibraryEndpoint.search("Android"),
+            response = MockOpenLibraryApi.ResponseValue(
+                statusCode = HttpStatusCode.OK,
+                content = DataTestResources.bookListJson()
+            )
+        )
+
         with(composeRule) {
             waitForIdle()
-            onNodeWithText(instrumentationContext.getString(R.string.book_list), useUnmergedTree = true)
+            /**
+             * Compose flattens its UI tree, so some elements can be combined into a single
+             * Composable. This process happens in a later stage so to use the first pre-draw tree
+             * useUnmergedTree should be true.
+             */
+            onNodeWithText(
+                instrumentationContext.getString(R.string.book_list),
+                useUnmergedTree = true
+            )
                 .assertIsDisplayed()
 
             onAllNodesWithText("bloco.io")
-                .assertCountEquals(10)
+                .assertCountEquals(5)
         }
     }
 
     @Test
     fun listBooksError() {
-        MockOpenLibraryApi.giveInternetError()
+        MockOpenLibraryApi.giveResponse(
+            request = OpenLibraryEndpoint.search("Android"),
+            response = MockOpenLibraryApi.ResponseValue(
+                statusCode = HttpStatusCode.BadRequest
+            )
+        )
 
         with(composeRule) {
             waitForIdle()

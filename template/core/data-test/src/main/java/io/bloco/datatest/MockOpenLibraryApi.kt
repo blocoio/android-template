@@ -1,6 +1,5 @@
 package io.bloco.datatest
 
-import io.bloco.core.commons.endpoints.OpenLibraryEndpoint
 import io.ktor.client.HttpClient
 import io.ktor.client.engine.mock.MockEngine
 import io.ktor.client.engine.mock.respond
@@ -13,36 +12,27 @@ object MockOpenLibraryApi {
     private val responseHeaders =
         headersOf("Content-Type" to listOf(ContentType.Application.Json.toString()))
 
-    private var statusCode: HttpStatusCode = HttpStatusCode.Accepted
-    private val statusCodeIsSuccess
-        get() = statusCode == HttpStatusCode.Accepted
+    private val responses = mutableMapOf<String, ResponseValue>()
 
     private val client = HttpClient(MockEngine) {
         engine {
             addHandler { request ->
-                when (request.url.encodedPathAndQuery) {
-                    OpenLibraryEndpoint.search("Android") -> {
-                        respond(
-                            DataTestResources.bookListJson(statusCodeIsSuccess),
-                            statusCode,
-                            responseHeaders,
-                        )
-                    }
-                    else -> {
-                        error("Unhandled ${request.url.encodedPathAndQuery}")
-                    }
-                }
+                responses[request.url.encodedPathAndQuery]?.let { response ->
+                    respond(
+                        response.content,
+                        response.statusCode,
+                        responseHeaders,
+                    )
+                } ?: throw AssertionError("No response specified for $request")
             }
         }
     }
 
     val engine = client.engine
 
-    fun giveSuccess() {
-        statusCode = HttpStatusCode.Accepted
+    fun giveResponse(request: String, response: ResponseValue) {
+        responses[request] = response
     }
 
-    fun giveInternetError() {
-        statusCode = HttpStatusCode.GatewayTimeout
-    }
+    data class ResponseValue(val statusCode: HttpStatusCode, val content: String = "")
 }
