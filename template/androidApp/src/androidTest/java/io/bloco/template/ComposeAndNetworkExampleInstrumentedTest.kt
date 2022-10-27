@@ -14,7 +14,7 @@ import dagger.hilt.android.testing.HiltAndroidTest
 import io.bloco.core.commons.endpoints.OpenLibraryEndpoint
 import io.bloco.datatest.DataTestResources
 import io.bloco.datatest.MockOpenLibraryApi
-import io.ktor.http.*
+import io.ktor.http.HttpStatusCode
 import org.junit.Before
 import org.junit.Rule
 import org.junit.Test
