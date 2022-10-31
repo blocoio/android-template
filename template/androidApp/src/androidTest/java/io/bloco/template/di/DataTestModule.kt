@@ -10,9 +10,9 @@ import io.ktor.client.engine.HttpClientEngineFactory
 @Module
 @TestInstallIn(
     components = [SingletonComponent::class],
-    replaces = [NetworkModule::class]
+    replaces = [DataModule::class]
 )
-class NetworkTestModule : NetworkModule() {
+class DataTestModule : DataModule() {
 
     override val baseUrl = "localhost"
 

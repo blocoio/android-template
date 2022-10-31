@@ -17,22 +17,22 @@ class DetailsViewModel @AssistedInject constructor(
     getBook: GetBook,
 ) : ViewModel() {
 
-    private val _bookDetailsUpdateState =
-        MutableStateFlow<APIRequestState>(APIRequestState.LoadingFromAPI)
-    val bookDetailsUpdateState = _bookDetailsUpdateState.asStateFlow()
+    private val _updateState =
+        MutableStateFlow<UiState>(UiState.LoadingFromAPI)
+    val updateState = _updateState.asStateFlow()
 
     init {
         viewModelScope.launch {
             getBook(bookId)
-                .onSuccess { _bookDetailsUpdateState.value = APIRequestState.Success(it) }
-                .onFailure { _bookDetailsUpdateState.value = APIRequestState.ErrorFromAPI }
+                .onSuccess { _updateState.value = UiState.Success(it) }
+                .onFailure { _updateState.value = UiState.ErrorFromAPI }
         }
     }
 
-    sealed class APIRequestState {
-        object LoadingFromAPI : APIRequestState()
-        data class Success(val book: BookDetails) : APIRequestState()
-        object ErrorFromAPI : APIRequestState()
+    sealed interface UiState {
+        object LoadingFromAPI : UiState
+        data class Success(val book: BookDetails) : UiState
+        object ErrorFromAPI : UiState
     }
 
     @AssistedFactory

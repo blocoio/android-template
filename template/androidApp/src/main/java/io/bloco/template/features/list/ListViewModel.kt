@@ -6,9 +6,9 @@ import dagger.hilt.android.lifecycle.HiltViewModel
 import io.bloco.core.commons.PublishFlow
 import io.bloco.core.domain.GetBooks
 import io.bloco.core.domain.models.Book
-import io.bloco.template.features.list.ListViewModel.BookListUpdateState.ErrorFromAPI
-import io.bloco.template.features.list.ListViewModel.BookListUpdateState.LoadingFromAPI
-import io.bloco.template.features.list.ListViewModel.BookListUpdateState.UpdateSuccess
+import io.bloco.template.features.list.ListViewModel.ListScreenUiState.ErrorFromAPI
+import io.bloco.template.features.list.ListViewModel.ListScreenUiState.LoadingFromAPI
+import io.bloco.template.features.list.ListViewModel.ListScreenUiState.UpdateSuccess
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.flow.filterIsInstance
@@ -25,7 +25,7 @@ class ListViewModel @Inject constructor(
 
     private val events = PublishFlow<Event>()
 
-    private val _state = MutableStateFlow<BookListUpdateState>(LoadingFromAPI)
+    private val _state = MutableStateFlow<ListScreenUiState>(LoadingFromAPI)
     val state = _state.asStateFlow()
 
     init {
@@ -53,9 +53,9 @@ class ListViewModel @Inject constructor(
         object Refresh : Event()
     }
 
-    sealed class BookListUpdateState {
-        object LoadingFromAPI : BookListUpdateState()
-        data class UpdateSuccess(val books: List<Book>) : BookListUpdateState()
-        object ErrorFromAPI : BookListUpdateState()
+    sealed interface ListScreenUiState {
+        object LoadingFromAPI : ListScreenUiState
+        data class UpdateSuccess(val books: List<Book>) : ListScreenUiState
+        object ErrorFromAPI : ListScreenUiState
     }
 }
