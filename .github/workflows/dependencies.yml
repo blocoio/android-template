@@ -1,7 +1,7 @@
 name: dependencies
 on:
-  schedule:
-    - cron: 20 07 * * 1
+  issue_comment:
+    types: [ created, deleted ]
 
 env:
   WORKING_DIR: template
@@ -15,8 +15,6 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v1
-        with:
-          path: master
 
       - name: Setup JDK 11
         uses: actions/setup-java@v1
