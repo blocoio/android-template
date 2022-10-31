@@ -9,13 +9,23 @@ env:
 jobs:
   create_issue:
     name: Create Dependencies Report
+    id: request
+      uses: octokit/request-action@v2.0.0
+      with:
+        route: ${{ github.event.issue.pull_request.url }}
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
     runs-on: ubuntu-latest
     permissions:
       issues: write
     steps:
       - name: Checkout
         uses: actions/checkout@v1
-
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          repository: ${{ fromJson(steps.request.outputs.data).head.repo.full_name }}
+          ref: ${{ steps.pr_data.outputs.branch }}
+          
       - name: Setup JDK 11
         uses: actions/setup-java@v1
         with:
