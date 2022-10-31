@@ -1,18 +1,22 @@
 name: dependencies
-
 on:
-  pull_request:
-    types: [opened, reopened]
+  schedule:
+    - cron: 20 07 * * 1
 
 env:
   WORKING_DIR: template
 
 jobs:
-  comment:
+  create_issue:
+    name: Create Dependencies Report
     runs-on: ubuntu-latest
+    permissions:
+      issues: write
     steps:
       - name: Checkout
         uses: actions/checkout@v1
+        with:
+          path: master
 
       - name: Setup JDK 11
         uses: actions/setup-java@v1
@@ -29,10 +33,17 @@ jobs:
 
       - name: Get Dependencies
         working-directory: ${{ env.WORKING_DIR }}
-        run: ./gradlew dependencyUpdates
+        run: echo "dependencies=$(./gradlew dependencyUpdates)" >> $GITHUB_ENV
 
-      - name: HTML Preview
-        id: html_preview
-        uses: pavi2410/html-preview-action@v2
+      - name: Create Dependencies issue
+        uses: imjohnbo/issue-bot@3daae12aa54d38685d7ff8459fc8a2aee8cea98b
         with:
-          html_file: 'template/build/dependencyUpdates/report.html'
+          assignees: "filmaluco"
+          labels: "dependencies"
+          title: "Dependencies with update Available"
+          body: |
+            ${{ env.dependencies }}
+          pinned: true
+          close-previous: false
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
