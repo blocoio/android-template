@@ -47,7 +47,8 @@ jobs:
 
       - name: Get Dependencies
         working-directory: ${{ env.WORKING_DIR }}
-        run: echo "dependencies=$(./gradlew dependencyUpdates)" >> $GITHUB_ENV
+        run: |
+          echo ::set-env name=GITHUB_DEPENDENCIES::$(./gradlew dependencyUpdates)
 
       - name: Create Dependencies issue
         uses: imjohnbo/issue-bot@3daae12aa54d38685d7ff8459fc8a2aee8cea98b
@@ -56,7 +57,7 @@ jobs:
           labels: "dependencies"
           title: "Dependencies with update Available"
           body: |
-            ${{ env.dependencies }}
+            ${{ env.GITHUB_DEPENDENCIES }}
           pinned: true
           close-previous: false
         env:
