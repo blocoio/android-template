@@ -12,18 +12,18 @@ class AppRepository @Inject constructor(
     private val dataUserPreferences: DataStore<Preferences>
 ) {
 
-    suspend fun saveFirstTimeOpeningPreference() {
+    suspend fun saveHasBeenOpenedPreference() {
         dataUserPreferences.edit {
-            it[FIRST_OPENING] = false
+            it[APP_OPENED] = true
         }
     }
 
-    fun isFirstOpening(): Flow<Boolean> =
+    fun hasBeenOpened(): Flow<Boolean> =
         dataUserPreferences.data.map { preferences ->
-            preferences[FIRST_OPENING] ?: true
+            preferences[APP_OPENED] ?: false
         }
 
     companion object {
-        private val FIRST_OPENING = booleanPreferencesKey("FIRST_OPENING")
+        private val APP_OPENED = booleanPreferencesKey("APP_OPENED")
     }
 }

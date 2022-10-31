@@ -8,11 +8,11 @@ class AppSettings @Inject constructor(
     private val appRepository: AppRepository,
 ) {
 
-    fun isFirstOpening(): Flow<Boolean> {
-        return appRepository.isFirstOpening()
+    fun hasBeenOpened(): Flow<Boolean> {
+        return appRepository.hasBeenOpened()
     }
 
     suspend fun appOpened() {
-        appRepository.saveFirstTimeOpeningPreference()
+        appRepository.saveHasBeenOpenedPreference()
     }
 }

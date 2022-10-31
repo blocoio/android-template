@@ -17,8 +17,8 @@ import javax.inject.Inject
 class MainActivityViewModel @Inject constructor(
     appSettings: AppSettings
 ) : ViewModel() {
-    val uiState: StateFlow<UiState> = appSettings.isFirstOpening().map {
-        if (it) {
+    val uiState: StateFlow<UiState> = appSettings.hasBeenOpened().map {
+        if (!it) {
             // Here you can add new logic
             // for first time opening the app it can be useful to check if theres is existing local
             // data from previous installations, or check and download heavier resources
