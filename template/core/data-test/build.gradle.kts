@@ -6,9 +6,7 @@ plugins {
 
 dependencies {
     implementation(project(":core:commons"))
+    implementation(project(":core:data"))
 
-    api(libs.bundles.network)
-    implementation(libs.bundles.javax)
-
-    testImplementation(project(":core:data-test"))
+    implementation(libs.ktor.engine.mock)
 }

@@ -1,5 +1,6 @@
 package io.bloco.template.di
 
+import androidx.annotation.VisibleForTesting
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -10,9 +11,12 @@ import kotlin.coroutines.CoroutineContext
 
 @Module
 @InstallIn(SingletonComponent::class)
-class CoroutineModule {
+open class CoroutineModule {
+
+    @VisibleForTesting
+    internal open val backgroundDispatcher = Dispatchers.IO
 
     @Provides
     @BackgroundDispatcher
-    fun backgroundContext(): CoroutineContext = Dispatchers.IO
+    open fun backgroundContext(): CoroutineContext = backgroundDispatcher
 }

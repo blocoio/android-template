@@ -1,6 +1,8 @@
 package io.bloco.core.data.network
 
 import io.bloco.core.commons.BackgroundDispatcher
+import io.bloco.core.commons.endpoints.OpenLibraryEndpoint
+import io.bloco.core.commons.loge
 import io.bloco.core.data.models.BookDetailsDto
 import io.bloco.core.data.models.BookRecords
 import io.ktor.client.call.body
@@ -16,14 +18,15 @@ class OpenLibraryService
     @BackgroundDispatcher private val coroutineContext: CoroutineContext
 ) {
 
-    suspend fun getBooks(): Result<BookRecords> = withContext(coroutineContext) {
+    suspend fun getBooks(keyword: String): Result<BookRecords> = withContext(coroutineContext) {
         return@withContext try {
             Result.success(
                 httpClient().get {
-                    url(path = "/search.json?q=android&limit=10")
+                    url(path = OpenLibraryEndpoint.search(keyword))
                 }.body()
             )
         } catch (e: Exception) {
+            loge("Failed to get Books", e)
             Result.failure(e)
         }
     }
@@ -32,10 +35,11 @@ class OpenLibraryService
         return@withContext try {
             Result.success(
                 httpClient().get {
-                    url(path = "/works/$id.json")
+                    url(path = OpenLibraryEndpoint.work(id))
                 }.body()
             )
         } catch (e: Exception) {
+            loge("Failed to get Book", e)
             Result.failure(e)
         }
     }

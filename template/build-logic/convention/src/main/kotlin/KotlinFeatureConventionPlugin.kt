@@ -6,10 +6,8 @@ import org.gradle.api.plugins.JavaPluginExtension
 import org.gradle.kotlin.dsl.configure
 import org.gradle.kotlin.dsl.dependencies
 import org.gradle.kotlin.dsl.getByType
-import org.gradle.kotlin.dsl.withType
 import org.gradle.kotlin.dsl.provideDelegate
-import org.gradle.kotlin.dsl.repositories
-import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
+import utils.kotlinOptions
 
 class KotlinFeatureConventionPlugin : Plugin<Project> {
     override fun apply(target: Project) {
@@ -25,25 +23,10 @@ class KotlinFeatureConventionPlugin : Plugin<Project> {
                 targetCompatibility = JavaVersion.VERSION_1_8
             }
 
-            tasks.withType<KotlinCompile> {
-                kotlinOptions {
-                    val warningsAsErrors: String? by project
-                    allWarningsAsErrors = warningsAsErrors.toBoolean()
-
-                    freeCompilerArgs = freeCompilerArgs + listOf(
-                        "-opt-in=kotlin.RequiresOptIn",
-                        // Enable experimental coroutines APIs, including Flow
-                        "-opt-in=kotlinx.coroutines.ExperimentalCoroutinesApi",
-                        "-opt-in=kotlinx.coroutines.FlowPreview",
-                        "-opt-in=kotlin.Experimental",
-                    )
-
-                    jvmTarget = JavaVersion.VERSION_1_8.toString()
-                }
-            }
-
             dependencies {
-                add("implementation", libs.findLibrary("coroutines").get())
+                add("implementation", libs.findLibrary("javax-inject").get())
+                add("testImplementation", libs.findLibrary("junit").get())
+                add("testImplementation", libs.findLibrary("mockk").get())
             }
         }
     }

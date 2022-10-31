@@ -3,6 +3,7 @@ plugins {
     id(libs.plugins.kotlin.android.get().pluginId)
     kotlin("kapt")
     id(libs.plugins.hilt.android.get().pluginId)
+    id("template.coroutines")
 }
 
 android {
@@ -17,7 +18,7 @@ android {
         versionCode = 1
         versionName = "1.0"
 
-        testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
+        testInstrumentationRunner = "io.bloco.template.TestRunner"
         vectorDrawables { useSupportLibrary = true }
     }
 
@@ -30,12 +31,12 @@ android {
             )
         }
     }
+
     compileOptions {
         sourceCompatibility = JavaVersion.VERSION_1_8
         targetCompatibility = JavaVersion.VERSION_1_8
     }
 
-    kotlinOptions { jvmTarget = JavaVersion.VERSION_1_8.toString() }
     hilt { enableAggregatingTask = true }
 
     buildFeatures { compose = true }
@@ -46,8 +47,10 @@ android {
     packagingOptions {
         resources {
             excludes.add("/META-INF/{AL2.0,LGPL2.1}")
+            excludes.add("/META-INF/LICENSE*")
         }
     }
+
     testOptions {
         unitTests {
             isIncludeAndroidResources = true
@@ -70,12 +73,23 @@ dependencies {
     implementation(libs.hilt.android)
     kapt(libs.hilt.compiler)
 
+    // Ktor Engine
+    implementation(libs.ktor.core)
+    implementation(libs.ktor.engine.android)
+
     // Debug Dependencies
     debugImplementation(libs.bundles.compose.debug)
 
     // Android Test Dependencies
+    androidTestImplementation(libs.hilt.test)
+    kaptAndroidTest(libs.hilt.test.compiler)
+
     androidTestImplementation(libs.bundles.compose.test)
+    androidTestImplementation(libs.ktor.engine.mock)
+    androidTestImplementation(project(":core:data-test"))
 
     // Test Dependencies
     testImplementation(libs.bundles.test.core)
+    testImplementation(libs.mockk.agent)
+    testImplementation(libs.mockk.android)
 }

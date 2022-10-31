@@ -20,7 +20,7 @@ import javax.inject.Inject
 
 @HiltViewModel
 class ListViewModel @Inject constructor(
-    getBooks: GetBooks
+    private val getBooks: GetBooks
 ) : ViewModel() {
 
     private val events = PublishFlow<Event>()
@@ -31,10 +31,10 @@ class ListViewModel @Inject constructor(
     init {
         events
             .filterIsInstance<Event.Refresh>()
-            .onStart { updateBookList(getBooks) }
+            .onStart { updateBookList() }
             .onEach {
                 _state.value = LoadingFromAPI
-                updateBookList(getBooks)
+                updateBookList()
             }
             .launchIn(viewModelScope)
     }
@@ -43,7 +43,7 @@ class ListViewModel @Inject constructor(
         viewModelScope.launch { events.emit(Event.Refresh) }
     }
 
-    private suspend fun updateBookList(getBooks: GetBooks) {
+    private suspend fun updateBookList() {
         getBooks()
             .onSuccess { _state.value = UpdateSuccess(it) }
             .onFailure { _state.value = ErrorFromAPI }

@@ -61,7 +61,7 @@ object Log {
     private val fqcnIgnore = listOf(
         Log::class.java.name,
         Log::class.java.name + "Kt",
-        Logger::class.java.name
+        Logger::class.java.name,
     )
 
     private fun createStackElementTag(element: StackTraceElement): String {
