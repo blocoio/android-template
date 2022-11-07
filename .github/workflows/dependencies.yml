@@ -9,6 +9,7 @@ on:
 
 env:
   WORKING_DIR: template
+  ACTIONS_ALLOW_UNSECURE_COMMANDS: 'true'
 
 jobs:
   create_issue:
@@ -48,7 +49,8 @@ jobs:
       - name: Get Dependencies
         working-directory: ${{ env.WORKING_DIR }}
         run: |
-          echo ::set-env name=GITHUB_DEPENDENCIES::$(./gradlew dependencyUpdates)
+          echo ::set-env name=GITHUB_DEPENDENCIES::$(./gradlew dependencyUpdates)          
+          echo "GITHUB_DEPENDENCIES=$(./gradlew dependencyUpdates)" >> $GITHUB_ENV
 
       - name: Create Dependencies issue
         uses: imjohnbo/issue-bot@3daae12aa54d38685d7ff8459fc8a2aee8cea98b
