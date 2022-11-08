@@ -1,0 +1,62 @@
+name: dependencies
+on:
+  schedule:
+    - cron: "0 11 1 * *"
+
+env:
+  WORKING_DIR: template
+
+jobs:
+  create_issue:
+    name: Create Dependencies Report
+    runs-on: ubuntu-latest
+    permissions:
+      issues: write
+    steps:
+      - name: Github API Request
+        id: request
+        uses: octokit/request-action@v2.0.2
+        with:
+          route: ${{ github.event.issue.pull_request.url }}
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Checkout
+        uses: actions/checkout@v1
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          repository: ${{ fromJson(steps.request.outputs.data).head.repo.full_name }}
+          ref: ${{ steps.pr_data.outputs.branch }}
+
+      - name: Setup JDK 11
+        uses: actions/setup-java@v1
+        with:
+          java-version: 11
+
+      - name: Cache
+        uses: actions/cache@v1
+        with:
+          path: ~/${{ env.WORKING_DIR }}/.gradle/caches
+          key: ${{ runner.os }}-gradle-${{ hashFiles('**/*.gradle') }}
+          restore-keys: |
+            ${{ runner.os }}-gradle-
+
+      - name: Get Dependencies
+        working-directory: ${{ env.WORKING_DIR }}
+        run: |
+          echo 'GITHUB_DEPENDENCIES<<EOF' >> $GITHUB_ENV
+          ./gradlew dependencyUpdates >> $GITHUB_ENV
+          echo 'EOF' >> $GITHUB_ENV
+
+      - name: Create Dependencies issue
+        uses: imjohnbo/issue-bot@3daae12aa54d38685d7ff8459fc8a2aee8cea98b
+        with:
+          assignees: "filmaluco"
+          labels: "dependencies"
+          title: "Dependencies with update Available"
+          body: |
+            ${{ env.GITHUB_DEPENDENCIES }}
+          pinned: true
+          close-previous: false
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

@@ -1,4 +1,6 @@
 @file:Suppress("UnstableApiUsage")
+
+import com.github.benmanes.gradle.versions.reporter.result.Result
 import com.github.benmanes.gradle.versions.updates.DependencyUpdatesTask
 import io.gitlab.arturbosch.detekt.extensions.DetektExtension
 import org.jlleitschuh.gradle.ktlint.KtlintExtension
@@ -77,7 +79,46 @@ tasks.withType<DependencyUpdatesTask> {
 
     // optional parameters
     checkForGradleUpdate = true
-    outputFormatter = "html"
+    outputFormatter = closureOf<Result> {
+        val updatable = outdated.dependencies
+        if (updatable.isNotEmpty()) {
+            val writer = java.io.StringWriter()
+            val html = groovy.xml.MarkupBuilder(writer)
+
+            html.withGroovyBuilder {
+                "html"() {
+                    "body"() {
+                        "table"() {
+                            "thead"() {
+                                "tr"() {
+                                    "td"("Package")
+                                    "td"("Current version")
+                                    "td"("Latest version")
+                                }
+                            }
+                            "tbody"() {
+                                updatable.forEach { dependency ->
+                                    "tr"() {
+                                        "td"("${dependency.group}:${dependency.name}")
+                                        "td"(dependency.version)
+                                        "td"(
+                                            dependency.available.release
+                                                ?: dependency.available.milestone
+                                        )
+                                    }
+                                }
+                            }
+                        }
+
+                        if (gradle.current.isUpdateAvailable) {
+                            "p"("Theres currently a gradle update available, your current version: ${gradle.current.version}")
+                        }
+                    }
+                }
+            }
+            println(writer.toString())
+        }
+    }
     outputDir = "build/dependencyUpdates"
-    reportfileName = "report"
+    reportfileName = "report.html"
 }
