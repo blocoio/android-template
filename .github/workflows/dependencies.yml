@@ -1,11 +1,7 @@
 name: dependencies
 on:
-  pull_request:
-    types: [ opened, reopened ]
-  pull_request_review_comment:
-    types: [ created, deleted ]
-  issue_comment:
-    types: [ created, deleted ]
+  schedule:
+    - cron: "0 11 1 * *"
 
 env:
   WORKING_DIR: template
