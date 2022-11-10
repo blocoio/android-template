@@ -17,7 +17,7 @@ private fun renameTemplateFolderStructure(initialPath: String, sourceSet: Source
     val oldPackageUriFormat = OLD_PACKAGE.replace(".", "/")
 
     // Move important files to temp folder at root
-    val tempFolder =  File("$initialPath/${sourceSet.path}/temp")
+    val tempFolder = File("$initialPath/${sourceSet.path}/temp")
     FileUtils.moveDirectory(
         File("$initialPath/${sourceSet.path}/$oldPackageUriFormat"),
         tempFolder

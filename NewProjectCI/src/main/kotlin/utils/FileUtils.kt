@@ -41,11 +41,15 @@ fun File.copyDirectory(destDir: File): Pair<Int, MutableSharedFlow<String>> {
         throw IOException("Source '$this' and destination '$destDir' are the same")
     } else {
         val fileCopyFlow = MutableSharedFlow<String>()
-        val numberOfFiles = FileUtils.listFiles(this, FileFilterUtils.trueFileFilter(), TrueFileFilter.INSTANCE).size
+        val numberOfFiles = FileUtils.listFiles(
+            this,
+            FileFilterUtils.trueFileFilter(),
+            TrueFileFilter.INSTANCE
+        ).size
 
         CoroutineScope(Dispatchers.IO).launch {
-                this@copyDirectory.doCopyDirectory(destDir, fileCopyFlow)
-            }
+            this@copyDirectory.doCopyDirectory(destDir, fileCopyFlow)
+        }
 
         return Pair(numberOfFiles, fileCopyFlow)
     }
@@ -58,12 +62,12 @@ private suspend fun File.doCopyDirectory(
 ) {
     val srcFiles = listFiles() ?: throw IOException("Failed to list contents of $this")
 
-    if (
-        (destDir.exists() && !destDir.isDirectory) ||
+    if ((destDir.exists() && !destDir.isDirectory) ||
         (!destDir.mkdirs() && !destDir.isDirectory) ||
         !destDir.canWrite()
-    )
+    ) {
         throw IOException("Destination '$destDir' is invalid")
+    }
 
     val numberOfFiles = srcFiles.size
     for (fileNumber in 0 until numberOfFiles) {
