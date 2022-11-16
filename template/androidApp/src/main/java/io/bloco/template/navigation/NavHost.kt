@@ -13,14 +13,14 @@ import io.bloco.template.features.list.ListScreen
 fun TemplateNaveHost(
     navController: NavHostController = rememberNavController(),
 ) {
-    NavHost(navController = navController, startDestination = NavRoutes.List.route) {
-        composable(NavRoutes.List.navigationRoute()) {
+    NavHost(navController = navController, startDestination = NavRoutes.List.path) {
+        composable(NavRoutes.List.path) {
             ListScreen(hiltViewModel(), openDetailsClicked = {
-                navController.navigate(NavRoutes.Details.navigationRoute(it))
+                navController.navigate(NavRoutes.Details.build(it))
             })
         }
-        composable(NavRoutes.Details.route) { backStackEntry ->
-            backStackEntry.arguments?.getString(NavRoutes.Details.Id)?.let {
+        composable(NavRoutes.Details.path) { backStackEntry ->
+            backStackEntry.arguments?.getString(NavRoutes.DETAILS_ID_KEY)?.let {
                 DetailsScreen(detailViewModel(bookId = it))
             }
         }

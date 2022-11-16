@@ -1,6 +1,6 @@
 @file:Suppress("UnstableApiUsage")
 
-package io.bloco.template.lintChecks
+package io.bloco.template.lintchecks
 
 import com.android.tools.lint.client.api.IssueRegistry
 import com.android.tools.lint.detector.api.CURRENT_API
