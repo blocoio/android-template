@@ -4,7 +4,7 @@ import io.bloco.core.data.repositories.AppRepository
 import kotlinx.coroutines.flow.Flow
 import javax.inject.Inject
 
-class AppSettings @Inject constructor(
+class AppSettingsInteractor @Inject constructor(
     private val appRepository: AppRepository,
 ) {
 

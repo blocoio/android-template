@@ -4,7 +4,7 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import dagger.hilt.android.lifecycle.HiltViewModel
 import io.bloco.core.commons.logd
-import io.bloco.core.domain.AppSettings
+import io.bloco.core.domain.AppSettingsInteractor
 import io.bloco.template.MainActivityViewModel.UiState.Loading
 import io.bloco.template.MainActivityViewModel.UiState.Success
 import kotlinx.coroutines.flow.SharingStarted
@@ -15,7 +15,7 @@ import javax.inject.Inject
 
 @HiltViewModel
 class MainActivityViewModel @Inject constructor(
-    appSettings: AppSettings
+    appSettings: AppSettingsInteractor
 ) : ViewModel() {
     val uiState: StateFlow<UiState> = appSettings.hasBeenOpened().map {
         if (!it) {

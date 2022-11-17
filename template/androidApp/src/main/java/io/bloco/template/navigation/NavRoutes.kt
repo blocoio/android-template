@@ -1,25 +1,14 @@
 package io.bloco.template.navigation
 
-sealed class NavRoutes(internal val route: String) {
-    object List : NavRoutes("/")
-    object Details : NavRoutes("details/{id}") {
-        /**
-         * Key for String Book Id
-         */
-        const val Id: String = "id"
+sealed class NavRoutes(internal open val path: String) {
 
-        /**
-         * Details takes 1 argument, BookId: String
-         * @param args 1 BookId as String
-         */
-        override fun navigationRoute(vararg args: Any): String {
-            return route.replace(Id.toRouteArg(), args.first() as String)
-        }
+    object List : NavRoutes("/")
+    object Details : NavRoutes("details/{$DETAILS_ID_KEY}") {
+        fun build(id: String): String =
+            path.replace("{$DETAILS_ID_KEY}", id)
     }
 
-    open fun navigationRoute(vararg args: Any): String {
-        return route
+    companion object {
+        const val DETAILS_ID_KEY: String = "id"
     }
 }
-
-private fun String.toRouteArg() = "{$this}"
