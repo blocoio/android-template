@@ -44,7 +44,7 @@ The goal of this Template is to be our starting point for new projects, followin
 6. On `androidApp/build.gradle`, update the dependencies Android Studio suggests
 7. On `string.xml`, set your application name
 
-**If you use the Project NewProjectCI all the above steps are done by you automatically**
+**If you run the Project inside the NewProjectCI all the above steps are done by you automatically, you can run the project using Android Studio then Opening the Main.kt file and press "Run MainKt". You will be prompted about a new package name and app name. **
 
 8. On `Theme.kt` & `Color.kt` set your application style
 9. Replace the App Icons
