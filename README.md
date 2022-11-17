@@ -3,7 +3,7 @@
 [![test](https://github.com/blocoio/android-template/workflows/test/badge.svg?branch=master)](https://github.com/blocoio/android-template/actions?query=workflow%3Atest+branch%3Amaster)
 [![lint](https://github.com/blocoio/android-template/workflows/lint/badge.svg?branch=master)](https://github.com/blocoio/android-template/actions?query=workflow%3Alint+branch%3Amaster)
 
-The goal of this Template is to be our starting point for new projects, following the best development practices. It's our interpretation and adaptation of the official architecture guidelines provided by Google. And it's inspired by Google's NowInAndroid.
+The goal of this Template is to be our starting point for new projects, following the best development practices. It's our interpretation and adaptation of the official [architecture](https://developer.android.com/topic/architecture) guidelines provided by Google. And it's inspired by Google's [NowInAndroid](https://github.com/android/nowinandroid).
 
 ## Clean architecture with 3 main modules
 - Data (for database, API and preferences code)
