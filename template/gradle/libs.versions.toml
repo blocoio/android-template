@@ -1,0 +1,161 @@
+[versions]
+sdk-compile = "33"
+sdk-target = "33"
+sdk-min = "23"
+
+gradle-android = "7.3.1"
+gradle-versions = "0.43.0"
+
+compose = "1.3.0"
+compose-material = "1.0.0"
+compose-compiler = "1.3.2"
+compose-navigation = "2.5.3"
+compose-navigation-hilt = "1.0.0"
+accompanist = "0.27.0"
+datastore = "1.0.0"
+
+lint = "30.3.1"
+detekt = "1.21.0"
+
+javax = "1"
+hilt = "2.44"
+mockk = "1.13.2"
+hilt-testing = "2.44"
+dagger = "2.43.2"
+kotlin = "1.7.20"
+ktor = "2.1.3"
+jvm = "5.4.1"
+coroutines = "1.6.4"
+
+[libraries]
+## Android
+androidx-core = { group = "androidx.core", name = "core-ktx", version = "1.9.0" }
+androidx-lifecycle = { group = "androidx.lifecycle", name = "lifecycle-runtime-ktx", version = "2.5.1" }
+androidx-activity-compose = { group = "androidx.activity", name = "activity-compose", version = "1.6.1" }
+
+hilt-android = { group = "com.google.dagger", name = "hilt-android", version.ref = "hilt" }
+hilt-navigation-compose = { group = "androidx.hilt", name = "hilt-navigation-compose", version.ref = "compose-navigation-hilt" }
+hilt-compiler = { group = "com.google.dagger", name = "hilt-android-compiler", version.ref = "hilt" }
+
+compose = { group = "androidx.compose.ui", name = "ui", version.ref = "compose" }
+compose-tools = { group = "androidx.compose.ui", name = "ui-tooling-preview", version.ref = "compose" }
+compose-material = { group = "androidx.compose.material3", name = "material3", version.ref = "compose-material" }
+compose-material-window = { group = "androidx.compose.material3", name = "material3-window-size-class", version.ref = "compose-material" }
+
+androidx-navigation-compose = { group = "androidx.navigation", name = "navigation-compose", version.ref = "compose.navigation" }
+
+accompanist-swiperefresh = { group = "com.google.accompanist", name = "accompanist-swiperefresh", version.ref = "accompanist"}
+accompanist-systemuicontroller = { group = "com.google.accompanist", name = "accompanist-systemuicontroller", version.ref = "accompanist"}
+
+datastore-android = { group = "androidx.datastore", name = "datastore-preferences", version.ref = "datastore"}
+
+splashscreen = { group = "androidx.core", name = "core-splashscreen", version = "1.0.0"}
+
+# Lint check for Compose
+lint-api = { group = "com.android.tools.lint", name = "lint-api", version.ref = "lint" }
+lint-checks = { group = "com.android.tools.lint", name = "lint-checks", version.ref = "lint" }
+lint-tests = { group = "com.android.tools.lint", name = "lint-tests", version.ref = "lint" }
+
+# Debug
+compose-tools-debug = { group = "androidx.compose.ui", name = "ui-tooling", version.ref = "compose" }
+compose-tools-manifest = { group = "androidx.compose.ui", name = "ui-test-manifest", version.ref = "compose" }
+
+# Testing
+test-core = { group = "androidx.test", name = "core", version = "1.5.0-rc01" }
+test-junit = { group = "androidx.test.ext", name = "junit", version = "1.1.3" }
+test-espresso = { group = "androidx.test.espresso", name = "espresso-core", version = "3.4.0" }
+test-compose = { group = "androidx.compose.ui", name = "ui-test-junit4", version.ref = "compose" }
+test-navigation = { group = "androidx.navigation", name = "navigation-testing", version.ref = "compose-navigation" }
+
+## Non Android
+javax-inject = { group = "javax.inject", name = "javax.inject", version.ref = "javax" }
+datastore = { group = "androidx.datastore", name = "datastore-preferences-core", version.ref = "datastore"}
+
+coroutines = { group = "org.jetbrains.kotlinx", name = "kotlinx-coroutines-core", version.ref = "coroutines"}
+ktor-core = { group = "io.ktor", name = "ktor-client-core", version.ref = "ktor" }
+ktor-cio = { group = "io.ktor", name = "ktor-client-cio", version.ref = "ktor" }
+ktor-client-content-negotiation = { group = "io.ktor", name = "ktor-client-content-negotiation", version.ref = "ktor" }
+ktor-client-content-serialization = { group = "io.ktor", name = "ktor-client-serialization", version.ref = "ktor" }
+ktor-client-logging = { group = "io.ktor", name = "ktor-client-logging-jvm", version.ref = "ktor" }
+ktor-engine-android = {group = "io.ktor", name = "ktor-client-android", version.ref = "ktor"}
+ktor-engine-mock = {group = "io.ktor", name = "ktor-client-mock", version.ref = "ktor"}
+ktor-serialization-kotlinx-json = { group = "io.ktor", name = "ktor-serialization-kotlinx-json", version.ref = "ktor" }
+
+# Testing
+junit = { group = "junit", name = "junit", version = "4.13.2" }
+mockk = { group = "io.mockk", name = "mockk", version.ref = "mockk" }
+mockk-android = { group = "io.mockk", name = "mockk-android", version.ref = "mockk" }
+mockk-agent = { group = "io.mockk", name = "mockk-agent-jvm", version.ref = "mockk" }
+turbine = { group = "app.cash.turbine", name = "turbine", version = "0.12.1" }
+
+hilt-test = { group = "com.google.dagger", name = "hilt-android-testing", version.ref = "hilt-testing"}
+hilt-test-compiler = { group = "com.google.dagger", name = "hilt-android-compiler", version.ref = "hilt-testing"}
+
+coroutines-test = { group = "org.jetbrains.kotlinx", name = "kotlinx-coroutines-test", version.ref = "coroutines" }
+
+## Dependencies of the included build-logic
+gradle-plugin-android = { group = "com.android.tools.build", name = "gradle", version.ref = "gradle-android" }
+gradle-plugin-kotlin = { group = "org.jetbrains.kotlin", name = "kotlin-gradle-plugin", version.ref = "kotlin" }
+
+[bundles]
+compose = [
+    "androidx-core",
+    "androidx-lifecycle",
+    "androidx-activity-compose",
+    "compose",
+    "compose-tools",
+    "compose-material",
+    "compose-material-window",
+    "androidx-navigation-compose",
+    "accompanist-swiperefresh",
+    "accompanist-systemuicontroller"
+]
+
+compose-debug = [
+    "compose-tools-debug",
+    "compose-tools-manifest"
+]
+
+compose-test = [
+    "test-junit",
+    "test-espresso",
+    "test-compose",
+    "test-navigation"
+]
+
+lint = [
+    "lint-api",
+    "lint-checks"
+]
+
+javax = [
+    "javax-inject",
+]
+
+network = [
+    "ktor-core",
+    "ktor-cio",
+    "ktor-client-logging",
+    "ktor-client-content-negotiation",
+    "ktor-client-content-serialization",
+    "ktor-serialization-kotlinx-json",
+]
+
+test-core = [
+    "junit",
+    "mockk",
+    "coroutines-test",
+    "turbine"
+]
+
+[plugins]
+versions = { id = "com.github.ben-manes.versions", version.ref = "gradle-versions" }
+android-application = { id = "com.android.application", version.ref = "gradle-android" }
+hilt = { id = "com.google.dagger.hilt.android", version.ref = "hilt" }
+hilt-android = { id = "dagger.hilt.android.plugin", version.ref = "hilt" }
+jvm = { id = "java-library", version.ref = "jvm" }
+kotlin-jvm = { id = "org.jetbrains.kotlin.jvm", version.ref = "kotlin" }
+kotlin-android = { id = "org.jetbrains.kotlin.android", version.ref = "kotlin" }
+kotlin-serialization = { id = "org.jetbrains.kotlin.plugin.serialization", version.ref = "kotlin" }
+ktlint = { id = "org.jlleitschuh.gradle.ktlint", version = "11.0.0" }
+detekt = { id = "io.gitlab.arturbosch.detekt", version.ref = "detekt" }

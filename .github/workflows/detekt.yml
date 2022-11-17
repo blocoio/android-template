@@ -1,0 +1,31 @@
+name: detekt
+
+on: [push]
+
+env:
+  WORKING_DIR: template
+
+jobs:
+  detekt:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v1
+
+      - name: Setup JDK 11
+        uses: actions/setup-java@v1
+        with:
+          java-version: 11
+
+      - name: Cache
+        uses: actions/cache@v1
+        with:
+          path: ~/${{ env.WORKING_DIR }}/.gradle/caches
+          key: ${{ runner.os }}-gradle-${{ hashFiles('**/*.gradle') }}
+          restore-keys: |
+            ${{ runner.os }}-gradle-
+
+      - name: Run Detekt
+        working-directory: ${{ env.WORKING_DIR }}
+        run: ./gradlew detekt
