@@ -21,18 +21,18 @@ The goal of this Template is to be our starting point for new projects, followin
   - example on how to work with coroutine scopes in tests
     
 ## Other useful features
-- This version brings [Modularization](https://developer.android.com/topic/modularization). With that also came:
-- [Version catalog](https://docs.gradle.org/current/userguide/platforms.html) type safe list of dependencies
-- [Convention plugins](https://docs.gradle.org/current/samples/sample_convention_plugins.html) to share build logic between modules.
+- This version brings [Modularization](https://developer.android.com/topic/modularization)
+- Version Management (with [Version catalog](https://docs.gradle.org/current/userguide/platforms.html))
+- Shared Build Logic (with [Convention plugins](https://docs.gradle.org/current/samples/sample_convention_plugins.html))
 - Dependency injection (with [Hilt](http://google.github.io/hilt/))
 - Network calls (with [Ktor](https://ktor.io/docs/http-client-engines.html#minimal-version))
-- Reactive programming with [Kotlin Flows](https://kotlinlang.org/docs/reference/coroutines/flow.html)
+- Reactive programming (with [Kotlin Flows](https://kotlinlang.org/docs/reference/coroutines/flow.html))
 - Android architecture components to share ViewModels during configuration changes
-- Google [Material Design](https://material.io/blog/android-material-theme-color) library
-- UI with [Jetpack Compose](https://developer.android.com/jetpack/compose)
-- Compose Navigation (with [Hilt Support](https://developer.android.com/jetpack/compose/libraries#hilt-navigation) and Assisted Inject Example)
-- Edge To Edge Configuration
 - [Splash Screen](https://developer.android.com/develop/ui/views/launch/splash-screen) Support
+- Google [Material Design](https://material.io/blog/android-material-theme-color) library
+- Declarative UI (with [Jetpack Compose](https://developer.android.com/jetpack/compose))
+  - Compose Navigation (with [Hilt Support](https://developer.android.com/jetpack/compose/libraries#hilt-navigation) and Assisted Inject Example)
+- Edge To Edge Configuration
 
 # Getting started
 
