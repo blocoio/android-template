@@ -27,7 +27,9 @@ class MissingExcludePreviewAnnotationDetector : Detector(), Detector.UastScanner
     private class PreviewMethodElementHandler(private val context: JavaContext) :
         UElementHandler() {
         override fun visitMethod(node: UMethod) {
-            val isPreviewMethod = node.hasAnnotation(COMPOSE_PREVIEW_ANNOTATION)
+            val isPreviewMethod =
+                node.hasAnnotation(COMPOSE_PREVIEW_ANNOTATION) ||
+                    node.hasAnnotation(COMPOSE_THEME_PREVIEW_ANNOTATION)
             val isExcluded = node.hasAnnotation(EXCLUDE_FROM_JACOCO_ANNOTATION)
 
             if (isPreviewMethod && !isExcluded) {
@@ -41,7 +43,10 @@ class MissingExcludePreviewAnnotationDetector : Detector(), Detector.UastScanner
     }
 
     companion object {
-        private const val COMPOSE_PREVIEW_ANNOTATION = "androidx.compose.ui.tooling.preview.Preview"
+        private const val COMPOSE_PREVIEW_ANNOTATION =
+            "androidx.compose.ui.tooling.preview.Preview"
+        private const val COMPOSE_THEME_PREVIEW_ANNOTATION =
+            "io.bloco.template.utils.preview.ThemeModePreview"
         private const val EXCLUDE_FROM_JACOCO_ANNOTATION =
             "io.bloco.template.ExcludeFromJacocoGeneratedReport"
 
