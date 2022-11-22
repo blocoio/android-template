@@ -20,7 +20,6 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
-import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.google.accompanist.swiperefresh.SwipeRefresh
 import com.google.accompanist.swiperefresh.rememberSwipeRefreshState
@@ -31,6 +30,10 @@ import io.bloco.template.features.list.ListViewModel.ListScreenUiState
 import io.bloco.template.features.list.ListViewModel.ListScreenUiState.ErrorFromAPI
 import io.bloco.template.features.list.ListViewModel.ListScreenUiState.LoadingFromAPI
 import io.bloco.template.features.list.ListViewModel.ListScreenUiState.UpdateSuccess
+import io.bloco.template.theme.TemplateTheme
+import io.bloco.template.utils.preview.DeviceFormatPreview
+import io.bloco.template.utils.preview.FontScalePreview
+import io.bloco.template.utils.preview.ThemeModePreview
 
 @Composable
 fun ListScreen(
@@ -89,11 +92,20 @@ private fun ListBooks(
 @Composable
 private fun ErrorFromApi() = Toast(R.string.api_error)
 
-@Preview(showSystemUi = true)
-@Suppress("UnusedPrivateMember")
+@ThemeModePreview
+@FontScalePreview
+@DeviceFormatPreview
 @Composable
-private fun ListScreenPreview() = ListBooks(
-    state = UpdateSuccess(listOf(Book("", "Preview"))),
-    onRefresh = {},
-    onDetailsClicked = {}
-)
+private fun ListScreenPreview() {
+    TemplateTheme {
+        ListBooks(
+            state = UpdateSuccess(
+                (1..10).map {
+                    Book(it.toString(), "Preview $it")
+                }
+            ),
+            onRefresh = {},
+            onDetailsClicked = {}
+        )
+    }
+}
