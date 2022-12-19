@@ -26,15 +26,3 @@ Modules can then pick and choose the configurations they need.
 If there is one-off logic for a module without shared code, it's preferable to define that directly
 in the module's `build.gradle`, as opposed to creating a convention plugin with module-specific
 setup.
-
-Current list of convention plugins:
-
-- [`nowinandroid.spotless`](convention/src/main/kotlin/SpotlessConventionPlugin.kt):
-  Configures spotless. 
-- [`nowinandroid.android.application`](convention/src/main/kotlin/AndroidApplicationConventionPlugin.kt),
-  [`nowinandroid.android.library`](convention/src/main/kotlin/AndroidLibraryConventionPlugin.kt),
-  [`nowinandroid.android.test`](convention/src/main/kotlin/AndroidTestConventionPlugin.kt):
-  Configures common Android and Kotlin options.
-- [`nowinandroid.android.application.compose`](convention/src/main/kotlin/AndroidApplicationComposeConventionPlugin.kt),
-  [`nowinandroid.android.library.compose`](convention/src/main/kotlin/AndroidLibraryComposeConventionPlugin.kt):
-  Configures Jetpack Compose options
