@@ -53,6 +53,7 @@ fun ListScreen(
 }
 
 @Composable
+@Suppress("DEPRECATION") // SwipeRefresh migration not available in material 3 just for 2
 private fun ListBooks(
     state: ListScreenUiState,
     onRefresh: () -> Unit,
