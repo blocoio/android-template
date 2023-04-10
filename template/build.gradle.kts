@@ -14,7 +14,7 @@ buildscript {
     dependencies {
         @Suppress("GradleDynamicVersion")
         classpath("com.github.ben-manes:gradle-versions-plugin:+")
-        classpath("org.jlleitschuh.gradle:ktlint-gradle:11.0.0")
+        classpath("org.jlleitschuh.gradle:ktlint-gradle:11.3.1")
     }
 }
 
