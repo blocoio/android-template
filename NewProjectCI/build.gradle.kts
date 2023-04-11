@@ -1,7 +1,7 @@
 import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
 
 plugins {
-    kotlin("jvm") version "1.7.10"
+    kotlin("jvm") version "1.8.20"
     application
 }
 
@@ -17,7 +17,7 @@ repositories {
 }
 
 dependencies {
-    implementation("com.github.ajalt.clikt:clikt:3.5.0")
+    implementation("com.github.ajalt.clikt:clikt:3.5.2")
     implementation("me.tongfei:progressbar:0.9.5")
     implementation("org.lucee:commons-io:2.6.0")
     implementation("org.jetbrains.kotlinx:kotlinx-coroutines-android:1.6.4")
@@ -30,7 +30,7 @@ tasks.test {
 }
 
 tasks.withType<KotlinCompile> {
-    kotlinOptions.jvmTarget = "1.8"
+    kotlinOptions.jvmTarget = "11"
 }
 
 
