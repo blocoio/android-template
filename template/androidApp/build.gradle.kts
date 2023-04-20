@@ -45,7 +45,6 @@ android {
         freeCompilerArgs = freeCompilerArgs + listOf(
             "-opt-in=androidx.compose.material3.ExperimentalMaterial3Api",
         )
-        jvmTarget = JavaVersion.VERSION_11.toString()
     }
 
     kotlin {
