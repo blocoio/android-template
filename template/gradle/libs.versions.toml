@@ -6,12 +6,12 @@ sdk-min = "23"
 gradle-android = "7.4.2"
 gradle-versions = "0.43.0"
 
-compose = "1.4.0"
+compose = "1.4.2"
 compose-material = "1.0.1"
-compose-compiler = "1.4.4"
+compose-compiler = "1.4.6"
 compose-navigation = "2.5.3"
 compose-navigation-hilt = "1.0.0"
-accompanist = "0.30.0"
+accompanist = "0.30.1"
 datastore = "1.0.0"
 
 lint = "25.3.0"
@@ -19,11 +19,11 @@ detekt = "1.22.0"
 
 javax = "1"
 hilt = "2.45"
-mockk = "1.13.4"
+mockk = "1.13.5"
 hilt-testing = "2.45"
 dagger = "2.43.2"
-kotlin = "1.8.10"
-ktor = "2.2.4"
+kotlin = "1.8.20"
+ktor = "2.3.0"
 jvm = "5.4.1"
 coroutines = "1.6.4"
 
@@ -31,7 +31,7 @@ coroutines = "1.6.4"
 ## Android
 androidx-core = { group = "androidx.core", name = "core-ktx", version = "1.9.0" }
 androidx-lifecycle = { group = "androidx.lifecycle", name = "lifecycle-runtime-ktx", version = "2.6.1" }
-androidx-activity-compose = { group = "androidx.activity", name = "activity-compose", version = "1.7.0" }
+androidx-activity-compose = { group = "androidx.activity", name = "activity-compose", version = "1.7.1" }
 
 hilt-android = { group = "com.google.dagger", name = "hilt-android", version.ref = "hilt" }
 hilt-navigation-compose = { group = "androidx.hilt", name = "hilt-navigation-compose", version.ref = "compose-navigation-hilt" }
@@ -86,7 +86,7 @@ junit = { group = "junit", name = "junit", version = "4.13.2" }
 mockk = { group = "io.mockk", name = "mockk", version.ref = "mockk" }
 mockk-android = { group = "io.mockk", name = "mockk-android", version.ref = "mockk" }
 mockk-agent = { group = "io.mockk", name = "mockk-agent-jvm", version.ref = "mockk" }
-turbine = { group = "app.cash.turbine", name = "turbine", version = "0.12.1" }
+turbine = { group = "app.cash.turbine", name = "turbine", version = "0.12.3" }
 
 hilt-test = { group = "com.google.dagger", name = "hilt-android-testing", version.ref = "hilt-testing"}
 hilt-test-compiler = { group = "com.google.dagger", name = "hilt-android-compiler", version.ref = "hilt-testing"}

@@ -53,6 +53,10 @@ allprojects {
     dependencies {
         add("detektPlugins", "io.gitlab.arturbosch.detekt:detekt-formatting:$detektVersion")
     }
+
+    tasks.withType<org.jetbrains.kotlin.gradle.tasks.KotlinCompile>().configureEach {
+        kotlinOptions.jvmTarget = "11"
+    }
 }
 
 fun String.isNonStable(): Boolean {
