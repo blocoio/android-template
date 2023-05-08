@@ -14,7 +14,7 @@ buildscript {
     dependencies {
         @Suppress("GradleDynamicVersion")
         classpath("com.github.ben-manes:gradle-versions-plugin:+")
-        classpath("org.jlleitschuh.gradle:ktlint-gradle:11.0.0")
+        classpath("org.jlleitschuh.gradle:ktlint-gradle:11.3.1")
     }
 }
 
@@ -52,6 +52,10 @@ allprojects {
 
     dependencies {
         add("detektPlugins", "io.gitlab.arturbosch.detekt:detekt-formatting:$detektVersion")
+    }
+
+    tasks.withType<org.jetbrains.kotlin.gradle.tasks.KotlinCompile>().configureEach {
+        kotlinOptions.jvmTarget = "11"
     }
 }
 
